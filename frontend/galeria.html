@@ -9,57 +9,467 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <title>Belenbuuur Fotografía</title>
+    <title>Galeria - Belenbuuur Fotografia</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Hero Section -->
+    <!-- Hero + navegación principal -->
     <section class="hero" id="hero">
-        <!-- Navigation Bar -->
         <nav class="navbar">
             <div class="container">
                 <ul>
-                    <li><a href="#galeria">Galería</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#colaboraciones">Colaboraciones</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </div>
         </nav>
         <img src="media/img/Belenbuuur-hero.jpg" alt="Fondo Hero Belenbuuur" class="hero-bg">
-        <img src="media/logos/Belenbuuur-whtpnk-sn-fondo.png" alt="Fotografía Belenbuuur" class="hero-logo">
+        <img src="media/logos/Belenbuuur-whtpnk-sn-fondo.png" alt="Fotografia Belenbuuur" class="hero-logo">
     </section>
 
-    <!-- Section 1 -->
-    <section class="index" id="index">
-        <div class="index-container">
-            <a href="belenpuuur.html"><div class="index-card">
-                <img src="media/logos/Belenpuuur.png" alt="Belenpuuur" class="index-card-img">
-                <div class="index-card-content">
-                    <h1>Belenpuuur</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium velit sapiente enim magni. Autem itaque laborum dolorum ullam hic voluptatum placeat doloribus labore, asperiores, vel, ad quos unde architecto quae!</p>
+    <main>
+        <!-- Selector de categorías -->
+        <section class="index-gallery" id="index-gallery">
+            <div class="index-container">
+                <a href="belenbuuur.html"><div class="index-card">
+                    <img src="media/logos/Belenbuuur.jpg" alt="Belenbuuur" class="index-gallery-card-img">
+                </div></a>
+                <a href="belenpuuur.html"><div class="index-card">
+                    <img src="media/logos/Belenpuuur.png" alt="Belenpuuur" class="index-gallery-card-img">
+                </div></a>
+                <a href="arquibuuur.html"><div class="index-card">
+                    <img src="media/logos/Arquibuuur.png" alt="Arquibuuur" class="index-gallery-card-img">
+                </div></a>
+                <a href="belenbruuum.html"><div class="index-card">
+                    <img src="media/logos/Belenbruuum.png" alt="Belenbruuum" class="index-gallery-card-img">
+                </div></a>
+                <a href="chinchinbuuur.html"><div class="index-card">
+                    <img src="media/logos/Chinchinbuuur.png" alt="Chinchinbuuur" class="index-gallery-card-img">
+                </div></a>
+                <a href="festibuuur.html"><div class="index-card">
+                    <img src="media/logos/Festibuuur.png" alt="Festibuuur" class="index-gallery-card-img">
+                </div></a>
+            </div>
+        </section>
+
+        <!-- Listado de álbumes -->
+        <section class="albumes" id="albumes">
+            <div class="container">
+                <div class="albumes-header">
+                    <h1>Galeria</h1>
+                    <p>Selecciona un album para ver todas sus fotos.</p>
                 </div>
-            </div></a>
-            <a href="#blog"><div class="index-card">
-                <img src="media/logos/Arquibuuur.png" alt="Arquibuuur" class="index-card-img">
-                <div class="index-card-content">
-                    <h1>Arquibuuur</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia debitis impedit at provident ad tenetur qui! Sint eligendi, magnam esse laudantium, pariatur tempore recusandae sit cum explicabo temporibus, autem nemo?</p>
+                <div id="album-list" class="album-grid" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- Visor del álbum seleccionado -->
+        <section class="album-view" id="album-view">
+            <div class="container">
+                <div class="album-view-header">
+                    <div>
+                        <h2 id="album-title">Elige un album</h2>
+                        <p id="album-meta">Selecciona un album para cargar las fotos.</p>
+                    </div>
                 </div>
-            </div></a>
-            <a href="#colaboraciones"><div class="index-card">
-                <img src="media/logos/Belenbruuum.png" alt="Belenbruuum" class="index-card-img">
-                <div class="index-card-content">
-                    <h1>Belenbruuum</h1>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis repellendus, alias quis rem, distinctio necessitatibus odio temporibus, praesentium earum ipsam placeat reiciendis. Neque totam cupiditate impedit laboriosam veniam doloremque ad.</p>
-                </div>
-            </div></a>
-            <a href="#contacto"><div class="index-card">
-                <img src="media/logos/Chinchinbuuur.png" alt="Chinchinbuuur" class="index-card-img">
-                <div class="index-card-content">
-                    <h1>Chinchinbuuur</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos minima architecto quasi aspernatur fuga quod voluptas cupiditate perferendis tempora, unde, porro modi accusantium totam. Id eaque minima distinctio? Explicabo, hic?</p>
-                </div>
-            </div></a>
-        </div>
-    </section>
+                <div id="photo-grid" class="photo-grid" aria-live="polite"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox para ver fotos en grande -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <button class="lightbox-close" type="button" aria-label="Cerrar">×</button>
+        <button class="lightbox-prev" type="button" aria-label="Anterior">‹</button>
+        <img id="lightbox-image" alt="">
+        <button class="lightbox-next" type="button" aria-label="Siguiente">›</button>
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Datos base de álbumes y fotos
+        const rawAlbums = [
+            {
+                folder: "2020-11-20-Alimentación-Trastarteando-20-de-noviembre-de-2020",
+                title: "Alimentación Trastarteando 20 de noviembre de 2020",
+                files: ["_MG_6491.jpg", "_MG_6515.jpg", "_MG_6522.jpg", "_MG_6528.jpg", "_MG_6543.jpg", "_MG_6587.jpg", "_MG_6611.jpg", "_MG_6644.jpg", "_MG_6652.jpg"]
+            },
+            {
+                folder: "2020-11-13-Alimentación-Trastarteando-13-de-noviembre-de-2020",
+                title: "Alimentación Trastarteando 13 de noviembre de 2020",
+                files: ["_MG_6239.jpg", "_MG_6242.jpg", "_MG_6245.jpg", "_MG_6270.jpg", "_MG_6281.jpg", "_MG_6286.jpg", "_MG_6295.jpg", "_MG_6300.jpg", "_MG_6306.jpg", "_MG_6326.jpg", "_MG_6335.jpg", "_MG_6340.jpg", "_MG_6342.jpg", "_MG_6368.jpg", "_MG_6389.jpg", "_MG_6403.jpg", "_MG_6408.jpg", "_MG_6412.jpg", "_MG_6422.jpg", "_MG_6436.jpg", "_MG_6441.jpg", "_MG_6452.jpg"]
+            },
+            {
+                folder: "2020-10-17-Belenbuuur-Saelices-17-de-octubre-de-2020",
+                title: "Saelices 17 de octubre de 2020",
+                files: ["_MG_5994.jpg", "_MG_6052.jpg", "_MG_6121.jpg", "_MG_6136.jpg", "_MG_6139.jpg", "_MG_6151.jpg", "_MG_6157.jpg"]
+            },
+            {
+                folder: "2020-09-04-Chinchinbuuur-Boda-Sandra-y-Joan-4-de-septiembre-de-2020",
+                title: "Boda Sandra y Joan 4 de septiembre de 2020",
+                files: ["_MG_4890.jpg", "_MG_4917.jpg", "_MG_4949.jpg", "_MG_4962.jpg", "_MG_4969.jpg", "_MG_4972.jpg", "_MG_4976.jpg", "_MG_4985.jpg", "_MG_4986.jpg", "_MG_5067.jpg", "_MG_5083.jpg", "_MG_5117.jpg", "_MG_5135.jpg", "_MG_5137.jpg", "_MG_5142-2.jpg", "_MG_5145-2.jpg"]
+            },
+            {
+                folder: "2020-07-25-Viajes-Altea-25-y-26-de-julio-de-2020",
+                title: "Viajes Altea 25 y 26 de julio de 2020",
+                files: ["_MG_4218.jpg", "_MG_4227.jpg", "_MG_4228.jpg", "_MG_4249.jpg", "_MG_4251.jpg", "_MG_4266.jpg"]
+            },
+            {
+                folder: "2020-07-24-Arquibuuur-IVAM-Valencia-24-de-julio-de-2020",
+                title: "IVAM Valencia 24 de julio de 2020",
+                files: ["_MG_4188.jpg", "_MG_4199.jpg", "_MG_4211.jpg", "_MG_4214.jpg"]
+            },
+            {
+                folder: "2020-07-14-Arquibuuur-Belenpuuur-Valencia-14-de-julio-de-2020",
+                title: "Belenpuuur Valencia 14 de julio de 2020",
+                files: ["_MG_4093.jpg", "_MG_4097-2.jpg", "_MG_4099.jpg", "_MG_4102.jpg", "_MG_4118.jpg", "_MG_4120.jpg"]
+            },
+            {
+                folder: "2020-01-26-Arquibuuur-Museo-Bombas-Gens-Valencia-26-de-enero-de-2020",
+                title: "Museo Bombas Gens Valencia 26 de enero de 2020",
+                files: ["_MG_2872.jpg", "_MG_2873.jpg", "_MG_2876.jpg", "_MG_2878.jpg"]
+            },
+            {
+                folder: "2019-12-22-Belenpuuur-Bioparc-Valencia-22-de-diciembre-de-2019",
+                title: "Bioparc Valencia 22 de diciembre de 2019",
+                files: ["_MG_2538.jpg", "_MG_2541.jpg", "_MG_2556.jpg", "_MG_2559.jpg", "_MG_2570.jpg", "_MG_2572.jpg", "_MG_2573.jpg", "_MG_2576.jpg", "_MG_2587.jpg", "_MG_2594.jpg", "_MG_2599.jpg", "_MG_2655.jpg"]
+            },
+            {
+                folder: "2019-11-22-Viajes-Belenpuuur-Arquibuuur-Ámsterdam-22-a-24-de-noviembre-de-2019",
+                title: "Ámsterdam 22 a 24 de noviembre de 2019",
+                files: ["_MG_1993.jpg", "_MG_2001.jpg", "_MG_2047.jpg", "_MG_2092.jpg", "_MG_2123.jpg", "_MG_2126.jpg", "_MG_2129.jpg", "_MG_2135.jpg", "_MG_2136.jpg", "_MG_2140.jpg", "_MG_2145.jpg", "_MG_2175.jpg", "_MG_2244.jpg", "_MG_2249.jpg", "_MG_2253.jpg"]
+            },
+            {
+                folder: "2019-10-31-Belenpuuur-Villarrubio-31-de-octubre-de-2019",
+                title: "Villarrubio 31 de octubre de 2019",
+                files: ["_MG_1873.jpg", "_MG_1874.jpg"]
+            },
+            {
+                folder: "2019-10-25-Viajes-Arquibuuur-Benidorm-y-Alicante-25-y-26-de-abril-de-2019",
+                title: "Benidorm y Alicante 25 y 26 de abril de 2019",
+                files: ["IMG_1722.jpg", "IMG_1745.jpg", "IMG_1753.jpg", "IMG_1758.jpg", "IMG_1762.jpg", "IMG_1770.jpg", "IMG_1774.jpg", "IMG_1780.jpg", "IMG_1794.jpg", "IMG_1797.jpg", "IMG_1799.jpg", "IMG_1804.jpg", "IMG_1810.jpg", "IMG_1815.jpg", "IMG_1819.jpg", "IMG_1821.jpg", "IMG_1828.jpg", "IMG_1831.jpg", "IMG_1833.jpg", "IMG_1834.jpg", "IMG_1836.jpg", "IMG_1837.jpg"]
+            },
+            {
+                folder: "2019-10-18-Viajes-Arquibuuur-Florencia-18-a-21-de-octubre-de-2019",
+                title: " Florencia 18 a 21 de octubre de 2019",
+                files: ["IMG_0981.jpg", "IMG_1005.jpg", "IMG_1008.jpg", "IMG_1013.jpg", "IMG_1014.jpg", "IMG_1026.jpg", "IMG_1034.jpg", "IMG_1041.jpg", "IMG_1044.jpg", "IMG_1048.jpg", "IMG_1081.jpg", "IMG_1085.jpg", "IMG_1104.jpg", "IMG_1107.jpg", "IMG_1130.jpg", "IMG_1152.jpg", "IMG_1159.jpg", "IMG_1190.jpg", "IMG_1192.jpg", "IMG_1201.jpg", "IMG_1224.jpg", "IMG_1241.jpg", "IMG_1249.jpg", "IMG_1274.jpg", "IMG_1280.jpg", "IMG_1284.jpg", "IMG_1288.jpg", "IMG_1297.jpg", "IMG_1334.jpg", "IMG_1356.jpg", "IMG_1371.jpg", "IMG_1460.jpg", "IMG_1468.jpg", "IMG_20191018_142522.jpg", "IMG_20191018_230609.jpg", "_13_0193.jpg", "_14_0194.jpg", "__5_0190.jpg"]
+            },
+            {
+                folder: "2019-09-27-Arquibuuur-Complejo-Educativo-de-Cheste-27-de-septiembre-de-2019",
+                title: "Complejo Educativo de Cheste 27 de septiembre de 2019",
+                files: ["IMG_20190927_163706_573.jpg", "IMG_20190927_164411_617.jpg", "IMG_20190927_165445_907.jpg", "IMG_20190927_165733_931.jpg", "IMG_20190927_165849_704.jpg", "IMG_20190927_171401_396.jpg", "IMG_20190927_171901_849.jpg", "IMG_20190927_175922_739.jpg", "IMG_20190927_180051_260.jpg"]
+            },
+            {
+                folder: "2019-09-09-Viajes-Arquibuuur-Belenpuuur-Rotterdam-Delft-y-La-Haya-9-a-13-de-septiembre-de-2019",
+                title: "Rotterdam Delft y La Haya 9 a 13 de septiembre de 2019",
+                files: ["IMG_0312.jpg", "IMG_0325.jpg", "IMG_0339.jpg", "IMG_0353.jpg", "IMG_0361.jpg", "IMG_0369.jpg", "IMG_0373.jpg", "IMG_0489.jpg", "IMG_0492.jpg", "IMG_0499.jpg", "IMG_0506.jpg", "IMG_0509.jpg", "IMG_0530.jpg", "IMG_0531.jpg", "IMG_0533.jpg", "IMG_0538.jpg", "IMG_0547.jpg", "IMG_0555.jpg", "IMG_0566.jpg", "IMG_0572.jpg", "IMG_0581.jpg", "IMG_0591.jpg", "IMG_0604.jpg", "IMG_0635.jpg", "IMG_0657.jpg", "IMG_0667.jpg", "IMG_0670.jpg", "IMG_0672.jpg", "IMG_0676.jpg", "IMG_0681.jpg", "IMG_0687.jpg", "IMG_0696.jpg", "IMG_0713.jpg", "IMG_0723.jpg", "IMG_0729.jpg", "IMG_0736.jpg", "IMG_0737.jpg", "IMG_0738.jpg", "IMG_0744.jpg", "IMG_0763.jpg", "IMG_0771.jpg", "IMG_0778.jpg", "IMG_0785.jpg", "IMG_0790.jpg", "IMG_0799.jpg", "IMG_0814.jpg", "IMG_0878.jpg"]
+            },
+            {
+                folder: "2019-08-23-Viajes-Chulilla-23-de-agosto-de-2019",
+                title: "Chulilla 23 de agosto de 2019",
+                files: ["IMG_0076.jpg", "IMG_0120.jpg", "IMG_0130.jpg", "IMG_0181.jpg"]
+            },
+            {
+                folder: "2019-08-12-Viajes-Sagra-Jávea-y-Denia-12-y-13-de-agosto-de-2019",
+                title: "Sagra Jávea y Denia 12 y 13 de agosto de 2019",
+                files: ["IMG_9756.jpg", "IMG_9759.jpg", "IMG_9788.jpg", "IMG_9796.jpg", "IMG_9809.jpg", "IMG_9821.jpg", "IMG_9937.jpg", "IMG_9945.jpg", "IMG_9946.jpg", "IMG_9947.jpg", "IMG_9982.jpg"]
+            },
+            {
+                folder: "2019-07-19-Belenpuuur-Bioparc-Valencia-19-de-julio-de-2019",
+                title: "Bioparc Valencia 19 de julio de 2019",
+                files: ["IMG_9046.jpg", "IMG_9047.jpg", "IMG_9067.jpg", "IMG_9132.jpg", "IMG_9159.jpg", "IMG_9203.jpg", "IMG_9216.jpg", "IMG_9389.jpg", "IMG_9490.jpg", "IMG_9525.jpg"]
+            },
+            {
+                folder: "2019-06-30-Viajes-Arquibuuur-Belenpuuur-Roma-30-de-junio-a-5-de-julio-de-2019",
+                title: "Roma 30 de junio a 5 de julio de 2019",
+                files: ["IMG_0007.jpg", "IMG_0009.jpg", "IMG_0014.jpg", "IMG_0024.jpg", "IMG_0029.jpg", "IMG_0040.jpg", "IMG_0066.jpg", "IMG_0080.jpg", "IMG_0091.jpg", "IMG_0108.jpg", "IMG_0111.jpg", "IMG_0116.jpg", "IMG_0121.jpg", "IMG_0124.jpg", "IMG_0132.jpg", "IMG_0171.jpg", "IMG_0198.jpg", "IMG_0199.jpg", "IMG_0215.jpg", "IMG_0223.jpg", "IMG_0262.jpg", "IMG_0267.jpg", "IMG_0273.jpg", "IMG_0274.jpg", "IMG_0285.jpg", "IMG_0296.jpg", "IMG_0305.jpg", "IMG_0324.jpg", "IMG_0340.jpg", "IMG_0381.jpg", "IMG_9221.jpg", "IMG_9249.jpg", "IMG_9253.jpg", "IMG_9260.jpg", "IMG_9262.jpg", "IMG_9275.jpg", "IMG_9284.jpg", "IMG_9287.jpg", "IMG_9310.jpg", "IMG_9345.jpg", "IMG_9348.jpg", "IMG_9372.jpg", "IMG_9374.jpg", "IMG_9401.jpg", "IMG_9404.jpg", "IMG_9406.jpg", "IMG_9431.jpg", "IMG_9433.jpg", "IMG_9442.jpg", "IMG_9527.jpg", "IMG_9528.jpg", "IMG_9536.jpg", "IMG_9576.jpg", "IMG_9596.jpg", "IMG_9599.jpg", "IMG_9600.jpg", "IMG_9605.jpg", "IMG_9612.jpg", "IMG_9614.jpg", "IMG_9622.jpg", "IMG_9627.jpg", "IMG_9638.jpg", "IMG_9682.jpg", "IMG_9684.jpg", "IMG_9690.jpg", "IMG_9693.jpg", "IMG_9721.jpg", "IMG_9722.jpg", "IMG_9750.jpg", "IMG_9756.jpg", "IMG_9763.jpg", "IMG_9785.jpg", "IMG_9791.jpg"]
+            },
+            {
+                folder: "2019-05-26-Chinchinbuuur-Comunión-Patri-26-de-mayo-de-2019",
+                title: " Patri 26 de mayo de 2019",
+                files: ["IMG_9703.jpg", "IMG_9709.jpg", "IMG_9711.jpg", "IMG_9733.jpg", "IMG_9772.jpg"]
+            },
+            {
+                folder: "2019-03-11-Arquibuuur-Facultad-de-Filosofía-de-Valencia-11-de-marzo-de-2019",
+                title: "Facultad de Filosofía de Valencia 11 de marzo de 2019",
+                files: ["IMG_8919.jpg", "IMG_8924.jpg", "IMG_8927.jpg", "IMG_8928.jpg", "IMG_8938.jpg", "IMG_8945.jpg", "IMG_8949.jpg", "IMG_8957.jpg", "IMG_8958.jpg", "IMG_8962.jpg", "IMG_8967.jpg", "IMG_8975.jpg", "IMG_8977.jpg", "IMG_8985.jpg"]
+            },
+            {
+                folder: "2019-01-31-Arquibuuur-Cevisama-Valencia-31-de-enero-de-2019",
+                title: "Cevisama Valencia 31 de enero de 2019",
+                files: ["IMG_8677.jpg", "IMG_8679.jpg", "IMG_8693.jpg", "IMG_8700.jpg", "IMG_8709.jpg"]
+            },
+            {
+                folder: "2018-10-12-Viajes-Arquibuuur-Belenpuuur-Calpe-12-de-octubre-de-2018",
+                title: "Calpe 12 de octubre de 2018",
+                files: ["IMG_7560.jpg", "IMG_7576.jpg", "IMG_7601.jpg", "IMG_7651.jpg", "IMG_7662.jpg", "IMG_7670.jpg", "IMG_7681.jpg"]
+            },
+            {
+                folder: "2018-09-29-Chinchinbuuur-Boda-Ana-y-Jose-29-de-septiembre-de-2018",
+                title: "Boda Ana y Jose 29 de septiembre de 2018",
+                files: ["IMG_6015.jpg", "IMG_6025.jpg", "IMG_6178.jpg", "IMG_6247.jpg", "IMG_6253.jpg", "IMG_6309.jpg", "IMG_6506.jpg", "IMG_6510.jpg", "IMG_6597.jpg", "IMG_7068.jpg", "IMG_7196.jpg", "IMG_7225.jpg"]
+            },
+            {
+                folder: "2018-06-27-Belenpuuur-El-Passatge-Dels-Gats-Valencia-27-de-junio-de-2018",
+                title: "El Passatge Dels Gats Valencia 27 de junio de 2018",
+                files: ["IMG_4138.jpg", "IMG_4162.jpg", "IMG_4168.jpg", "IMG_4169.jpg", "IMG_4172.jpg"]
+            },
+            {
+                folder: "2018-06-02-Belenpuuur-Animalitos-2-de-junio-de-2018",
+                title: "Animalitos 2 de junio de 2018",
+                files: ["IMG_3897.jpg", "IMG_3900.jpg", "IMG_3939.jpg", "IMG_3943.jpg"]
+            },
+            {
+                folder: "2018-04-29-Belenpuuur-Caballos-29-de-abril-de-2018",
+                title: "Caballos 29 de abril de 2018",
+                files: ["IMG_3564.JPG", "IMG_3577.jpg", "IMG_3583.jpg"]
+            },
+            {
+                folder: "2017.11.04-SesiónExterior-Nico-4-de-noviembre-de-2017-copy",
+                title: "Nico 4 de noviembre de 2017",
+                files: ["IMG_0066.jpg", "IMG_0112.jpg", "IMG_0144.jpg", "IMG_0146.jpg", "IMG_0172.jpg"]
+            },
+            {
+                folder: "2017.11.04-Belenbruuum-CB-Tarancón-4-de-noviembre-de-2017-copy",
+                title: "CB Tarancón 4 de noviembre de 2017",
+                files: ["IMG_0189.jpg", "IMG_0246.jpg", "IMG_0249.jpg", "IMG_0342.jpg", "IMG_0400.jpg", "IMG_0424.jpg", "IMG_0430.jpg", "IMG_0465.jpg"]
+            },
+            {
+                folder: "2017.11.01-Arquibuuur-IX-Certamen-Fotográfico-Renfe-1-de-noviembre-de-2017-copy",
+                title: "IX Certamen Fotográfico Renfe 1 de noviembre de 2017",
+                files: ["IMG_0019.jpg", "IMG_0027.jpg", "IMG_0035.jpg", "IMG_0040.jpg", "IMG_0045.jpg", "IMG_9995.jpg", "IMG_9998.jpg"]
+            },
+            {
+                folder: "2017.10.14-SesiónExterior-Esther-14-de-octubre-de-2017-copy",
+                title: "Esther 14 de octubre de 2017",
+                files: ["IMG_9855.jpg", "IMG_9877.jpg", "IMG_9883.jpg", "IMG_9887.jpg", "IMG_9906.jpg"]
+            },
+            {
+                folder: "2017.10.07-Bar-La-Valenciana-7-de-octubre-de-2017-copy",
+                title: "Bar La Valenciana 7 de octubre de 2017",
+                files: ["IMG_9596.jpg", "IMG_9598.jpg", "IMG_9602.jpg", "IMG_9606.jpg"]
+            },
+            {
+                folder: "2017.09.26-Arquibuuur-Museo-Sorolla-26-de-septiembre-de-2017-copy",
+                title: "Museo Sorolla 26 de septiembre de 2017",
+                files: ["DSC07277.jpg", "DSC07278.jpg", "DSC07280.jpg", "DSC07290.jpg", "DSC07304.jpg"]
+            },
+            {
+                folder: "2017.09.16-Viajes-Arquibuuur-Murcia-16-y-17-de-septiembre-de-2017-copy",
+                title: "Murcia 16 y 17 de septiembre de 2017",
+                files: ["IMG_9257.jpg", "IMG_9265.jpg", "IMG_9267.jpg", "IMG_9341.jpg", "IMG_9452.JPG", "IMG_9471.JPG"]
+            },
+            {
+                folder: "2017.09.03-Belenbruuum-C.B.-Tarancón-3-de-septiembre-de-2017-copy",
+                title: "C.B. Tarancón 3 de septiembre de 2017",
+                files: ["IMG_8999.jpg", "IMG_9005.jpg", "IMG_9009.jpg", "IMG_9015.jpg", "IMG_9056.jpg", "IMG_9070.jpg", "IMG_9079.jpg"]
+            },
+            {
+                folder: "2017.08.21-Viajes-Arquibuuur-Belenpuuur-Cantabria-21-a-26-de-agosto-de-2017-copy",
+                title: "Cantabria 21 a 26 de agosto de 2017",
+                files: ["IMG_7783.jpg", "IMG_7826.jpg", "IMG_7840.jpg", "IMG_7878.jpg", "IMG_7958.jpg", "IMG_7967.jpg", "IMG_7981.jpg", "IMG_8016.jpg", "IMG_8036.jpg", "IMG_8081.jpg", "IMG_8099.jpg", "IMG_8108.jpg", "IMG_8137.jpg", "IMG_8163.jpg", "IMG_8168.jpg", "IMG_8189.jpg", "IMG_8194.jpg", "IMG_8254.jpg", "IMG_8306.jpg", "IMG_8359.jpg", "IMG_8370.jpg", "IMG_8398.jpg", "IMG_8422.jpg"]
+            },
+            {
+                folder: "2017.08.10-SesiónExterior-Pedro-10-de-agosto-de-2017-copy",
+                title: "Pedro 10 de agosto de 2017",
+                files: ["IMG_7364.jpg", "IMG_7372.jpg", "IMG_7429.jpg", "IMG_7434.jpg", "IMG_7461.jpg"]
+            },
+            {
+                folder: "2017.08.09-SesiónExterior-Isa-9-de-agosto-de-2017-copy",
+                title: "Isa 9 de agosto de 2017",
+                files: ["IMG_7111.jpg", "IMG_7220.jpg", "IMG_7238.jpg", "IMG_7324.jpg"]
+            },
+            {
+                folder: "2017.06.27-SesionExterior-Mamá-27-de-junio-de-2017-copy",
+                title: "Mamá 27 de junio de 2017",
+                files: ["IMG_5731.jpg", "IMG_5749.jpg", "IMG_5811.jpg"]
+            },
+            {
+                folder: "2017.06.22-SesiónExterior-Saray-22-de-junio-de-2017-copy",
+                title: "Saray 22 de junio de 2017",
+                files: ["IMG_5516.jpg", "IMG_5542.jpg", "IMG_5567.jpg"]
+            },
+            {
+                folder: "2017.06.21-SesiónExterior-Noelia-21-de-junio-de-2017-copy",
+                title: "Noelia 21 de junio de 2017",
+                files: ["IMG_5294.jpg", "IMG_5304.jpg", "IMG_5326.jpg", "IMG_5332.jpg"]
+            },
+            {
+                folder: "2017.06.10-SesiónExterior-Inma-10-de-junio-de-2017",
+                title: "Inma 10 de junio de 2017",
+                files: ["IMG_5025.jpg", "IMG_5099.jpg", "IMG_5104.jpg", "IMG_5108.jpg"]
+            },
+            {
+                folder: "2017.04.14-Viajes-Irún-y-San-Sebastián-14-a-16-de-abril-de-2017",
+                title: "Irún y San Sebastián 14 a 16 de abril de 2017",
+                files: ["IMG_3131-2.jpg", "IMG_3149.JPG", "IMG_3163.JPG", "IMG_3177-2.jpg", "IMG_3317.JPG", "IMG_3391-2.jpg", "IMG_3455-2.jpg"]
+            },
+            {
+                folder: "2017.04.06-Arquibuuur-Viajes-Lisboa-6-a-11-de-abril-de-2017",
+                title: "Lisboa 6 a 11 de abril de 2017",
+                files: ["IMG_1919-2.jpg", "IMG_1922-2.jpg", "IMG_1957-2.jpg", "IMG_2054-2.jpg", "IMG_2061-2.jpg", "IMG_2070-2.jpg", "IMG_2243-2.jpg", "IMG_2511-2.jpg", "IMG_2799.JPG"]
+            },
+            {
+                folder: "2017.02.25-Belenbruuum-Classic-Auto-25-de-febrero-de-2017",
+                title: "Classic Auto 25 de febrero de 2017",
+                files: ["IMG_0630.JPG", "IMG_0647.JPG", "IMG_0650.JPG", "IMG_0656.JPG"]
+            },
+            {
+                folder: "2016.10.12-Viajes-Arquibuuur-Zaragoza-12-de-octubre-de-2016",
+                title: "Zaragoza 12 de octubre de 2016",
+                files: ["IMG_6774.JPG", "IMG_6801.JPG", "IMG_6825.JPG", "IMG_6832.JPG", "IMG_6911.JPG", "IMG_6939.JPG"]
+            },
+            {
+                folder: "2016.06.19-Festibuuur-Estampa-Flamenca-19-de-junio-de-2016",
+                title: "Estampa Flamenca 19 de junio de 2016",
+                files: ["IMG_3341.JPG", "IMG_3436.JPG", "IMG_3471.JPG", "IMG_3499.JPG"]
+            }
+        ];
+
+        // Filtra álbumes vacíos
+        const albums = rawAlbums.filter((album) => Array.isArray(album.files) && album.files.length > 0);
+
+        // Referencias al DOM
+        const albumListEl = document.getElementById("album-list");
+        const photoGridEl = document.getElementById("photo-grid");
+        const albumTitleEl = document.getElementById("album-title");
+        const albumMetaEl = document.getElementById("album-meta");
+
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightbox-image");
+        const lightboxCaption = document.getElementById("lightbox-caption");
+        const lightboxClose = document.querySelector(".lightbox-close");
+        const lightboxPrev = document.querySelector(".lightbox-prev");
+        const lightboxNext = document.querySelector(".lightbox-next");
+
+        // Estado de navegación
+        let activeAlbumIndex = 0;
+        let activePhotoIndex = 0;
+
+        // Utilidad: construir la ruta de una imagen
+        const buildImageSrc = (folder, file) => {
+            const encodedFolder = encodeURIComponent(folder);
+            const encodedFile = encodeURIComponent(file);
+            return `media/img/${encodedFolder}/${encodedFile}`;
+        };
+
+        // Renderiza la lista de álbumes
+        const renderAlbumList = () => {
+            albumListEl.innerHTML = "";
+
+            albums.forEach((album, index) => {
+                const coverSrc = buildImageSrc(album.folder, album.files[0]);
+                const card = document.createElement("button");
+                card.type = "button";
+                card.className = "album-card" + (index === activeAlbumIndex ? " is-active" : "");
+                card.style.setProperty("--album-cover", `url("${coverSrc}")`);
+                card.dataset.index = index.toString();
+                // Separa título y fecha para una lectura más clara
+                const titleParts = album.title.match(/^(.+?)\s+(\d{1,2}\s+(?:de\s+)?\w+\s+(?:a|y)?\s*\d*\s*(?:de\s+)?\w*\s*(?:de\s+)?\d{4})$/)
+                    || [null, album.title, ''];
+                const mainTitle = titleParts[1];
+                const dateStr = titleParts[2];
+                
+                card.innerHTML = `
+                    <span class="album-card-overlay"></span>
+                    <span class="album-card-content">
+                        <span class="album-card-title">${mainTitle}</span>
+                        ${dateStr ? `<span class="album-card-date">${dateStr}</span>` : ''}
+                        <span class="album-card-count">${album.files.length} fotos</span>
+                    </span>
+                `;
+                card.addEventListener("click", () => {
+                    activeAlbumIndex = index;
+                    renderAlbumList();
+                    renderAlbumPhotos();
+                    // Scroll automático al album-view
+                    document.getElementById("album-view").scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+                albumListEl.appendChild(card);
+            });
+        };
+
+        // Renderiza las fotos del álbum activo
+        const renderAlbumPhotos = () => {
+            const album = albums[activeAlbumIndex];
+            if (!album) {
+                albumTitleEl.textContent = "Elige un album";
+                albumMetaEl.textContent = "Selecciona un album para cargar las fotos.";
+                photoGridEl.innerHTML = "";
+                return;
+            }
+
+            albumTitleEl.textContent = album.title;
+            albumMetaEl.textContent = `${album.files.length} fotos`;
+            photoGridEl.innerHTML = "";
+
+            album.files.forEach((file, index) => {
+                const src = buildImageSrc(album.folder, file);
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "photo-item";
+                button.innerHTML = `<img src="${src}" alt="${album.title} ${index + 1}" loading="lazy">`;
+                button.addEventListener("click", () => {
+                    openLightbox(album, index);
+                });
+                photoGridEl.appendChild(button);
+            });
+        };
+
+        // Abre el lightbox en la foto seleccionada
+        const openLightbox = (album, index) => {
+            activePhotoIndex = index;
+            updateLightbox(album);
+            lightbox.classList.add("is-open");
+            lightbox.setAttribute("aria-hidden", "false");
+            document.body.classList.add("lightbox-open");
+        };
+
+        // Cierra el lightbox y restablece el scroll
+        const closeLightbox = () => {
+            lightbox.classList.remove("is-open");
+            lightbox.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("lightbox-open");
+        };
+
+        // Actualiza imagen y pie de foto del lightbox
+        const updateLightbox = (album) => {
+            const file = album.files[activePhotoIndex];
+            const src = buildImageSrc(album.folder, file);
+            lightboxImage.src = src;
+            lightboxImage.alt = `${album.title} ${activePhotoIndex + 1}`;
+            lightboxCaption.textContent = `${album.title} (${activePhotoIndex + 1}/${album.files.length})`;
+        };
+
+        // Avanza o retrocede dentro del álbum
+        const stepPhoto = (direction) => {
+            const album = albums[activeAlbumIndex];
+            if (!album) return;
+            activePhotoIndex = (activePhotoIndex + direction + album.files.length) % album.files.length;
+            updateLightbox(album);
+        };
+
+        lightboxClose.addEventListener("click", closeLightbox);
+        lightboxPrev.addEventListener("click", () => stepPhoto(-1));
+        lightboxNext.addEventListener("click", () => stepPhoto(1));
+        lightbox.addEventListener("click", (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+        document.addEventListener("keydown", (event) => {
+            if (!lightbox.classList.contains("is-open")) return;
+            if (event.key === "Escape") closeLightbox();
+            if (event.key === "ArrowLeft") stepPhoto(-1);
+            if (event.key === "ArrowRight") stepPhoto(1);
+        });
+
+        renderAlbumList();
+        renderAlbumPhotos();
+    </script>
+</body>
+</html>

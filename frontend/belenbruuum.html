@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <title>Belenbruuum - Belenbuuur Fotografia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="belenbruuum-page">
+    <!-- Hero + navegación principal -->
+    <section class="hero" id="hero">
+        <nav class="navbar">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
+        <img src="media/logos/Belenbruuum.png" alt="Fondo Hero Belenbruuum" class="hero-bg">
+    </section>
+
+    <main>
+        <!-- Listado de álbumes -->
+        <section class="albumes" id="albumes">
+            <div class="container">
+                <div class="albumes-header">
+                    <h1>Belenbruuum</h1>
+                    <p>Selecciona un album para ver todas sus fotos.</p>
+                </div>
+                <div id="album-list" class="album-grid" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- Visor del álbum seleccionado -->
+        <section class="album-view" id="album-view">
+            <div class="container">
+                <div class="album-view-header">
+                    <div>
+                        <h2 id="album-title">Elige un album</h2>
+                        <p id="album-meta">Selecciona un album para cargar las fotos.</p>
+                    </div>
+                </div>
+                <div id="photo-grid" class="photo-grid" aria-live="polite"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox para ver fotos en grande -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <button class="lightbox-close" type="button" aria-label="Cerrar">×</button>
+        <button class="lightbox-prev" type="button" aria-label="Anterior">‹</button>
+        <img id="lightbox-image" alt="">
+        <button class="lightbox-next" type="button" aria-label="Siguiente">›</button>
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Datos base de álbumes y fotos
+        const rawAlbums = [
+            {
+                folder: "2017.02.25-Belenbruuum-Classic-Auto-25-de-febrero-de-2017",
+                title: "Classic Auto (25 de febrero de 2017)",
+                files: [
+                    "IMG_0630.JPG",
+                    "IMG_0647.JPG",
+                    "IMG_0650.JPG",
+                    "IMG_0656.JPG"
+                ]
+            },
+            {
+                folder: "2017.09.03-Belenbruuum-C.B.-Tarancón-3-de-septiembre-de-2017-copy",
+                title: "C.B. Tarancón (3 de septiembre de 2017)",
+                files: [
+                    "IMG_8999.jpg",
+                    "IMG_9005.jpg",
+                    "IMG_9009.jpg",
+                    "IMG_9015.jpg",
+                    "IMG_9056.jpg",
+                    "IMG_9070.jpg",
+                    "IMG_9079.jpg"
+                ]
+            },
+            {
+                folder: "2017.11.04-Belenbruuum-CB-Tarancón-4-de-noviembre-de-2017-copy",
+                title: "CB Tarancón (4 de noviembre de 2017)",
+                files: [
+                    "IMG_0189.jpg",
+                    "IMG_0246.jpg",
+                    "IMG_0249.jpg",
+                    "IMG_0342.jpg",
+                    "IMG_0400.jpg",
+                    "IMG_0424.jpg",
+                    "IMG_0430.jpg",
+                    "IMG_0465.jpg"
+                ]
+            },
+        ];
+
+        // Filtra álbumes vacíos
+        const albums = rawAlbums.filter((album) => Array.isArray(album.files) && album.files.length > 0);
+
+        // Referencias al DOM
+        const albumListEl = document.getElementById("album-list");
+        const photoGridEl = document.getElementById("photo-grid");
+        const albumTitleEl = document.getElementById("album-title");
+        const albumMetaEl = document.getElementById("album-meta");
+
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightbox-image");
+        const lightboxCaption = document.getElementById("lightbox-caption");
+        const lightboxClose = document.querySelector(".lightbox-close");
+        const lightboxPrev = document.querySelector(".lightbox-prev");
+        const lightboxNext = document.querySelector(".lightbox-next");
+
+        // Estado de navegación
+        let activeAlbumIndex = 0;
+        let activePhotoIndex = 0;
+
+        // Utilidad: construir la ruta de una imagen
+        const buildImageSrc = (folder, file) => {
+            const encodedFolder = encodeURIComponent(folder);
+            const encodedFile = encodeURIComponent(file);
+            return `media/img/${encodedFolder}/${encodedFile}`;
+        };
+
+        // Renderiza la lista de álbumes
+        const renderAlbumList = () => {
+            albumListEl.innerHTML = "";
+
+            albums.forEach((album, index) => {
+                const coverSrc = buildImageSrc(album.folder, album.files[0]);
+                const card = document.createElement("button");
+                card.type = "button";
+                card.className = "album-card" + (index === activeAlbumIndex ? " is-active" : "");
+                card.style.setProperty("--album-cover", `url("${coverSrc}")`);
+                card.dataset.index = index.toString();
+                
+                // Separa título y fecha para una lectura más clara
+                const titleParts = album.title.match(/^(.+?)\s+(\d{1,2}\s+(?:de\s+)?\w+\s+(?:a|y)?\s*\d*\s*(?:de\s+)?\w*\s*(?:de\s+)?\d{4})$/)
+                    || [null, album.title, ''];
+                const mainTitle = titleParts[1];
+                const dateStr = titleParts[2];
+                
+                card.innerHTML = `
+                    <span class="album-card-overlay"></span>
+                    <span class="album-card-content">
+                        <span class="album-card-title">${mainTitle}</span>
+                        ${dateStr ? `<span class="album-card-date">${dateStr}</span>` : ''}
+                        <span class="album-card-count">${album.files.length} fotos</span>
+                    </span>
+                `;
+                card.addEventListener("click", () => {
+                    activeAlbumIndex = index;
+                    renderAlbumList();
+                    renderAlbumPhotos();
+                });
+                albumListEl.appendChild(card);
+            });
+        };
+
+        // Renderiza las fotos del álbum activo
+        const renderAlbumPhotos = () => {
+            const album = albums[activeAlbumIndex];
+            if (!album) {
+                albumTitleEl.textContent = "Elige un album";
+                albumMetaEl.textContent = "Selecciona un album para cargar las fotos.";
+                photoGridEl.innerHTML = "";
+                return;
+            }
+
+            albumTitleEl.textContent = album.title;
+            albumMetaEl.textContent = `${album.files.length} fotos`;
+            photoGridEl.innerHTML = "";
+
+            album.files.forEach((file, index) => {
+                const src = buildImageSrc(album.folder, file);
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "photo-item";
+                button.innerHTML = `<img src="${src}" alt="${album.title} ${index + 1}" loading="lazy">`;
+                button.addEventListener("click", () => {
+                    openLightbox(album, index);
+                });
+                photoGridEl.appendChild(button);
+            });
+        };
+
+        // Abre el lightbox en la foto seleccionada
+        const openLightbox = (album, index) => {
+            activePhotoIndex = index;
+            updateLightbox(album);
+            lightbox.classList.add("is-open");
+            lightbox.setAttribute("aria-hidden", "false");
+            document.body.classList.add("lightbox-open");
+        };
+
+        // Cierra el lightbox y restablece el scroll
+        const closeLightbox = () => {
+            lightbox.classList.remove("is-open");
+            lightbox.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("lightbox-open");
+        };
+
+        // Actualiza imagen y pie de foto del lightbox
+        const updateLightbox = (album) => {
+            const file = album.files[activePhotoIndex];
+            const src = buildImageSrc(album.folder, file);
+            lightboxImage.src = src;
+            lightboxImage.alt = `${album.title} ${activePhotoIndex + 1}`;
+            lightboxCaption.textContent = `${album.title} (${activePhotoIndex + 1}/${album.files.length})`;
+        };
+
+        // Avanza o retrocede dentro del álbum
+        const stepPhoto = (direction) => {
+            const album = albums[activeAlbumIndex];
+            if (!album) return;
+            activePhotoIndex = (activePhotoIndex + direction + album.files.length) % album.files.length;
+            updateLightbox(album);
+        };
+
+        // Eventos del lightbox
+        lightboxClose.addEventListener("click", closeLightbox);
+        lightboxPrev.addEventListener("click", () => stepPhoto(-1));
+        lightboxNext.addEventListener("click", () => stepPhoto(1));
+        lightbox.addEventListener("click", (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+        document.addEventListener("keydown", (event) => {
+            if (!lightbox.classList.contains("is-open")) return;
+            if (event.key === "Escape") closeLightbox();
+            if (event.key === "ArrowLeft") stepPhoto(-1);
+            if (event.key === "ArrowRight") stepPhoto(1);
+        });
+
+        renderAlbumList();
+        renderAlbumPhotos();
+    </script>
+</body>
+</html>

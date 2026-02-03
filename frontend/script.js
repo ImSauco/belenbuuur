@@ -1,6 +1,8 @@
+// Elementos principales para controlar el estado del menú
 const navbar = document.querySelector('.navbar');
 const hero = document.querySelector('.hero');
 
+// Activa el modo "sticky" cuando el scroll supera la altura del hero
 const updateNavbarState = () => {
     if (!navbar || !hero) return;
 
@@ -14,6 +16,7 @@ const updateNavbarState = () => {
     }
 };
 
+// Escucha cambios de scroll y resize para recalcular
 window.addEventListener('scroll', updateNavbarState);
 window.addEventListener('resize', updateNavbarState);
 updateNavbarState();
