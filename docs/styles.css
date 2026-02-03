@@ -50,6 +50,9 @@ body {
 .belenpuuur-page .navbar.sticky {
     background-color: rgb(204, 98, 32);
 }
+.chinchinbuuur-page .navbar.sticky {
+    background-color: rgb(86,  68,  68);
+}
 .navbar .container {
     display: flex;
     justify-content: space-between;
@@ -116,11 +119,17 @@ body {
 .belenpuuur-page .navbar a:hover {
     color: rgb(105, 42, 23);
 }
+.chinchinbuuur-page .navbar a:hover {
+    color: rgb(207, 136, 181);
+}
 
 .navbar.sticky h3,
 .navbar.sticky a {
     color: rgb(44, 44, 44);
     text-shadow: none;
+}
+.chinchinbuuur-page .navbar.sticky h3, .chinchinbuuur-page .navbar.sticky a {
+    color: rgb(237, 215, 215);
 }
 
 .navbar.sticky a:hover {
@@ -136,7 +145,9 @@ body {
 .belenpuuur-page .navbar.sticky a:hover {
     color: rgb(243, 210, 136);
 }
-
+.chinchinbuuur-page .navbar.sticky a:hover {
+    color: rgb(207, 136, 181);
+}
 /* Hero Section */
 .hero {
     position: relative;
@@ -588,7 +599,12 @@ section h2 {
 .belenpuuur-page .album-view {
     background-color: rgb(255, 243, 216);
 }
-
+.chinchinbuuur-page .albumes {
+    background-color: rgb(201, 180, 180);
+}
+.chinchinbuuur-page .album-view {
+    background-color: rgb(201, 180, 180);
+}
 .album-view-header {
     display: flex;
     align-items: flex-end;
