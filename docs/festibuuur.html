@@ -9,10 +9,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <title>Belenpuuur - Belenbuuur Fotografia</title>
+    <title>Festibuuur - Belenbuuur Fotografia</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="belenpuuur-page">
+<body class="festibuuur-page">
     <!-- Hero + navegación principal -->
     <section class="hero" id="hero">
         <nav class="navbar">
@@ -25,7 +25,7 @@
                 </ul>
             </div>
         </nav>
-        <img src="media/logos/Belenpuuur_Logo completo.jpg" alt="Fondo Hero Belenpuuur" class="hero-bg">
+        <img src="media/logos/Festibuuur_Logo completo.jpg" alt="Fondo Hero Festibuuur" class="hero-bg">
     </section>
 
     <main>
@@ -33,7 +33,7 @@
         <section class="albumes" id="albumes">
             <div class="container">
                 <div class="albumes-header">
-                    <h1>Belenpuuur</h1>
+                    <h1>Festibuuur</h1>
                     <p>Selecciona un álbum para ver todas sus fotos.</p>
                 </div>
                 <div id="album-list" class="album-grid" aria-live="polite"></div>
@@ -68,61 +68,7 @@
     <script>
         // Datos base de álbumes y fotos
         const rawAlbums = [
-            {
-                folder: "2019-12-22-Belenpuuur-Bioparc-Valencia-22-de-diciembre-de-2019",
-                title: "Bioparc Valencia 22 de diciembre de 2019",
-                files: ["_MG_2538.jpg", "_MG_2541.jpg", "_MG_2556.jpg", "_MG_2559.jpg", "_MG_2570.jpg", "_MG_2572.jpg", "_MG_2573.jpg", "_MG_2576.jpg", "_MG_2587.jpg", "_MG_2594.jpg", "_MG_2599.jpg", "_MG_2655.jpg"]
-            },
-            {
-                folder: "2019-11-22-Viajes-Belenpuuur-Arquibuuur-Ámsterdam-22-a-24-de-noviembre-de-2019",
-                title: "Ámsterdam 22 a 24 de noviembre de 2019",
-                files: ["_MG_1993.jpg", "_MG_2001.jpg", "_MG_2047.jpg", "_MG_2092.jpg", "_MG_2123.jpg", "_MG_2126.jpg", "_MG_2129.jpg", "_MG_2135.jpg", "_MG_2136.jpg", "_MG_2140.jpg", "_MG_2145.jpg", "_MG_2175.jpg", "_MG_2244.jpg", "_MG_2249.jpg", "_MG_2253.jpg"]
-            },
-            {
-                folder: "2019-10-31-Belenpuuur-Villarrubio-31-de-octubre-de-2019",
-                title: "Villarrubio 31 de octubre de 2019",
-                files: ["_MG_1873.jpg", "_MG_1874.jpg"]
-            },
-            {
-                folder: "2019-09-09-Viajes-Arquibuuur-Belenpuuur-Rotterdam-Delft-y-La-Haya-9-a-13-de-septiembre-de-2019",
-                title: "Rotterdam Delft y La Haya 9 a 13 de septiembre de 2019",
-                files: ["IMG_0312.jpg", "IMG_0325.jpg", "IMG_0339.jpg", "IMG_0353.jpg", "IMG_0361.jpg", "IMG_0369.jpg", "IMG_0373.jpg", "IMG_0489.jpg", "IMG_0492.jpg", "IMG_0499.jpg", "IMG_0506.jpg", "IMG_0509.jpg", "IMG_0530.jpg", "IMG_0531.jpg", "IMG_0533.jpg", "IMG_0538.jpg", "IMG_0547.jpg", "IMG_0555.jpg", "IMG_0566.jpg", "IMG_0572.jpg", "IMG_0581.jpg", "IMG_0591.jpg", "IMG_0604.jpg", "IMG_0635.jpg", "IMG_0657.jpg", "IMG_0667.jpg", "IMG_0670.jpg", "IMG_0672.jpg", "IMG_0676.jpg", "IMG_0681.jpg", "IMG_0687.jpg", "IMG_0696.jpg", "IMG_0713.jpg", "IMG_0723.jpg", "IMG_0729.jpg", "IMG_0736.jpg", "IMG_0737.jpg", "IMG_0738.jpg", "IMG_0744.jpg", "IMG_0763.jpg", "IMG_0771.jpg", "IMG_0778.jpg", "IMG_0785.jpg", "IMG_0790.jpg", "IMG_0799.jpg", "IMG_0814.jpg", "IMG_0878.jpg"]
-            },
-            {
-                folder: "2019-07-19-Belenpuuur-Bioparc-Valencia-19-de-julio-de-2019",
-                title: "Bioparc Valencia 19 de julio de 2019",
-                files: ["IMG_9046.jpg", "IMG_9047.jpg", "IMG_9067.jpg", "IMG_9132.jpg", "IMG_9159.jpg", "IMG_9203.jpg", "IMG_9216.jpg", "IMG_9389.jpg", "IMG_9490.jpg", "IMG_9525.jpg"]
-            },
-            {
-                folder: "2019-06-30-Viajes-Arquibuuur-Belenpuuur-Roma-30-de-junio-a-5-de-julio-de-2019",
-                title: "Roma 30 de junio a 5 de julio de 2019",
-                files: ["IMG_0007.jpg", "IMG_0009.jpg", "IMG_0014.jpg", "IMG_0024.jpg", "IMG_0029.jpg", "IMG_0040.jpg", "IMG_0066.jpg", "IMG_0080.jpg", "IMG_0091.jpg", "IMG_0108.jpg", "IMG_0111.jpg", "IMG_0116.jpg", "IMG_0121.jpg", "IMG_0124.jpg", "IMG_0132.jpg", "IMG_0171.jpg", "IMG_0198.jpg", "IMG_0199.jpg", "IMG_0215.jpg", "IMG_0223.jpg", "IMG_0262.jpg", "IMG_0267.jpg", "IMG_0273.jpg", "IMG_0274.jpg", "IMG_0285.jpg", "IMG_0296.jpg", "IMG_0305.jpg", "IMG_0324.jpg", "IMG_0340.jpg", "IMG_0381.jpg", "IMG_9221.jpg", "IMG_9249.jpg", "IMG_9253.jpg", "IMG_9260.jpg", "IMG_9262.jpg", "IMG_9275.jpg", "IMG_9284.jpg", "IMG_9287.jpg", "IMG_9310.jpg", "IMG_9345.jpg", "IMG_9348.jpg", "IMG_9372.jpg", "IMG_9374.jpg", "IMG_9401.jpg", "IMG_9404.jpg", "IMG_9406.jpg", "IMG_9431.jpg", "IMG_9433.jpg", "IMG_9442.jpg", "IMG_9527.jpg", "IMG_9528.jpg", "IMG_9536.jpg", "IMG_9576.jpg", "IMG_9596.jpg", "IMG_9599.jpg", "IMG_9600.jpg", "IMG_9605.jpg", "IMG_9612.jpg", "IMG_9614.jpg", "IMG_9622.jpg", "IMG_9627.jpg", "IMG_9638.jpg", "IMG_9682.jpg", "IMG_9684.jpg", "IMG_9690.jpg", "IMG_9693.jpg", "IMG_9721.jpg", "IMG_9722.jpg", "IMG_9750.jpg", "IMG_9756.jpg", "IMG_9763.jpg", "IMG_9785.jpg", "IMG_9791.jpg"]
-            },
-            {
-                folder: "2018-10-12-Viajes-Arquibuuur-Belenpuuur-Calpe-12-de-octubre-de-2018",
-                title: "Calpe 12 de octubre de 2018",
-                files: ["IMG_7560.jpg", "IMG_7576.jpg", "IMG_7601.jpg", "IMG_7651.jpg", "IMG_7662.jpg", "IMG_7670.jpg", "IMG_7681.jpg"]
-            },
-            {
-                folder: "2018-06-27-Belenpuuur-El-Passatge-Dels-Gats-Valencia-27-de-junio-de-2018",
-                title: "El Passatge Dels Gats Valencia 27 de junio de 2018",
-                files: ["IMG_4138.jpg", "IMG_4162.jpg", "IMG_4168.jpg", "IMG_4169.jpg", "IMG_4172.jpg"]
-            },
-            {
-                folder: "2018-06-02-Belenpuuur-Animalitos-2-de-junio-de-2018",
-                title: "Animalitos 2 de junio de 2018",
-                files: ["IMG_3897.jpg", "IMG_3900.jpg", "IMG_3939.jpg", "IMG_3943.jpg"]
-            },
-            {
-                folder: "2018-04-29-Belenpuuur-Caballos-29-de-abril-de-2018",
-                title: "Caballos 29 de abril de 2018",
-                files: ["IMG_3564.JPG", "IMG_3577.jpg", "IMG_3583.jpg"]
-            },
-            {
-                folder: "2017-08-21-Viajes-Arquibuuur-Belenpuuur-Cantabria-21-a-26-de-agosto-de-2017",
-                title: "Cantabria 21 a 26 de agosto de 2017",
-                files: ["IMG_7783.jpg", "IMG_7826.jpg", "IMG_7840.jpg", "IMG_7878.jpg", "IMG_7958.jpg", "IMG_7967.jpg", "IMG_7981.jpg", "IMG_8016.jpg", "IMG_8036.jpg", "IMG_8081.jpg", "IMG_8099.jpg", "IMG_8108.jpg", "IMG_8137.jpg", "IMG_8163.jpg", "IMG_8168.jpg", "IMG_8189.jpg", "IMG_8194.jpg", "IMG_8254.jpg", "IMG_8306.jpg", "IMG_8359.jpg", "IMG_8370.jpg", "IMG_8398.jpg", "IMG_8422.jpg"]
-            }
+            
         ];
 
         // Filtra álbumes vacíos

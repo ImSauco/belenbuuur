@@ -20,7 +20,7 @@
             <div class="container">
                 <ul>
                     <li><a href="galeria.html">Galería</a></li>
-                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                     <li><a href="#colaboraciones">Colaboraciones</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
@@ -80,25 +80,45 @@
 
     <!-- Section 2 -->
     <section class="news" id="news">
-        <div class="news-container">
-            <div class="news-card">
-                <img src="" alt="">
-                <h2>Novedades</h2>
-                <p></p>
+        <div class="container">
+            <h2>Novedades</h2>
+            <div class="news-container">
+                <!-- Último álbum -->
+                <a href="galeria.html" class="news-card news-card-album">
+                    <div class="news-card-image">
+                        <img src="media/img/Belenbuuur-hero.jpg" alt="Último álbum">
+                    </div>
+                    <div class="news-card-content">
+                        <span class="news-card-label">Último álbum</span>
+                        <h3>Nuevo álbum 2026</h3>
+                        <p class="news-card-date">Febrero 2026</p>
+                        <p>Explora las últimas fotografías agregadas a la galería.</p>
+                    </div>
+                </a>
+                
+                <!-- Última entrada del blog -->
+                <a href="blog.html" class="news-card news-card-blog">
+                    <div class="news-card-image">
+                        <img src="media/img/Belenbuuur-hero.jpg" alt="Último post">
+                    </div>
+                    <div class="news-card-content">
+                        <span class="news-card-label">Última entrada</span>
+                        <h3>Nuevo comienzo en 2026</h3>
+                        <p class="news-card-date">4 de febrero de 2026</p>
+                        <p>Un nuevo año lleno de proyectos fotográficos emocionantes...</p>
+                    </div>
+                </a>
             </div>
-            <div class="news-card">
-                <img src="" alt="">
-                <h2></h2>
-                <p></p>
-            </div>
-
         </div>
     </section>
 
     <!-- Section 3 -->
-    <section id="about-me">
+    <section class="about-me" id="about-me">
         <div class="container">
             <h2>Me llamo Paula, no Belén</h2>
+            <div class="about-me-content">
+                <p></p>
+            </div>
         </div>
     </section>
 
@@ -115,6 +135,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="albums-data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
