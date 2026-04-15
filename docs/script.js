@@ -2,6 +2,38 @@
 const navbar = document.querySelector('.navbar');
 const hero = document.querySelector('.hero');
 
+// Marca el enlace de navegación correspondiente a la página actual como activo
+const markActiveNavLink = () => {
+    const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.navbar a').forEach(link => {
+        const linkFile = link.getAttribute('href').split('/').pop().split('?')[0];
+        if (linkFile === currentFile) {
+            link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
+        }
+    });
+};
+markActiveNavLink();
+
+// Soporte swipe táctil para el lightbox
+let _swipeTouchStartX = 0;
+document.addEventListener('touchstart', (e) => {
+    const lb = document.getElementById('lightbox');
+    if (lb && lb.classList.contains('is-open')) {
+        _swipeTouchStartX = e.changedTouches[0].screenX;
+    }
+}, { passive: true });
+document.addEventListener('touchend', (e) => {
+    const lb = document.getElementById('lightbox');
+    if (!lb || !lb.classList.contains('is-open')) return;
+    const dx = e.changedTouches[0].screenX - _swipeTouchStartX;
+    if (Math.abs(dx) < 50) return;
+    const btn = dx > 0
+        ? document.querySelector('.lightbox-prev')
+        : document.querySelector('.lightbox-next');
+    if (btn) btn.click();
+}, { passive: true });
+
 // Activa el modo "sticky" cuando el scroll supera la altura del hero
 const updateNavbarState = () => {
     if (!navbar || !hero) return;

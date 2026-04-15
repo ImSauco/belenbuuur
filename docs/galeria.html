@@ -9,7 +9,8 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <title>Galeria - Belenbuuur Fotografia</title>
+    <title>Galería - Belenbuuur Fotografía</title>
+    <meta name="description" content="Galería fotográfica de Belenbuuur: álbumes de animales, arquitectura, motor, celebraciones, viajes y festivales.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,7 +20,7 @@
             <div class="container">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
@@ -58,23 +59,10 @@
         <section class="albumes" id="albumes">
             <div class="container">
                 <div class="albumes-header">
-                    <h1>Galeria</h1>
+                    <h1>Galería</h1>
                     <p>Selecciona un álbum para ver todas sus fotos.</p>
                 </div>
                 <div id="album-list" class="album-grid" aria-live="polite"></div>
-            </div>
-        </section>
-
-        <!-- Visor del álbum seleccionado -->
-        <section class="album-view" id="album-view">
-            <div class="container">
-                <div class="album-view-header">
-                    <div>
-                        <h2 id="album-title">Elige un álbum</h2>
-                        <p id="album-meta">Selecciona un álbum para cargar las fotos.</p>
-                    </div>
-                </div>
-                <div id="photo-grid" class="photo-grid" aria-live="polite"></div>
             </div>
         </section>
     </main>
@@ -98,21 +86,9 @@
         // Leer parámetro de URL para abrir un álbum específico
         const urlParams = new URLSearchParams(window.location.search);
         const albumParam = urlParams.get('album');
-        let initialAlbumIndex = 0;
-        
-        if (albumParam !== null) {
-            const paramIndex = parseInt(albumParam, 10);
-            if (!isNaN(paramIndex) && paramIndex >= 0 && paramIndex < albums.length) {
-                initialAlbumIndex = paramIndex;
-            }
-        }
 
         // Referencias al DOM
         const albumListEl = document.getElementById("album-list");
-        const photoGridEl = document.getElementById("photo-grid");
-        const albumTitleEl = document.getElementById("album-title");
-        const albumMetaEl = document.getElementById("album-meta");
-
         const lightbox = document.getElementById("lightbox");
         const lightboxImage = document.getElementById("lightbox-image");
         const lightboxCaption = document.getElementById("lightbox-caption");
@@ -120,34 +96,113 @@
         const lightboxPrev = document.querySelector(".lightbox-prev");
         const lightboxNext = document.querySelector(".lightbox-next");
 
-        // Estado de navegación
-        let activeAlbumIndex = initialAlbumIndex;
+        // Estado
+        let activeAlbumIndex = -1;
         let activePhotoIndex = 0;
+        let inlinePanel = null;
 
         // Utilidad: construir la ruta de una imagen
         const buildImageSrc = (folder, file) => {
-            const encodedFolder = encodeURIComponent(folder);
-            const encodedFile = encodeURIComponent(file);
-            return `media/img/${encodedFolder}/${encodedFile}`;
+            return `media/img/${encodeURIComponent(folder)}/${encodeURIComponent(file)}`;
         };
+
+        // Devuelve el índice del último card en la misma fila visual que `index`
+        const getRowLastIndex = (cards, index) => {
+            const top = cards[index].getBoundingClientRect().top;
+            let last = index;
+            for (let i = index + 1; i < cards.length; i++) {
+                if (Math.abs(cards[i].getBoundingClientRect().top - top) < 5) {
+                    last = i;
+                } else {
+                    break;
+                }
+            }
+            return last;
+        };
+
+        // Cierra el panel inline
+        const closeInlinePanel = () => {
+            if (inlinePanel && inlinePanel.parentNode) {
+                inlinePanel.parentNode.removeChild(inlinePanel);
+            }
+            inlinePanel = null;
+            albumListEl.querySelectorAll('.album-card').forEach(c => c.classList.remove('is-active'));
+            activeAlbumIndex = -1;
+        };
+
+        // Abre el panel inline justo después de la fila del card pulsado
+        const openInlinePanel = (index) => {
+            const album = albums[index];
+            const cards = Array.from(albumListEl.querySelectorAll('.album-card'));
+
+            // Eliminar panel existente
+            if (inlinePanel && inlinePanel.parentNode) {
+                inlinePanel.parentNode.removeChild(inlinePanel);
+                inlinePanel = null;
+            }
+
+            // Marcar card activo
+            cards.forEach(c => c.classList.remove('is-active'));
+            cards[index].classList.add('is-active');
+            activeAlbumIndex = index;
+
+            // Encontrar el último card de la misma fila
+            const lastInRow = getRowLastIndex(cards, index);
+
+            // Construir panel
+            inlinePanel = document.createElement('div');
+            inlinePanel.className = 'album-inline-view';
+            inlinePanel.innerHTML = `
+                <div class="album-inline-header">
+                    <button class="album-inline-close" type="button" aria-label="Cerrar álbum">×</button>
+                </div>
+                <div class="album-inline-photos photo-grid"></div>
+            `;
+
+            // Insertar después del último card de la fila
+            cards[lastInRow].insertAdjacentElement('afterend', inlinePanel);
+
+            // Rellenar fotos
+            const photoGridEl = inlinePanel.querySelector('.album-inline-photos');
+            album.files.forEach((file, i) => {
+                const src = buildImageSrc(album.folder, file);
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'photo-item';
+                btn.innerHTML = `<img src="${src}" alt="${album.title} ${i + 1}" loading="lazy">`;
+                btn.addEventListener('click', () => openLightbox(album, i));
+                photoGridEl.appendChild(btn);
+            });
+
+            inlinePanel.querySelector('.album-inline-close').addEventListener('click', closeInlinePanel);
+
+            // Scroll suave para que el panel sea visible
+            setTimeout(() => {
+                inlinePanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 50);
+        };
+
+        // Cerrar panel al redimensionar para evitar desajustes de fila
+        window.addEventListener('resize', () => {
+            if (activeAlbumIndex !== -1) closeInlinePanel();
+        });
 
         // Renderiza la lista de álbumes
         const renderAlbumList = () => {
             albumListEl.innerHTML = "";
-
             albums.forEach((album, index) => {
                 const coverSrc = buildImageSrc(album.folder, album.files[0]);
                 const card = document.createElement("button");
                 card.type = "button";
-                card.className = "album-card" + (index === activeAlbumIndex ? " is-active" : "");
+                card.className = "album-card";
                 card.style.setProperty("--album-cover", `url("${coverSrc}")`);
                 card.dataset.index = index.toString();
-                // Separa título y fecha para una lectura más clara
+
                 const titleParts = album.title.match(/^(.+?)\s+(\d{1,2}\s+(?:de\s+)?\w+\s+(?:a|y)?\s*\d*\s*(?:de\s+)?\w*\s*(?:de\s+)?\d{4})$/)
                     || [null, album.title, ''];
                 const mainTitle = titleParts[1];
                 const dateStr = titleParts[2];
-                
+
                 card.innerHTML = `
                     <span class="album-card-overlay"></span>
                     <span class="album-card-content">
@@ -157,44 +212,17 @@
                     </span>
                 `;
                 card.addEventListener("click", () => {
-                    activeAlbumIndex = index;
-                    renderAlbumList();
-                    renderAlbumPhotos();
-                    // Scroll automático al album-view
-                    document.getElementById("album-view").scrollIntoView({ behavior: "smooth", block: "start" });
+                    if (activeAlbumIndex === index) {
+                        closeInlinePanel();
+                    } else {
+                        openInlinePanel(index);
+                    }
                 });
                 albumListEl.appendChild(card);
             });
         };
 
-        // Renderiza las fotos del álbum activo
-        const renderAlbumPhotos = () => {
-            const album = albums[activeAlbumIndex];
-            if (!album) {
-                albumTitleEl.textContent = "Elige un album";
-                albumMetaEl.textContent = "Selecciona un album para cargar las fotos.";
-                photoGridEl.innerHTML = "";
-                return;
-            }
-
-            albumTitleEl.textContent = album.title;
-            albumMetaEl.textContent = `${album.files.length} fotos`;
-            photoGridEl.innerHTML = "";
-
-            album.files.forEach((file, index) => {
-                const src = buildImageSrc(album.folder, file);
-                const button = document.createElement("button");
-                button.type = "button";
-                button.className = "photo-item";
-                button.innerHTML = `<img src="${src}" alt="${album.title} ${index + 1}" loading="lazy">`;
-                button.addEventListener("click", () => {
-                    openLightbox(album, index);
-                });
-                photoGridEl.appendChild(button);
-            });
-        };
-
-        // Abre el lightbox en la foto seleccionada
+        // Lightbox
         const openLightbox = (album, index) => {
             activePhotoIndex = index;
             updateLightbox(album);
@@ -203,23 +231,19 @@
             document.body.classList.add("lightbox-open");
         };
 
-        // Cierra el lightbox y restablece el scroll
         const closeLightbox = () => {
             lightbox.classList.remove("is-open");
             lightbox.setAttribute("aria-hidden", "true");
             document.body.classList.remove("lightbox-open");
         };
 
-        // Actualiza imagen y pie de foto del lightbox
         const updateLightbox = (album) => {
             const file = album.files[activePhotoIndex];
-            const src = buildImageSrc(album.folder, file);
-            lightboxImage.src = src;
+            lightboxImage.src = buildImageSrc(album.folder, file);
             lightboxImage.alt = `${album.title} ${activePhotoIndex + 1}`;
             lightboxCaption.textContent = `${album.title} (${activePhotoIndex + 1}/${album.files.length})`;
         };
 
-        // Avanza o retrocede dentro del álbum
         const stepPhoto = (direction) => {
             const album = albums[activeAlbumIndex];
             if (!album) return;
@@ -231,9 +255,7 @@
         lightboxPrev.addEventListener("click", () => stepPhoto(-1));
         lightboxNext.addEventListener("click", () => stepPhoto(1));
         lightbox.addEventListener("click", (event) => {
-            if (event.target === lightbox) {
-                closeLightbox();
-            }
+            if (event.target === lightbox) closeLightbox();
         });
         document.addEventListener("keydown", (event) => {
             if (!lightbox.classList.contains("is-open")) return;
@@ -243,13 +265,13 @@
         });
 
         renderAlbumList();
-        renderAlbumPhotos();
-        
-        // Si se abrió un álbum específico desde la URL, hacer scroll al visor
+
+        // Abrir álbum indicado en URL
         if (albumParam !== null) {
-            setTimeout(() => {
-                document.getElementById("album-view").scrollIntoView({ behavior: "smooth", block: "start" });
-            }, 300);
+            const paramIndex = parseInt(albumParam, 10);
+            if (!isNaN(paramIndex) && paramIndex >= 0 && paramIndex < albums.length) {
+                setTimeout(() => openInlinePanel(paramIndex), 150);
+            }
         }
     </script>
 </body>

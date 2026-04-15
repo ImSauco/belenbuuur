@@ -96,6 +96,11 @@ body {
     color: rgb(118, 198, 206);
 }
 
+.navbar a.active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
 .navbar.sticky h3,
 .navbar.sticky a {
     color: rgb(44, 44, 44);
@@ -162,7 +167,7 @@ section {
 section h2 {
     font-size: clamp(1.6rem, 3vw, 2.5rem);
     margin-bottom: 30px;
-    color: #667eea;
+    color: rgb(153, 51, 102);
 }
 
 .container {
@@ -620,6 +625,50 @@ section h2 {
 
 .album-view {
     background-color: rgb(237, 215, 215);
+}
+
+/* Inline album viewer (galeria.html) */
+.album-inline-view {
+    grid-column: 1 / -1;
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+    border-top: 2px solid rgba(153, 51, 102, 0.25);
+    border-bottom: 2px solid rgba(153, 51, 102, 0.25);
+    padding: 28px 0;
+    margin: 4px 0;
+    animation: inlinePanelIn 0.2s ease-out;
+}
+
+@keyframes inlinePanelIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.album-inline-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+}
+
+.album-inline-close {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    line-height: 1;
+    color: rgb(160, 160, 160);
+    cursor: pointer;
+    padding: 0 4px;
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+}
+
+.album-inline-close:hover {
+    color: rgb(153, 51, 102);
+}
+
+.album-inline-photos {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
 /* News Section */
@@ -1344,3 +1393,192 @@ section h2 {
     outline: 2px solid rgb(244, 67, 54);
     outline-offset: 2px;
 }
+
+/* ====================================
+   CONTACT PAGE
+   ==================================== */
+
+.contact {
+    background-color: rgb(237, 215, 215);
+    padding: 80px 40px;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 56px;
+}
+
+.contact-header h1 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: rgb(153, 51, 102);
+    margin-bottom: 12px;
+}
+
+.contact-header p {
+    font-size: 1.1rem;
+    color: rgb(90, 90, 90);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* Info column */
+.contact-info h2 {
+    font-size: 1.4rem;
+    color: rgb(44, 44, 44);
+    margin-bottom: 16px;
+}
+
+.contact-info p {
+    font-size: 0.95rem;
+    color: rgb(80, 80, 80);
+    line-height: 1.7;
+    margin-bottom: 14px;
+}
+
+.contact-social {
+    margin-top: 32px;
+}
+
+.contact-social h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: rgb(120, 120, 120);
+    margin-bottom: 14px;
+}
+
+.contact-social-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: rgb(44, 44, 44);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.contact-social-link:hover {
+    color: rgb(153, 51, 102);
+}
+
+/* Form column */
+.contact-form-wrap {
+    background-color: #fff;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: rgb(60, 60, 60);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 12px 14px;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: rgb(44, 44, 44);
+    background-color: #fafafa;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: rgb(153, 51, 102);
+    box-shadow: 0 0 0 3px rgba(153, 51, 102, 0.12);
+    background-color: #fff;
+}
+
+.contact-submit {
+    align-self: flex-start;
+    padding: 12px 28px;
+    background-color: rgb(153, 51, 102);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-submit:hover {
+    background-color: rgb(123, 39, 82);
+    transform: translateY(-1px);
+}
+
+.contact-back-wrap {
+    background-color: rgb(237, 215, 215);
+    display: flex;
+    justify-content: center;
+    padding: 0 0 48px;
+}
+
+@media (max-width: 768px) {
+    .contact {
+        padding: 48px 20px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .contact-form-wrap {
+        padding: 28px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact {
+        padding: 40px 16px;
+    }
+
+    .contact-form-wrap {
+        padding: 24px 20px;
+    }
+
+    .contact-submit {
+        width: 100%;
+        text-align: center;
+    }
+}
+
