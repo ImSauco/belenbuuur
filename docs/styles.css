@@ -40,6 +40,7 @@ body {
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     backdrop-filter: blur(6px);
 }
+
 .navbar .container {
     display: flex;
     justify-content: space-between;
@@ -290,6 +291,8 @@ section h2 {
 .index a {
     text-decoration: none;
     color: inherit;
+    display: flex;
+    align-items: stretch;
 }
 
 .index-card {
@@ -302,7 +305,7 @@ section h2 {
     border-radius: 12px;
     background-color: #fff;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    height: 180px;
+    height: 100%;
     text-align: left;
 }
 
@@ -538,7 +541,96 @@ section h2 {
         gap: 14px;
     }
 }
+.gallery-navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 182, 193, 0.97);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 0.6rem 0;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.gallery-navbar.nav-hidden {
+    transform: translateY(-110%);
+    box-shadow: none;
+}
+
+.gallery-navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.gallery-navbar h3 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.gallery-navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    flex: 1;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.gallery-navbar li {
+    position: relative;
+    padding: 0 1rem;
+}
+
+.gallery-navbar li + li::before {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    top: 50%;
+    width: 1px;
+    height: 1.2rem;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+.gallery-navbar.sticky li + li::before {
+    background-color: rgba(0, 0, 0, 0.18);
+}
+
+.gallery-navbar a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+
+.gallery-navbar a:hover {
+    color: rgb(118, 198, 206);
+}
+
+.gallery-navbar a.active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.gallery-navbar.sticky h3,
+.gallery-navbar.sticky a {
+    color: rgb(44, 44, 44);
+    text-shadow: none;
+}
+
+.gallery-navbar.sticky a:hover {
+    color: rgb(153, 51, 102);
+}
 /* Albums / Galerías */
 .albumes {
     background-color: rgb(237, 215, 215);
@@ -699,7 +791,7 @@ section h2 {
     color: inherit;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 12px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(250, 238, 238);
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -792,7 +884,7 @@ section h2 {
 /* Blog Section */
 .blog {
     padding: 80px 40px;
-    background-color: rgb(237, 215, 215);
+    background-color: #faf8f5;
 }
 
 .blog-header {
@@ -820,7 +912,7 @@ section h2 {
 }
 
 .blog-post {
-    background-color: #fff;
+    background-color: #f3e8dc   ;
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid rgba(0, 0, 0, 0.12);
@@ -1330,6 +1422,204 @@ section h2 {
 
 .belenbruuum-page .album-view {
     background-color: rgb(216, 215, 215);
+}
+
+/* ===== Blog Post ===== */
+
+/* Navbar compacta para posts */
+.post-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #d4b896    ;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 0.6rem 0;
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-navbar.nav-hidden {
+    transform: translateY(-110%);
+    box-shadow: none;
+}
+
+.post-navbar--pink {
+    background-color: rgba(255, 182, 193, 0.97);
+}
+
+.post-navbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.post-navbar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.post-navbar nav ul li a {
+    text-decoration: none;
+    color: #faf8f5;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.post-navbar nav ul li a:hover,
+.post-navbar nav ul li a.active {
+    color: rgb(153, 51, 102);
+}
+
+/* Página de post: fondo crema */
+.post-page {
+    background-color: #faf8f5;
+}
+
+.post-body {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+}
+
+.post-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgb(153, 51, 102);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+    transition: color 0.2s ease;
+}
+
+.post-back:hover {
+    color: rgb(123, 39, 82);
+}
+
+.post-header {
+    margin-bottom: 40px;
+}
+
+.post-header h1 {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    color: rgb(153, 51, 102);
+    line-height: 1.2;
+    margin-bottom: 12px;
+    font-family: 'Abril Fatface', serif;
+    font-weight: 400;
+}
+
+.post-subtitle {
+    font-size: 1.1rem;
+    color: rgb(90, 90, 90);
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.post-date {
+    font-size: 0.9rem;
+    color: rgb(130, 130, 130);
+}
+
+.post-cover {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 48px;
+}
+
+.post-cover img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.post-content {
+    color: rgb(60, 60, 60);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    border-left: 3px solid rgb(153, 51, 102);
+    padding-left: 28px;
+}
+
+.post-content p {
+    margin-bottom: 24px;
+}
+
+.post-content h2 {
+    font-size: 1.3rem;
+    color: rgb(44, 44, 44);
+    margin: 40px 0 16px;
+}
+
+.post-content figure {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.post-content figure img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.post-content figcaption {
+    font-size: 0.9rem;
+    color: rgb(130, 130, 130);
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.post-content ul,
+.post-content ol {
+    padding-left: 24px;
+    margin-bottom: 24px;
+}
+
+.post-content li {
+    margin-bottom: 12px;
+}
+
+.post-content strong {
+    color: rgb(44, 44, 44);
+}
+
+.post-footer {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.post-footer a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgb(153, 51, 102);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.post-footer a:hover {
+    color: rgb(123, 39, 82);
+}
+
+/* Tarjeta de archivo WordPress */
+.blog-post-archive {
+    border-style: dashed;
+    opacity: 0.85;
 }
 
 .belenbruuum-page .album-card.is-active {

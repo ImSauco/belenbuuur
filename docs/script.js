@@ -34,6 +34,21 @@ document.addEventListener('touchend', (e) => {
     if (btn) btn.click();
 }, { passive: true });
 
+// Oculta/muestra la post-navbar o gallery-navbar al hacer scroll
+const postNavbar = document.querySelector('.post-navbar, .gallery-navbar');
+if (postNavbar) {
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY && currentScrollY > 60) {
+            postNavbar.classList.add('nav-hidden');
+        } else {
+            postNavbar.classList.remove('nav-hidden');
+        }
+        lastScrollY = currentScrollY;
+    }, { passive: true });
+}
+
 // Activa el modo "sticky" cuando el scroll supera la altura del hero
 const updateNavbarState = () => {
     if (!navbar || !hero) return;
@@ -96,4 +111,29 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', loadLatestAlbum);
 } else {
     loadLatestAlbum();
+}
+
+// Función para cargar el post más reciente en la página de inicio
+const loadLatestPost = () => {
+    const newsCardBlog = document.querySelector('.news-card-blog');
+    if (!newsCardBlog || typeof rawPosts === 'undefined' || rawPosts.length === 0) return;
+
+    const latest = rawPosts[0];
+
+    const imageEl = newsCardBlog.querySelector('.news-card-image img');
+    const titleEl = newsCardBlog.querySelector('h3');
+    const dateEl = newsCardBlog.querySelector('.news-card-date');
+    const descEl = newsCardBlog.querySelector('.news-card-content p:last-child');
+
+    if (imageEl) { imageEl.src = latest.image; imageEl.alt = latest.title; }
+    if (titleEl) titleEl.textContent = latest.title;
+    if (dateEl) dateEl.textContent = latest.date;
+    if (descEl) descEl.textContent = latest.excerpt;
+    newsCardBlog.href = latest.url;
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadLatestPost);
+} else {
+    loadLatestPost();
 }
