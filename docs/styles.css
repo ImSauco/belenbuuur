@@ -273,8 +273,9 @@ section h2 {
 }
 
 .index-gallery .index-container {
-    max-width: 100%;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    max-width: 1200px;
+    margin: 0 auto;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .index-container {
@@ -850,6 +851,7 @@ section h2 {
     color: rgb(90, 90, 90);
     line-height: 1.6;
     font-size: 0.95rem;
+    text-align: justify;
 }
 
 /* About Me Section */
@@ -866,19 +868,40 @@ section h2 {
 }
 
 .about-me-content {
-    max-width: 800px;
+    display: grid;
+    grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+    gap: 32px;
+    align-items: center;
+    max-width: 980px;
     margin: 0 auto;
     padding: 32px;
     background-color: #fff;
-    border-radius: 12px;
+    border-radius: 20px;
     border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 18px 50px rgba(153, 51, 102, 0.08);
 }
 
-.about-me-content p {
+.about-me-image {
+    margin: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(135deg, rgba(153, 51, 102, 0.08), rgba(237, 215, 215, 0.35));
+}
+
+.about-me-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-me-text p {
     font-size: 1.1rem;
     line-height: 1.8;
     color: rgb(60, 60, 60);
-    text-align: center;
+    text-align: justify;
+    margin: 0;
 }
 
 /* Blog Section */
@@ -996,10 +1019,18 @@ section h2 {
     }
     
     .about-me-content {
+        grid-template-columns: 1fr;
+        gap: 24px;
         padding: 24px;
     }
+
+    .about-me-image {
+        max-width: 320px;
+        width: 100%;
+        margin: 0 auto;
+    }
     
-    .about-me-content p {
+    .about-me-text p {
         font-size: 1rem;
     }
     
@@ -1033,9 +1064,10 @@ section h2 {
     
     .about-me-content {
         padding: 20px;
+        gap: 20px;
     }
     
-    .about-me-content p {
+    .about-me-text p {
         font-size: 0.95rem;
     }
     
@@ -1469,7 +1501,7 @@ section h2 {
 
 .post-navbar nav ul li a {
     text-decoration: none;
-    color: #faf8f5;
+    color: rgb(44, 44, 44);
     font-weight: 600;
     font-size: 0.95rem;
     transition: color 0.2s ease;
@@ -1483,6 +1515,10 @@ section h2 {
 /* Página de post: fondo crema */
 .post-page {
     background-color: #faf8f5;
+}
+
+.post-page:not(.collabs-page) .site-footer {
+    background-color: #d4b896;
 }
 
 .post-body {
@@ -1857,6 +1893,179 @@ section h2 {
     }
 }
 
+/* Collaborations Page */
+.collabs-page {
+    background: linear-gradient(180deg, #faf8f5 0%, #edd7d7 100%);
+}
+
+.collabs-hero {
+    padding: 72px 40px 24px;
+}
+
+.collabs-hero-inner {
+    max-width: 980px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 18px 45px rgba(153, 51, 102, 0.08);
+}
+
+.collabs-kicker {
+    margin-bottom: 10px;
+    color: rgb(153, 51, 102);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.collabs-hero h1 {
+    margin: 0 0 16px;
+    color: rgb(44, 44, 44);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+}
+
+.collabs-hero p {
+    margin: 0;
+    max-width: 68ch;
+    color: rgb(60, 60, 60);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.collabs-list {
+    padding: 12px 40px 80px;
+}
+
+.collabs-section-title {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.collabs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.collab-card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 28px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.05);
+}
+
+.collab-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: linear-gradient(90deg, rgb(153, 51, 102), rgb(214, 149, 85));
+}
+
+.collab-eyebrow {
+    margin-top: 2px;
+    color: rgb(153, 51, 102);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.collab-card h2 {
+    margin: 0;
+    color: rgb(44, 44, 44);
+    font-size: 1.45rem;
+    line-height: 1.2;
+}
+.collab-card h3 {
+    margin: 0;
+    color: rgb(60, 60, 60);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+.collab-card p {
+    margin: 0;
+    color: rgb(60, 60, 60);
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.collab-action {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: rgb(153, 51, 102);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.collab-action:hover {
+    background: rgb(123, 39, 82);
+    transform: translateY(-1px);
+}
+
+.collabs-note {
+    max-width: 760px;
+    margin: 32px auto 0;
+    color: rgb(90, 90, 90);
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .contact {
+        padding: 48px 20px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .contact-form-wrap {
+        padding: 28px 24px;
+    }
+
+    .collabs-hero {
+        padding: 56px 20px 20px;
+    }
+
+    .collabs-hero-inner {
+        padding: 28px 24px;
+        border-radius: 20px;
+    }
+
+    .collabs-list {
+        padding: 8px 20px 64px;
+    }
+
+    .collabs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .collab-card {
+        padding: 24px 20px;
+    }
+}
+
 @media (max-width: 480px) {
     .contact {
         padding: 40px 16px;
@@ -1869,6 +2078,23 @@ section h2 {
     .contact-submit {
         width: 100%;
         text-align: center;
+    }
+
+    .collabs-hero {
+        padding: 40px 16px 16px;
+    }
+
+    .collabs-hero-inner {
+        padding: 24px 18px;
+    }
+
+    .collabs-card,
+    .collab-card {
+        padding: 22px 18px;
+    }
+
+    .collab-action {
+        width: 100%;
     }
 }
 
