@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
     <link rel="icon" href="media/logos/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="media/logos/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="media/logos/favicon-16x16.png">
@@ -27,11 +28,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script>
-        if (window.location.pathname.toLowerCase().endsWith('/galeria.html')) {
-            window.location.replace('/galeria/' + window.location.search + window.location.hash);
-        }
-    </script>
     <header class="post-navbar post-navbar--pink">
         <div class="post-navbar-inner">
             <nav>

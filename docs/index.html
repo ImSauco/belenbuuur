@@ -12,13 +12,13 @@
     <title>Fotografía Belenbuuur</title>
     <meta name="description" content="Belenbuuur Fotografía — Galería de Paula: animales, arquitectura, motor, celebraciones, festivales y mucho más.">
     <meta name="theme-color" content="#993366">
-    <link rel="canonical" href="/index.html">
+    <link rel="canonical" href="https://fotografiabelenbuuur.com/">
     <meta property="og:locale" content="es_ES">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Fotografía Belenbuuur">
     <meta property="og:title" content="Fotografía Belenbuuur">
     <meta property="og:description" content="Fotografía Belenbuuur — Galería de Paula: animales, arquitectura, motor, celebraciones, festivales y mucho más.">
-    <meta property="og:url" content="/index.html">
+    <meta property="og:url" content="https://fotografiabelenbuuur.com/">
     <meta property="og:image" content="/media/logos/Belenbuuur.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Fotografía Belenbuuur">
@@ -27,6 +27,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <script>
+        if (window.location.pathname.toLowerCase().endsWith("/index.html")) {
+            window.location.replace("/" + window.location.search + window.location.hash);
+        }
+    </script>
+
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <!-- Navigation Bar -->
@@ -167,7 +173,7 @@
                 date: "Abril de 2026",
                 excerpt: "Cinco años más tarde, retomamos la colección viajando fuera de España. Análisis de la relación de Poreč con el mar.",
                 image: "media/img/blogs/porec.jpg",
-                url: "blog/geometria-ciudad-mar-iv-porec.html"
+                url: "/blog/geometria-ciudad-mar-iv-porec/"
             }
         ];
     </script>

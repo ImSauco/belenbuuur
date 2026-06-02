@@ -12,13 +12,13 @@
     <title>Arquibuuur - Fotografía Belenbuuur</title>
     <meta name="description" content="Arquibuuur: arquitectura, espacios urbanos, museos y los viajes con la lista de edificios que visitar.">
     <meta name="theme-color" content="#993366">
-    <link rel="canonical" href="/arquibuuur.html">
+    <link rel="canonical" href="/arquibuuur/">
     <meta property="og:locale" content="es_ES">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Fotografía Belenbuuur">
     <meta property="og:title" content="Arquibuuur - Fotografía Belenbuuur">
     <meta property="og:description" content="Arquibuuur: arquitectura, espacios urbanos, museos y los viajes con la lista de edificios que visitar.">
-    <meta property="og:url" content="/arquibuuur.html">
+    <meta property="og:url" content="/arquibuuur/">
     <meta property="og:image" content="/media/logos/Belenbuuur.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Arquibuuur - Fotografía Belenbuuur">
@@ -27,6 +27,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="arquibuuur-page">
+    <script>
+        if (window.location.pathname.toLowerCase().endsWith('/arquibuuur.html')) {
+            window.location.replace('/arquibuuur/' + window.location.search + window.location.hash);
+        }
+    </script>
     <!-- Hero + navegación principal -->
     <section class="hero" id="hero">
         <nav class="navbar">
