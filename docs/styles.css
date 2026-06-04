@@ -1226,12 +1226,25 @@ section h2 {
 
     .footer-content {
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
+        padding: 0 18px;
     }
 
     .footer-links {
-        flex-direction: column;
-        gap: 8px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .footer-sep {
+        display: none;
+    }
+
+    .site-footer p,
+    .footer-links {
+        font-size: 0.9rem;
     }
 
     .album-grid {
@@ -1276,7 +1289,14 @@ section h2 {
     }
 
     .footer-content {
-        padding: 0 16px;
+        padding: 0 14px;
+        gap: 8px;
+    }
+
+    .site-footer p,
+    .footer-links {
+        font-size: 0.86rem;
+        line-height: 1.35;
     }
 
     .album-grid {
@@ -1340,8 +1360,20 @@ section h2 {
     }
 
     .index-gallery .index-container {
-        grid-template-columns: 1fr;
+        display: flex;
         gap: 12px;
+        padding: 0 2px 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    .index-gallery .index-container > a {
+        flex: 0 0 62%;
+        max-width: 240px;
+        scroll-snap-align: start;
     }
 
     .lightbox {
@@ -2030,6 +2062,175 @@ section h2 {
     line-height: 1.7;
 }
 
+.collabs-availability {
+    padding: 0 40px 72px;
+}
+
+.availability-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.97) 0%, rgba(252, 241, 244, 0.96) 100%);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 18px 45px rgba(153, 51, 102, 0.1);
+}
+
+.availability-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: start;
+}
+
+.availability-head h2 {
+    margin: 0;
+    color: rgb(44, 44, 44);
+    font-size: clamp(1.55rem, 3vw, 2.1rem);
+    line-height: 1.2;
+}
+
+.availability-intro {
+    margin-top: 10px;
+    max-width: 68ch;
+    color: rgb(70, 70, 70);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.availability-controls {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    border-radius: 999px;
+    background: rgba(153, 51, 102, 0.08);
+}
+
+.availability-nav {
+    border: 1px solid rgba(153, 51, 102, 0.35);
+    background: #fff;
+    color: rgb(123, 39, 82);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.availability-nav:hover:not(:disabled) {
+    background: rgb(153, 51, 102);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.availability-nav:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.availability-month {
+    min-width: 180px;
+    text-align: center;
+    color: rgb(44, 44, 44);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.availability-legend {
+    margin: 18px 0 20px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    color: rgb(65, 65, 65);
+    font-size: 0.95rem;
+}
+
+.availability-legend li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.availability-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.availability-dot.is-available {
+    background: #d6efd2;
+}
+
+.availability-dot.is-limited {
+    background: #ffe4a8;
+}
+
+.availability-dot.is-unavailable {
+    background: #f8c6c6;
+}
+
+.availability-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.availability-day-head {
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgb(106, 106, 106);
+    padding: 4px 0;
+}
+
+.availability-day {
+    min-height: 58px;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: rgb(65, 65, 65);
+    background: #fff;
+}
+
+.availability-day.is-empty {
+    background: rgba(255, 255, 255, 0.35);
+    border-style: dashed;
+    opacity: 0.5;
+}
+
+.availability-day.is-available {
+    background: #e6f5e3;
+}
+
+.availability-day.is-limited {
+    background: #ffefcb;
+}
+
+.availability-day.is-unavailable {
+    background: #f9d6d6;
+}
+
+.availability-day.is-today {
+    box-shadow: inset 0 0 0 2px rgb(153, 51, 102);
+}
+
+.availability-help {
+    margin: 18px 0 0;
+    color: rgb(94, 94, 94);
+    font-size: 0.92rem;
+}
+
 @media (max-width: 768px) {
     .contact {
         padding: 48px 20px;
@@ -2064,6 +2265,39 @@ section h2 {
     .collab-card {
         padding: 24px 20px;
     }
+
+    .collabs-availability {
+        padding: 0 20px 60px;
+    }
+
+    .availability-card {
+        padding: 24px 20px;
+        border-radius: 20px;
+    }
+
+    .availability-head {
+        grid-template-columns: 1fr;
+    }
+
+    .availability-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .availability-month {
+        min-width: auto;
+        font-size: 0.9rem;
+    }
+
+    .availability-grid {
+        gap: 8px;
+    }
+
+    .availability-day {
+        min-height: 52px;
+        border-radius: 12px;
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2096,5 +2330,786 @@ section h2 {
     .collab-action {
         width: 100%;
     }
+
+    .collabs-availability {
+        padding: 0 16px 50px;
+    }
+
+    .availability-card {
+        padding: 22px 16px;
+    }
+
+    .availability-controls {
+        gap: 8px;
+        padding: 6px;
+    }
+
+    .availability-nav {
+        padding: 7px 10px;
+        font-size: 0.82rem;
+    }
+
+    .availability-day-head {
+        font-size: 0.7rem;
+        letter-spacing: 0.04em;
+    }
+
+    .availability-day {
+        min-height: 44px;
+        font-size: 0.82rem;
+    }
 }
+
+    /* Phase 1: mobile-first overrides (Home + Colabs) */
+    /* Base mobile */
+    .hero {
+        min-height: 72vh;
+    }
+
+    .hero-logo {
+        width: clamp(220px, 70vw, 560px);
+    }
+
+    .index,
+    .news,
+    .about-me {
+        padding: 40px 16px;
+    }
+
+    .index {
+        margin-top: 24px;
+    }
+
+    .index-container,
+    .news-container {
+        grid-template-columns: 1fr;
+        padding: 0 16px;
+        gap: 16px;
+    }
+
+    .index-card {
+        flex-direction: row;
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .index-card img {
+        width: 84px;
+        height: 84px;
+    }
+
+    .news-card-image {
+        height: 165px;
+    }
+
+    .news-card-content {
+        padding: 20px;
+    }
+
+    .about-me-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .about-me-text p {
+        font-size: 0.95rem;
+    }
+
+    .collabs-hero {
+        padding: 40px 16px 16px;
+    }
+
+    .collabs-hero-inner {
+        padding: 24px 18px;
+        border-radius: 20px;
+    }
+
+    .collabs-list {
+        padding: 8px 16px 56px;
+    }
+
+    .collabs-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .collab-card {
+        padding: 22px 18px;
+    }
+
+    .collab-action {
+        width: 100%;
+    }
+
+    .collabs-availability {
+        padding: 0 16px 50px;
+    }
+
+    .availability-card {
+        padding: 22px 16px;
+    }
+
+    .availability-head {
+        grid-template-columns: 1fr;
+    }
+
+    .availability-controls {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 6px;
+    }
+
+    .availability-month {
+        min-width: auto;
+    }
+
+    .availability-nav {
+        padding: 7px 10px;
+        font-size: 0.82rem;
+    }
+
+    .availability-day-head {
+        font-size: 0.7rem;
+        letter-spacing: 0.04em;
+    }
+
+    .availability-day {
+        min-height: 44px;
+        font-size: 0.82rem;
+    }
+
+    @media (min-width: 768px) {
+        .hero-logo {
+            width: clamp(240px, 56vw, 760px);
+        }
+
+        .index,
+        .news,
+        .about-me {
+            padding: 48px 20px;
+        }
+
+        .index-container,
+        .news-container {
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        .index-container {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .news-card-image {
+            height: 190px;
+        }
+
+        .about-me-content {
+            gap: 24px;
+            padding: 24px;
+        }
+
+        .about-me-image {
+            max-width: 320px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .about-me-text p {
+            font-size: 1rem;
+        }
+
+        .collabs-hero {
+            padding: 56px 20px 20px;
+        }
+
+        .collabs-hero-inner {
+            padding: 28px 24px;
+        }
+
+        .collabs-list {
+            padding: 8px 20px 64px;
+        }
+
+        .collab-card {
+            padding: 24px 20px;
+        }
+
+        .collabs-availability {
+            padding: 0 20px 60px;
+        }
+
+        .availability-card {
+            padding: 24px 20px;
+        }
+
+        .availability-grid {
+            gap: 8px;
+        }
+
+        .availability-day {
+            min-height: 52px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .hero {
+            min-height: 100vh;
+        }
+
+        .hero-logo {
+            width: clamp(260px, 50vw, 950px);
+        }
+
+        .index,
+        .news,
+        .about-me {
+            padding: 80px 40px;
+        }
+
+        .index {
+            margin-top: 40px;
+        }
+
+        .index-container,
+        .news-container {
+            padding: 0 24px;
+            gap: 24px;
+        }
+
+        .index-card {
+            padding: 20px 24px;
+            gap: 20px;
+        }
+
+        .index-card img {
+            width: 120px;
+            height: 120px;
+        }
+
+        .news-container {
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+
+        .news-card-image {
+            height: 200px;
+        }
+
+        .about-me-content {
+            grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+            gap: 32px;
+            padding: 32px;
+        }
+
+        .about-me-image {
+            max-width: none;
+            margin: 0;
+        }
+
+        .about-me-text p {
+            font-size: 1.1rem;
+        }
+
+        .collabs-hero {
+            padding: 72px 40px 24px;
+        }
+
+        .collabs-hero-inner {
+            padding: 36px;
+            border-radius: 24px;
+        }
+
+        .collabs-list {
+            padding: 12px 40px 80px;
+        }
+
+        .collabs-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .collab-card {
+            padding: 28px;
+        }
+
+        .collab-action {
+            width: auto;
+        }
+
+        .collabs-availability {
+            padding: 0 40px 72px;
+        }
+
+        .availability-card {
+            padding: 30px;
+        }
+
+        .availability-head {
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 24px;
+        }
+
+        .availability-controls {
+            width: auto;
+            gap: 12px;
+            padding: 8px;
+        }
+
+        .availability-month {
+            min-width: 180px;
+        }
+
+        .availability-nav {
+            padding: 8px 14px;
+            font-size: 0.9rem;
+        }
+
+        .availability-day-head {
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+        }
+
+        .availability-day {
+            min-height: 58px;
+            border-radius: 14px;
+            font-size: 0.98rem;
+        }
+    }
+
+    /* Phase 2: mobile-first overrides (Blog + Gallery) */
+    /* Base mobile */
+    .blog {
+        padding: 40px 16px;
+        background: linear-gradient(180deg, #fff7ee 0%, #ffffff 45%);
+    }
+
+    .blog-header {
+        margin-bottom: 28px;
+    }
+
+    .blog-header p {
+        font-size: 1rem;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .blog-post {
+        border-radius: 18px;
+        border: 1px solid rgba(204, 120, 82, 0.24);
+        box-shadow: 0 10px 24px rgba(87, 43, 24, 0.1);
+        overflow: hidden;
+        transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .blog-post:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 30px rgba(87, 43, 24, 0.16);
+    }
+
+    .blog-post-image {
+        height: 180px;
+    }
+
+    .blog-post-content {
+        padding: 20px;
+    }
+
+    .blog-post h2 {
+        font-size: 1.2rem;
+    }
+
+    .blog-post p {
+        font-size: 0.95rem;
+    }
+
+    .index-gallery {
+        padding: 40px 16px 0;
+        background: linear-gradient(180deg, #fff8f2 0%, #ffffff 70%);
+    }
+
+    .index-gallery .index-container {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .index-gallery .index-card {
+        border-radius: 18px;
+        border: 1px solid rgba(199, 116, 71, 0.2);
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: 0 8px 20px rgba(84, 42, 24, 0.08);
+    }
+
+    .albumes,
+    .album-view {
+        padding: 40px 16px;
+    }
+
+    .albumes-header {
+        margin-bottom: 20px;
+    }
+
+    .albumes-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .albumes-header p {
+        font-size: 0.9rem;
+    }
+
+    .album-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .album-card {
+        min-height: 160px;
+        padding: 14px;
+        border-radius: 16px;
+        border: 1px solid rgba(199, 116, 71, 0.22);
+        box-shadow: 0 8px 18px rgba(84, 42, 24, 0.08);
+    }
+
+    .album-card-title {
+        font-size: 0.95rem;
+    }
+
+    .album-card-date,
+    .album-card-count {
+        font-size: 0.85rem;
+    }
+
+    .album-inline-view {
+        padding: 20px 0;
+    }
+
+    .album-inline-photos,
+    .photo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+    }
+
+    .lightbox {
+        padding: 16px;
+    }
+
+    .lightbox-close {
+        top: 16px;
+        right: 16px;
+        width: 36px;
+        height: 36px;
+        font-size: 1.8rem;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+        width: 34px;
+        height: 34px;
+        font-size: 1.3rem;
+        left: 8px;
+    }
+
+    .lightbox-next {
+        left: auto;
+        right: 8px;
+    }
+
+    .lightbox img {
+        max-width: 90vw;
+        max-height: 75vh;
+    }
+
+    .lightbox-caption {
+        bottom: 16px;
+        font-size: 0.85rem;
+        padding: 0 10px;
+    }
+
+    @media (min-width: 768px) {
+        .blog {
+            padding: 48px 20px;
+        }
+
+        .blog-grid {
+            gap: 24px;
+        }
+
+        .blog-post-image {
+            height: 220px;
+        }
+
+        .blog-post-content {
+            padding: 24px;
+        }
+
+        .blog-post h2 {
+            font-size: 1.3rem;
+        }
+
+        .index-gallery {
+            padding: 48px 20px 0;
+        }
+
+        .index-gallery .index-container {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            overflow: visible;
+            padding: 0;
+            scroll-snap-type: none;
+        }
+
+        .index-gallery .index-container > a {
+            flex: initial;
+            max-width: none;
+        }
+
+        .albumes,
+        .album-view {
+            padding: 48px 20px;
+        }
+
+        .albumes-header h1 {
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
+        }
+
+        .album-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .album-inline-photos,
+        .photo-grid {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            width: 38px;
+            height: 38px;
+            font-size: 1.4rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .blog {
+            padding: 80px 40px;
+        }
+
+        .blog-header {
+            margin-bottom: 48px;
+        }
+
+        .blog-header p {
+            font-size: 1.1rem;
+        }
+
+        .blog-grid {
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 32px;
+        }
+
+        .blog-post-image {
+            height: 220px;
+        }
+
+        .blog-post-content {
+            padding: 28px;
+        }
+
+        .blog-post h2 {
+            font-size: 1.4rem;
+        }
+
+        .blog-post p {
+            font-size: 1rem;
+        }
+
+        .index-gallery {
+            padding: 80px 40px 0;
+        }
+
+        .index-gallery .index-container {
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .albumes,
+        .album-view {
+            padding: 80px 40px;
+        }
+
+        .albumes-header {
+            margin-bottom: 24px;
+        }
+
+        .albumes-header h1 {
+            font-size: clamp(2rem, 3vw, 2.6rem);
+        }
+
+        .albumes-header p {
+            font-size: 1rem;
+        }
+
+        .album-grid {
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+
+        .album-card {
+            min-height: 180px;
+            padding: 16px;
+        }
+
+        .album-card-title {
+            font-size: 1rem;
+        }
+
+        .album-card-date,
+        .album-card-count {
+            font-size: 0.9rem;
+        }
+
+        .album-inline-view {
+            padding: 28px 0;
+        }
+
+        .album-inline-photos {
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+
+        .photo-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .lightbox {
+            padding: 24px;
+        }
+
+        .lightbox-close {
+            top: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            font-size: 2rem;
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            width: 44px;
+            height: 44px;
+            font-size: 1.6rem;
+            left: 24px;
+        }
+
+        .lightbox-next {
+            left: auto;
+            right: 24px;
+        }
+
+        .lightbox img {
+            max-width: min(900px, 85vw);
+            max-height: 80vh;
+        }
+
+        .lightbox-caption {
+            bottom: 24px;
+            font-size: 0.95rem;
+            padding: 0;
+        }
+    }
+
+    /* Mobile landscape tuning (phones in rotation and small tablets) */
+    @media (max-width: 900px) and (orientation: landscape) {
+        .post-navbar nav ul {
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .post-navbar nav ul li a {
+            padding: 0.3rem 0.6rem;
+            font-size: 0.84rem;
+        }
+
+        .hero {
+            min-height: 62svh;
+        }
+
+        .index,
+        .news,
+        .about-me,
+        .blog,
+        .albumes,
+        .album-view,
+        .collabs-list,
+        .collabs-availability {
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
+
+        .collabs-grid,
+        .blog-grid,
+        .album-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .availability-grid {
+            gap: 6px;
+        }
+
+        .availability-day {
+            min-height: 40px;
+            font-size: 0.8rem;
+        }
+
+        .index-gallery .index-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            padding: 0 2px 8px;
+        }
+
+        .index-gallery .index-container > a {
+            flex: 0 0 42%;
+            max-width: 210px;
+            scroll-snap-align: start;
+        }
+
+        .album-inline-photos,
+        .photo-grid {
+            grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+            gap: 10px;
+        }
+
+        .lightbox {
+            padding: 10px 14px;
+        }
+
+        .lightbox img {
+            max-width: 86vw;
+            max-height: 66vh;
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            width: 34px;
+            height: 34px;
+            font-size: 1.2rem;
+        }
+
+        .lightbox-close {
+            width: 34px;
+            height: 34px;
+            font-size: 1.6rem;
+        }
+    }
 

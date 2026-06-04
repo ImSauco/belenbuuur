@@ -1,16 +1,23 @@
 <!DOCTYPE html>
+<!-- PAGE: index.html
+  Titulo SEO: Fotografía Belenbuuur
+  Objetivo: Portada principal del sitio.
+  Canonical: https://fotografiabelenbuuur.com/
+  Resumen: Fotografía Belenbuuur — Galería de Paula: animales, arquitectura, motor, celebraciones, festivales y mucho más.
+  Notas tecnicas: Pensada para SEO y compartidos sociales con metadatos OG/Twitter.
+-->
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="media/logos/favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" sizes="32x32" href="media/logos/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="media/logos/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="media/logos/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="media/logos/isotipocolores.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="media/logos/isotipocolores.png" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" sizes="180x180" href="media/logos/isotipocolores.png">
     <link rel="manifest" href="site.webmanifest">
 
     <title>Fotografía Belenbuuur</title>
-    <meta name="description" content="Belenbuuur Fotografía — Galería de Paula: animales, arquitectura, motor, celebraciones, festivales y mucho más.">
+    <meta name="description" content="Fotografía Belenbuuur — Galería de Paula: animales, arquitectura, motor, celebraciones, festivales y mucho más.">
     <meta name="theme-color" content="#993366">
     <link rel="canonical" href="https://fotografiabelenbuuur.com/">
     <meta property="og:locale" content="es_ES">
@@ -19,17 +26,20 @@
     <meta property="og:title" content="Fotografía Belenbuuur">
     <meta property="og:description" content="Fotografía Belenbuuur — Galería de Paula: animales, arquitectura, motor, celebraciones, festivales y mucho más.">
     <meta property="og:url" content="https://fotografiabelenbuuur.com/">
-    <meta property="og:image" content="/media/logos/Belenbuuur.jpg">
+    <meta property="og:image" content="https://fotografiabelenbuuur.com/media/logos/socialpre.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Fotografía Belenbuuur">
     <meta name="twitter:description" content="Fotografía Belenbuuur — Galería de Paula: animales, arquitectura, motor, celebraciones, festivales y mucho más.">
-    <meta name="twitter:image" content="/media/logos/Belenbuuur.jpg">
+    <meta name="twitter:image" content="https://fotografiabelenbuuur.com/media/logos/socialpre.jpg">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <script>
         if (window.location.pathname.toLowerCase().endsWith("/index.html")) {
-            window.location.replace("/" + window.location.search + window.location.hash);
+            window.location.replace("./" + window.location.search + window.location.hash);
         }
     </script>
 
@@ -173,7 +183,7 @@
                 date: "Abril de 2026",
                 excerpt: "Cinco años más tarde, retomamos la colección viajando fuera de España. Análisis de la relación de Poreč con el mar.",
                 image: "media/img/blogs/porec.jpg",
-                url: "/blog/geometria-ciudad-mar-iv-porec/"
+                url: "blog/geometria-ciudad-mar-iv-porec/"
             }
         ];
     </script>
