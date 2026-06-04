@@ -668,7 +668,7 @@ section h2 {
     text-align: left;
     color: #fff;
     background-color: #d66b8e;
-    background-image: var(--album-cover);
+    background-image: var(--album-cover), var(--album-cover-fallback);
     background-size: cover;
     background-position: center;
     cursor: pointer;
@@ -678,7 +678,7 @@ section h2 {
 
 @media (max-width: 768px) {
     .album-card {
-        background-image: var(--album-cover-mobile);
+        background-image: var(--album-cover-mobile), var(--album-cover-fallback);
     }
 }
 

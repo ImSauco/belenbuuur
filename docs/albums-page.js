@@ -26,7 +26,11 @@
     const albums = rawAlbums.filter(matchesPage);
     if (albums.length === 0) return;
 
+    const toWebp = (file) => file.replace(/\.[^.]+$/, '.webp');
     const buildImageSrc = (folder, file) => `media/img/${encodeURIComponent(folder)}/${encodeURIComponent(file)}`;
+    const buildPreviewSrc = (folder, file) => `media/previews/img/${encodeURIComponent(folder)}/${encodeURIComponent(toWebp(file))}`;
+    const buildPreviewMobileSrc = (folder, file) => `media/previews-mobile/img/${encodeURIComponent(folder)}/${encodeURIComponent(toWebp(file))}`;
+    const buildThumbSrc = (folder, file) => `media/thumbs/albums/${encodeURIComponent(folder)}/${encodeURIComponent(toWebp(file))}`;
 
     let activeAlbumIndex = -1;
     let activePhotoIndex = 0;
@@ -116,10 +120,12 @@
         const photoGridEl = inlinePanel.querySelector('.album-inline-photos');
         album.files.forEach((file, fileIndex) => {
             const src = buildImageSrc(album.folder, file);
+            const previewSrc = buildPreviewSrc(album.folder, file);
+            const previewMobileSrc = buildPreviewMobileSrc(album.folder, file);
             const button = document.createElement('button');
             button.type = 'button';
             button.className = 'photo-item';
-            button.innerHTML = `<img src="${src}" alt="${album.title} ${fileIndex + 1}" loading="lazy">`;
+            button.innerHTML = `<img src="${previewMobileSrc}" srcset="${previewMobileSrc} 900w, ${previewSrc} 1600w" sizes="(max-width: 640px) 92vw, (max-width: 1024px) 44vw, 320px" alt="${album.title} ${fileIndex + 1}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${src}'">`;
             button.addEventListener('click', () => openLightbox(album, fileIndex));
             photoGridEl.appendChild(button);
         });
@@ -135,11 +141,15 @@
         albumListEl.innerHTML = '';
 
         albums.forEach((album, index) => {
-            const coverSrc = buildImageSrc(album.folder, album.files[0]);
+            const coverSrc = buildThumbSrc(album.folder, album.files[0]);
+            const coverMobileSrc = buildPreviewMobileSrc(album.folder, album.files[0]);
+            const coverFallbackSrc = buildImageSrc(album.folder, album.files[0]);
             const card = document.createElement('button');
             card.type = 'button';
             card.className = 'album-card';
             card.style.setProperty('--album-cover', `url("${coverSrc}")`);
+            card.style.setProperty('--album-cover-mobile', `url("${coverMobileSrc}")`);
+            card.style.setProperty('--album-cover-fallback', `url("${coverFallbackSrc}")`);
             card.dataset.index = String(index);
 
             const titleParts = album.title.match(/^(.+?)\s+(\d{1,2}\s+(?:de\s+)?\w+\s+(?:a|y)?\s*\d*\s*(?:de\s+)?\w*\s*(?:de\s+)?\d{4})$/)
