@@ -56,16 +56,16 @@
         <section class="index-gallery" id="index-gallery">
             <div class="index-container">
                 <a href="belenpuuur.html"><div class="index-card">
-                    <img src="media/logos/Belenpuuur.png" alt="Belenpuuur" class="index-gallery-card-img">
+                    <img src="media/logos/Belenpuuur.webp" alt="Belenpuuur" class="index-gallery-card-img" onerror="this.onerror=null;this.src='media/logos/Belenpuuur.png'">
                 </div></a>
                 <a href="arquibuuur.html"><div class="index-card">
-                    <img src="media/logos/Arquibuuur.png" alt="Arquibuuur" class="index-gallery-card-img">
+                    <img src="media/logos/Arquibuuur.webp" alt="Arquibuuur" class="index-gallery-card-img" onerror="this.onerror=null;this.src='media/logos/Arquibuuur.png'">
                 </div></a>
                 <a href="belenbruuum.html"><div class="index-card">
-                    <img src="media/logos/Belenbruuum.png" alt="Belenbruuum" class="index-gallery-card-img">
+                    <img src="media/logos/Belenbruuum.webp" alt="Belenbruuum" class="index-gallery-card-img" onerror="this.onerror=null;this.src='media/logos/Belenbruuum.png'">
                 </div></a>
                 <a href="chinchinbuuur.html"><div class="index-card">
-                    <img src="media/logos/Chinchinbuuur.png" alt="Chinchinbuuur" class="index-gallery-card-img">
+                    <img src="media/logos/Chinchinbuuur.webp" alt="Chinchinbuuur" class="index-gallery-card-img" onerror="this.onerror=null;this.src='media/logos/Chinchinbuuur.png'">
                 </div></a>
                 <a href="festibuuur.html"><div class="index-card">
                     <img src="media/logos/Festibuuur_Perfil.jpg" alt="Festibuuur" class="index-gallery-card-img">
@@ -122,6 +122,14 @@
         // Utilidad: construir la ruta de una imagen
         const buildImageSrc = (folder, file) => {
             return `media/img/${encodeURIComponent(folder)}/${encodeURIComponent(file)}`;
+        };
+
+        const buildPreviewSrc = (folder, file) => {
+            return `media/previews/img/${encodeURIComponent(folder)}/${encodeURIComponent(file.replace(/\.[^.]+$/, '.webp'))}`;
+        };
+
+        const buildPreviewMobileSrc = (folder, file) => {
+            return `media/previews-mobile/img/${encodeURIComponent(folder)}/${encodeURIComponent(file.replace(/\.[^.]+$/, '.webp'))}`;
         };
 
         // Devuelve el índice del último card en la misma fila visual que `index`
@@ -184,10 +192,12 @@
             const photoGridEl = inlinePanel.querySelector('.album-inline-photos');
             album.files.forEach((file, i) => {
                 const src = buildImageSrc(album.folder, file);
+                const previewSrc = buildPreviewSrc(album.folder, file);
+                const previewMobileSrc = buildPreviewMobileSrc(album.folder, file);
                 const btn = document.createElement('button');
                 btn.type = 'button';
                 btn.className = 'photo-item';
-                btn.innerHTML = `<img src="${src}" alt="${album.title} ${i + 1}" loading="lazy">`;
+                btn.innerHTML = `<img src="${previewMobileSrc}" srcset="${previewMobileSrc} 900w, ${previewSrc} 1600w" sizes="(max-width: 640px) 92vw, (max-width: 1024px) 44vw, 320px" alt="${album.title} ${i + 1}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${src}'">`;
                 btn.addEventListener('click', () => openLightbox(album, i));
                 photoGridEl.appendChild(btn);
             });
@@ -209,11 +219,15 @@
         const renderAlbumList = () => {
             albumListEl.innerHTML = "";
             albums.forEach((album, index) => {
-                const coverSrc = buildImageSrc(album.folder, album.files[0]);
+                const coverSrc = `media/thumbs/albums/${encodeURIComponent(album.folder)}/${encodeURIComponent(album.files[0].replace(/\.[^.]+$/, '.webp'))}`;
+                const coverMobileSrc = `media/previews-mobile/img/${encodeURIComponent(album.folder)}/${encodeURIComponent(album.files[0].replace(/\.[^.]+$/, '.webp'))}`;
+                const coverFallbackSrc = buildImageSrc(album.folder, album.files[0]);
                 const card = document.createElement("button");
                 card.type = "button";
                 card.className = "album-card";
                 card.style.setProperty("--album-cover", `url("${coverSrc}")`);
+                card.style.setProperty("--album-cover-mobile", `url("${coverMobileSrc}")`);
+                card.style.setProperty("--album-cover-fallback", `url("${coverFallbackSrc}")`);
                 card.dataset.index = index.toString();
 
                 const titleParts = album.title.match(/^(.+?)\s+(\d{1,2}\s+(?:de\s+)?\w+\s+(?:a|y)?\s*\d*\s*(?:de\s+)?\w*\s*(?:de\s+)?\d{4})$/)
