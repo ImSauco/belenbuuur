@@ -2,12 +2,41 @@
 const navbar = document.querySelector('.navbar');
 const hero = document.querySelector('.hero');
 
+// Normaliza URLs antiguas con .html a rutas limpias con barra final.
+const redirectLegacyHtmlUrl = () => {
+    const path = window.location.pathname;
+    const lowerPath = path.toLowerCase();
+    let cleanPath = null;
+
+    if (lowerPath.endsWith('/index.html')) {
+        cleanPath = path.slice(0, -10) || '/';
+    } else if (lowerPath.endsWith('.html')) {
+        cleanPath = `${path.slice(0, -5)}/`;
+    }
+
+    if (cleanPath && cleanPath !== path) {
+        window.location.replace(cleanPath + window.location.search + window.location.hash);
+    }
+};
+
+redirectLegacyHtmlUrl();
+
 // Marca el enlace de navegación correspondiente a la página actual como activo
 const markActiveNavLink = () => {
-    const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+    const normalizePath = (path) => {
+        let normalized = (path || '/').toLowerCase();
+        normalized = normalized.replace(/\/index\.html$/, '/');
+        normalized = normalized.replace(/\.html$/, '/');
+        if (!normalized.endsWith('/')) normalized += '/';
+        return normalized;
+    };
+
+    const currentPath = normalizePath(window.location.pathname);
     document.querySelectorAll('.navbar a').forEach(link => {
-        const linkFile = link.getAttribute('href').split('/').pop().split('?')[0];
-        if (linkFile === currentFile) {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        const linkPath = normalizePath(new URL(href, window.location.origin).pathname);
+        if (linkPath === currentPath) {
             link.classList.add('active');
             link.setAttribute('aria-current', 'page');
         }
@@ -103,7 +132,7 @@ const loadLatestAlbum = () => {
     if (descEl) descEl.textContent = `Explora las últimas ${latestAlbum.files.length} fotografías agregadas a la galería.`;
     
     // Actualizar el enlace para abrir la galería en ese álbum
-    newsCardAlbum.href = `galeria.html?album=0`;
+    newsCardAlbum.href = `/galeria/?album=0`;
 };
 
 // Cargar el álbum más reciente cuando la página esté lista

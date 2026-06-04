@@ -105,16 +105,17 @@ const rawAlbums = [
         folder: "2018-06-27-Belenpuuur-El-Passatge-Dels-Gats-Valencia-27-de-junio-de-2018",
         title: "El Passatge Dels Gats Valencia 27 de junio de 2018",
         files: ["IMG_8251-2.jpg", "IMG_8254-2.jpg", "IMG_8318.jpg", "IMG_8327-2.jpg", "IMG_8342-2.jpg", "IMG_8361-2.jpg", "IMG_8366.jpg", "IMG_8422.jpg"]
+        },
         {
             folder: "2018-10-12-Viajes-Arquibuuur-Belenpuuur-Calpe-12-de-octubre-de-2018",
             title: "Viajes Arquibuuur Belenpuuur Calpe 12 de octubre de 2018",
             files: ["IMG_7560.jpg", "IMG_7576.jpg", "IMG_7601.jpg", "IMG_7651.jpg", "IMG_7662.jpg", "IMG_7670.jpg", "IMG_7681.jpg"]
         },
-    },
     {
         folder: "2018-06-02-Belenpuuur-Animalitos-2-de-junio-de-2018",
         title: "Animalitos 2 de junio de 2018",
         files: ["IMG_7717.jpg", "IMG_7762.jpg", "IMG_7799.jpg", "IMG_7801.jpg", "IMG_7811-2.jpg", "IMG_7921.jpg", "IMG_7932.jpg", "IMG_7933.jpg", "IMG_7962.jpg"]
+    },
         {
             folder: "2019-07-19-Belenpuuur-Bioparc-Valencia-19-de-julio-de-2019",
             title: "Bioparc Valencia 19 de julio de 2019",
@@ -140,7 +141,7 @@ const rawAlbums = [
             title: "Cevisama Valencia 31 de enero de 2019",
             files: ["IMG_8677.jpg", "IMG_8679.jpg", "IMG_8693.jpg", "IMG_8700.jpg", "IMG_8709.jpg"]
         },
-    },
+    
     {
         folder: "2018-04-29-Belenpuuur-Caballos-29-de-abril-de-2018",
         title: "Caballos 29 de abril de 2018",
