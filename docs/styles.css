@@ -267,6 +267,35 @@ main {
     transform: translateY(-1px);
 }
 
+.festibuuur-page .site-footer {
+    background-color: rgb(214, 117, 3);
+}
+
+.arquibuuur-page .site-footer {
+    background-color: rgb(141, 125, 109);
+}
+
+.belenbruuum-page .site-footer {
+    background-color: rgb(40, 49, 100);
+}
+
+.belenpuuur-page .site-footer {
+    background-color: rgb(204, 98, 32);
+}
+
+.chinchinbuuur-page .site-footer {
+    background-color: rgb(86, 68, 68);
+}
+
+.belenbruuum-page .site-footer p,
+.belenbruuum-page .footer-links a,
+.belenbruuum-page .footer-sep,
+.chinchinbuuur-page .site-footer p,
+.chinchinbuuur-page .footer-links a,
+.chinchinbuuur-page .footer-sep {
+    color: rgb(237, 215, 215);
+}
+
 /* Index Cards / Galería de categorías */
 .index {
     padding: 80px 40px;

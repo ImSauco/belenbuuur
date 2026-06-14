@@ -2,6 +2,31 @@
 // Este archivo es compartido entre galeria.html e index.html
 const rawAlbums = [
     {
+        folder: "2024-02-24-Arquibuuur-Belenpuuur-Betxí-y-Villafamés-24-de-febrero-de-2024",
+        title: "Betxí y Villafamés 24 de febrero de 2024",
+        files: ["IMG_7380.jpg", "IMG_7381.jpg", "IMG_7385.jpg", "IMG_7394.jpg", "IMG_7406.jpg", "IMG_7417.jpg", "IMG_7423.jpg", "IMG_7429.jpg", "IMG_7441.jpg", "IMG_7445-2.jpg", "IMG_7449.jpg", "IMG_7462.jpg", "IMG_7466.jpg", "IMG_7468.jpg", "IMG_7474.jpg", "IMG_7484.jpg", "IMG_7489.jpg", "IMG_7490-2.jpg"]
+    },
+    {
+        folder: "2024-02-18-Arquibuuur-Toledo-18-de-febrero-de-2024",
+        title: "Toledo 18 de febrero de 2024",
+        files: ["IMG_7360.jpg", "IMG_7363.jpg", "IMG_7364.jpg", "IMG_7366.jpg", "IMG_7367.jpg", "IMG_7371.jpg", "IMG_7376.jpg", "IMG_7378.jpg"]
+    },
+    {
+        folder: "2024-02-17-Arquibuuur-Castillo-de-Belmonte-17-de-febrero-de-2024",
+        title: "Castillo de Belmonte 17 de febrero de 2024",
+        files: ["IMG_7279.jpg", "IMG_7286.jpg", "IMG_7297.jpg", "IMG_7303.jpg", "IMG_7308.jpg", "IMG_7311.jpg", "IMG_7312.jpg", "IMG_7317.jpg", "IMG_7322.jpg", "IMG_7337.jpg", "IMG_7338.jpg", "IMG_7340-2.jpg", "IMG_7347.jpg", "IMG_7355.jpg"]
+    },
+    {
+        folder: "2024-02-11-Celebración-de-cumpleaños-11-de-febrero-de-2024",
+        title: "Celebración de cumpleaños 11 de febrero de 2024",
+        files: ["_MG_4030.jpg", "_MG_4032.jpg", "_MG_4034.jpg", "_MG_4037-2.jpg"]
+    },
+    {
+        folder: "2024-01-27-Sala-de-Exposiciones-CCCC-El-Carme-27-de-enero-de-2024",
+        title: "Sala de Exposiciones CCCC El Carme 27 de enero de 2024",
+        files: ["IMG_6963.jpg", "IMG_6972.jpg", "IMG_6979.jpg", "IMG_6981.jpg", "IMG_6985.jpg", "IMG_6997.jpg", "IMG_7000.jpg", "IMG_7011.jpg", "IMG_7015.jpg", "IMG_7024.jpg", "IMG_7032.jpg", "IMG_7051.jpg", "IMG_7056.jpg"]
+    },
+    {
         folder: "2023-12-29-Viajes-Villamarchante-29-de-diciembre-de-2023",
         title: "Villamarchante 29 de diciembre de 2023",
         files: ["IMG_6864.jpg", "IMG_6865.jpg", "IMG_6867.jpg", "IMG_6877.jpg", "IMG_6888.jpg"]
