@@ -122,6 +122,60 @@
                 </div>
 
                 <p class="collabs-note">Si tu idea no encaja del todo en una de estas categorías, mejor todavía: cuéntamela y la afinamos juntas/os hasta encontrar el formato que funcione.</p>
+
+                <section class="service-opinions" aria-labelledby="service-opinions-title">
+                    <div class="service-opinions-head">
+                        <p class="collabs-kicker">Opiniones</p>
+                        <h2 id="service-opinions-title">Lo que cuentan quienes ya han vivido una sesión</h2>
+                    </div>
+
+                    <div class="service-opinions-grid" aria-live="polite">
+                        <article class="service-opinion is-active" aria-hidden="false">
+                            <p class="service-opinion-meta">Nuria y Dani · Sesión Boda · Mayo 2022</p>
+                            <blockquote>Lo que he visto hasta el momento es precioso, me encantan las fotos en las que salimos desprevenidos. Es increíble.</blockquote>
+                        </article>
+
+                        <article class="service-opinion" aria-hidden="true">
+                            <p class="service-opinion-meta">Zahara, mami de Layla · Sesión Pre-comunión y Sesión Comunión · Abril 2024</p>
+                            <blockquote>Qué fotos más bonitas, muchas gracias.</blockquote>
+                        </article>
+
+                        <article class="service-opinion" aria-hidden="true">
+                            <p class="service-opinion-meta">Rian, mami de Laura · Sesión Pre-comunión y Sesión Comunión · Mayo 2024</p>
+                            <blockquote>Estoy hasta nerviosa. Muchas gracias, Paula, tanto a nivel personal como profesional. Las fotos son preciosas.</blockquote>
+                        </article>
+
+                        <article class="service-opinion" aria-hidden="true">
+                            <p class="service-opinion-meta">Amanda y Marc · Sesión Boda · Septiembre 2024</p>
+                            <blockquote>Pensaba que no había salido nada bueno, porque la preparación fue un poco locura, pero hay alguna muuuuy bonita. Las del cóctel son espectaculares, y las de la iglesia igual.</blockquote>
+                        </article>
+
+                        <article class="service-opinion" aria-hidden="true">
+                            <p class="service-opinion-meta">Alicia y Fernando · Sesión Boda · Marzo 2025</p>
+                            <blockquote>Ya hemos podido ver las fotos y están increíbles, muchísimas gracias.</blockquote>
+                        </article>
+
+                        <article class="service-opinion" aria-hidden="true">
+                            <p class="service-opinion-meta">Cristina y Jesús, papis de Greta · Sesión Comunión · Mayo 2025</p>
+                            <blockquote>Ay Paula, te voy a mandar una foto... ¿Aprecias mi piel? Se me ha puesto la piel de gallina. Para mí las fotos de Greta eran muy importantes, y me ha emocionado mucho ver la primera selección de fotos que nos has enviado. Yo sabía, cuando vi las fotos de Laura, que tenías que hacer las fotos en nuestra familia. Transmites, estas fotos hablan.</blockquote>
+                        </article>
+
+                        <article class="service-opinion" aria-hidden="true">
+                            <p class="service-opinion-meta">Zahara y Nacho · Sesión Boda · Julio 2025</p>
+                            <blockquote>Es como si te conociera de siempre, tienes un ojo increíble para los momentos espontáneos. Sabes sacar la mejor versión sin que nos demos cuenta y eso se nota en las fotos. El resultado son imágenes preciosas, naturales y llenas de vida. Gracias por hacerlo tan fácil, Paula.</blockquote>
+                        </article>
+
+                        <article class="service-opinion" aria-hidden="true">
+                            <p class="service-opinion-meta">Amanda y Marc · Sesión Embarazo · Septiembre 2025</p>
+                            <blockquote>Acabo de ver las fotos y me han encantado. Un placer como siempre tenerte como fotógrafa.</blockquote>
+                        </article>
+
+                        <article class="service-opinion" aria-hidden="true">
+                            <p class="service-opinion-meta">Ana, mami de José · Sesión Pre-comunión · Marzo 2026</p>
+                            <blockquote>¡Madre mía qué bonitas son, Paula! Hay muchísimas que me enamoran, concretamente tres me han puesto hasta los ojos llorosos. Eres una pedazo de artista.</blockquote>
+                        </article>
+                    </div>
+                </section>
             </div>
         </section>
 
@@ -180,7 +234,7 @@
                     </article>
 
                     <article class="shop-card">
-                        <img src="../media/logos/socialpre.jpg" alt="Calendario mensual con fotografías" loading="lazy" decoding="async">
+                        <img class="shop-card-img--calendar" src="../media/img/tienda/calendario.png" alt="Calendario mensual con fotografías Belenbuuur" loading="lazy" decoding="async">
                         <div class="shop-card-content">
                             <p class="shop-tag">Temporada</p>
                             <h3>Calendario de pared</h3>
@@ -191,7 +245,7 @@
                     </article>
 
                     <article class="shop-card">
-                        <img src="../media/previews-mobile/img/2017-06-10-Sesi%C3%B3nExterior-Inma-10-de-junio-de-2017/IMG_5025.webp" alt="Vale regalo para sesión fotográfica" loading="lazy" decoding="async">
+                        <img class="shop-card-img--cover" src="../media/previews-mobile/img/2023-11-11-Belenpuuur-Asociaci%C3%B3n-Vida-Gatuna-11-de-noviembre-de-2023/IMG_4336.webp" alt="Vale regalo para sesión fotográfica" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='../media/img/2023-11-11-Belenpuuur-Asociaci%C3%B3n-Vida-Gatuna-11-de-noviembre-de-2023/IMG_4336.jpg'">
                         <div class="shop-card-content">
                             <p class="shop-tag">Regalo</p>
                             <h3>Vale para sesión</h3>
@@ -303,6 +357,31 @@
             });
         }());
 
+    </script>
+
+    <script>
+        (function () {
+            const opinions = Array.from(document.querySelectorAll('.service-opinion'));
+
+            if (opinions.length <= 1 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+
+            let activeIndex = opinions.findIndex((opinion) => opinion.classList.contains('is-active'));
+            if (activeIndex < 0) activeIndex = 0;
+
+            const showOpinion = (nextIndex) => {
+                opinions[activeIndex].classList.remove('is-active');
+                opinions[activeIndex].setAttribute('aria-hidden', 'true');
+                opinions[nextIndex].classList.add('is-active');
+                opinions[nextIndex].setAttribute('aria-hidden', 'false');
+                activeIndex = nextIndex;
+            };
+
+            window.setInterval(() => {
+                showOpinion((activeIndex + 1) % opinions.length);
+            }, 6500);
+        }());
     </script>
 
     <script>

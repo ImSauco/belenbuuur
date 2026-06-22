@@ -1209,6 +1209,10 @@ main {
 .lightbox-prev,
 .lightbox-next {
     position: absolute;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     background: rgba(255, 255, 255, 0.2);
     color: #fff;
@@ -1224,7 +1228,15 @@ main {
 .lightbox-prev:hover,
 .lightbox-next:hover {
     background: rgba(255, 255, 255, 0.35);
+}
+
+.lightbox-close:hover {
     transform: translateY(-1px);
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    transform: translateY(-50%) translateY(-1px);
 }
 
 .lightbox-close {
@@ -1234,11 +1246,15 @@ main {
 }
 
 .lightbox-prev {
+    top: 50%;
     left: 24px;
+    transform: translateY(-50%);
 }
 
 .lightbox-next {
+    top: 50%;
     right: 24px;
+    transform: translateY(-50%);
 }
 
 .lightbox-open {
@@ -2227,6 +2243,104 @@ main {
     line-height: 1.7;
 }
 
+.service-opinions {
+    margin-top: 58px;
+}
+
+.service-opinions-head {
+    max-width: 720px;
+    margin: 0 0 24px;
+}
+
+.service-opinions-head h2 {
+    margin: 0;
+    color: rgb(44, 44, 44);
+    font-size: clamp(1.45rem, 2.5vw, 1.9rem);
+    line-height: 1.18;
+}
+
+.service-opinions-grid {
+    display: grid;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.service-opinion {
+    position: relative;
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+    min-height: 230px;
+    padding: clamp(24px, 4vw, 38px);
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(153, 51, 102, 0.16);
+    border-radius: 18px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.55s ease, transform 0.55s ease, visibility 0.55s ease;
+    visibility: hidden;
+}
+
+.service-opinion.is-active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.service-opinion::before {
+    content: "“";
+    position: absolute;
+    top: 8px;
+    right: 18px;
+    color: rgba(153, 51, 102, 0.16);
+    font-size: 4rem;
+    line-height: 1;
+}
+
+.service-opinion-meta {
+    margin: 0;
+    padding-right: 34px;
+    color: rgb(123, 39, 82);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.service-opinion blockquote {
+    margin: 0;
+    color: rgb(60, 60, 60);
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    line-height: 1.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-opinion {
+        transition: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-opinions {
+        margin-top: 44px;
+    }
+
+    .service-opinions-grid {
+        max-width: none;
+    }
+
+    .service-opinion {
+        min-height: 310px;
+        padding: 24px 18px;
+    }
+}
+
 .shop-section {
     scroll-margin-top: 90px;
     background: linear-gradient(180deg, #edd7d7 0%, #f6e8e8 46%, #edd7d7 100%);
@@ -2284,6 +2398,16 @@ main {
     aspect-ratio: 1 / 1;
     object-fit: contain;
     background: #f4e5e5;
+}
+
+.shop-card img.shop-card-img--calendar {
+    object-fit: cover;
+    object-position: center;
+}
+
+.shop-card img.shop-card-img--cover {
+    object-fit: cover;
+    object-position: center;
 }
 
 .shop-card-content {
