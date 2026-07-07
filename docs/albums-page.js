@@ -27,7 +27,6 @@
     if (albums.length === 0) return;
 
     const toWebp = (file) => file.replace(/\.[^.]+$/, '.webp');
-    const buildImageSrc = (folder, file) => `media/img/${encodeURIComponent(folder)}/${encodeURIComponent(file)}`;
     const buildPreviewSrc = (folder, file) => `media/previews/img/${encodeURIComponent(folder)}/${encodeURIComponent(toWebp(file))}`;
     const buildPreviewMobileSrc = (folder, file) => `media/previews-mobile/img/${encodeURIComponent(folder)}/${encodeURIComponent(toWebp(file))}`;
     const buildThumbSrc = (folder, file) => `media/thumbs/albums/${encodeURIComponent(folder)}/${encodeURIComponent(toWebp(file))}`;
@@ -63,7 +62,7 @@
 
     const updateLightbox = (album) => {
         const file = album.files[activePhotoIndex];
-        lightboxImage.src = buildImageSrc(album.folder, file);
+        lightboxImage.src = buildPreviewSrc(album.folder, file);
         lightboxImage.alt = `${album.title} ${activePhotoIndex + 1}`;
         lightboxCaption.textContent = `${album.title} (${activePhotoIndex + 1}/${album.files.length})`;
     };
@@ -119,13 +118,12 @@
 
         const photoGridEl = inlinePanel.querySelector('.album-inline-photos');
         album.files.forEach((file, fileIndex) => {
-            const src = buildImageSrc(album.folder, file);
             const previewSrc = buildPreviewSrc(album.folder, file);
             const previewMobileSrc = buildPreviewMobileSrc(album.folder, file);
             const button = document.createElement('button');
             button.type = 'button';
             button.className = 'photo-item';
-            button.innerHTML = `<img src="${previewMobileSrc}" srcset="${previewMobileSrc} 900w, ${previewSrc} 1600w" sizes="(max-width: 640px) 92vw, (max-width: 1024px) 44vw, 320px" alt="${album.title} ${fileIndex + 1}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${src}'">`;
+            button.innerHTML = `<img src="${previewMobileSrc}" srcset="${previewMobileSrc} 900w, ${previewSrc} 1600w" sizes="(max-width: 640px) 92vw, (max-width: 1024px) 44vw, 320px" alt="${album.title} ${fileIndex + 1}" loading="lazy" decoding="async">`;
             button.addEventListener('click', () => openLightbox(album, fileIndex));
             photoGridEl.appendChild(button);
         });
@@ -143,7 +141,7 @@
         albums.forEach((album, index) => {
             const coverSrc = buildThumbSrc(album.folder, album.files[0]);
             const coverMobileSrc = buildPreviewMobileSrc(album.folder, album.files[0]);
-            const coverFallbackSrc = buildImageSrc(album.folder, album.files[0]);
+            const coverFallbackSrc = buildPreviewSrc(album.folder, album.files[0]);
             const card = document.createElement('button');
             card.type = 'button';
             card.className = 'album-card';
