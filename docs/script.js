@@ -117,8 +117,8 @@ const loadLatestAlbum = () => {
     
     // Construir la URL de la imagen de portada
     const encodedFolder = encodeURIComponent(latestAlbum.folder);
-    const encodedFile = encodeURIComponent(latestAlbum.files[0]);
-    const coverSrc = `media/img/${encodedFolder}/${encodedFile}`;
+    const encodedFile = encodeURIComponent(latestAlbum.files[0].replace(/\.[^.]+$/, '.webp'));
+    const coverSrc = `media/previews/img/${encodedFolder}/${encodedFile}`;
     
     // Actualizar el contenido de la tarjeta
     const imageEl = newsCardAlbum.querySelector('.news-card-image img');
