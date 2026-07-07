@@ -207,13 +207,12 @@
             // Rellenar fotos
             const photoGridEl = inlinePanel.querySelector('.album-inline-photos');
             album.files.forEach((file, i) => {
-                const src = buildImageSrc(album.folder, file);
                 const previewSrc = buildPreviewSrc(album.folder, file);
                 const previewMobileSrc = buildPreviewMobileSrc(album.folder, file);
                 const btn = document.createElement('button');
                 btn.type = 'button';
                 btn.className = 'photo-item';
-                btn.innerHTML = `<img src="${previewMobileSrc}" srcset="${previewMobileSrc} 900w, ${previewSrc} 1600w" sizes="(max-width: 640px) 92vw, (max-width: 1024px) 44vw, 320px" alt="${album.title} ${i + 1}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${src}'">`;
+                btn.innerHTML = `<img src="${previewMobileSrc}" srcset="${previewMobileSrc} 900w, ${previewSrc} 1600w" sizes="(max-width: 640px) 92vw, (max-width: 1024px) 44vw, 320px" alt="${album.title} ${i + 1}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${previewSrc}'">`;
                 btn.addEventListener('click', () => openLightbox(album, i));
                 photoGridEl.appendChild(btn);
             });
@@ -237,7 +236,7 @@
             albums.forEach((album, index) => {
                 const coverSrc = `media/thumbs/albums/${encodeURIComponent(album.folder)}/${encodeURIComponent(album.files[0].replace(/\.[^.]+$/, '.webp'))}`;
                 const coverMobileSrc = `media/previews-mobile/img/${encodeURIComponent(album.folder)}/${encodeURIComponent(album.files[0].replace(/\.[^.]+$/, '.webp'))}`;
-                const coverFallbackSrc = buildImageSrc(album.folder, album.files[0]);
+                const coverFallbackSrc = buildPreviewSrc(album.folder, album.files[0]);
                 const card = document.createElement("button");
                 card.type = "button";
                 card.className = "album-card";
@@ -287,7 +286,7 @@
 
         const updateLightbox = (album) => {
             const file = album.files[activePhotoIndex];
-            lightboxImage.src = buildImageSrc(album.folder, file);
+            lightboxImage.src = buildPreviewSrc(album.folder, file);
             lightboxImage.alt = `${album.title} ${activePhotoIndex + 1}`;
             lightboxCaption.textContent = `${album.title} (${activePhotoIndex + 1}/${album.files.length})`;
         };
