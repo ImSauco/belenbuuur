@@ -119,13 +119,12 @@
 
         const photoGridEl = inlinePanel.querySelector('.album-inline-photos');
         album.files.forEach((file, fileIndex) => {
-            const src = buildPreviewSrc(album.folder, file);
             const previewSrc = buildPreviewSrc(album.folder, file);
             const previewMobileSrc = buildPreviewMobileSrc(album.folder, file);
             const button = document.createElement('button');
             button.type = 'button';
             button.className = 'photo-item';
-            button.innerHTML = `<img src="${previewMobileSrc}" srcset="${previewMobileSrc} 900w, ${previewSrc} 1600w" sizes="(max-width: 640px) 92vw, (max-width: 1024px) 44vw, 320px" alt="${album.title} ${fileIndex + 1}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${src}'">`;
+            button.innerHTML = `<img src="${previewMobileSrc}" srcset="${previewMobileSrc} 900w, ${previewSrc} 1600w" sizes="(max-width: 640px) 92vw, (max-width: 1024px) 44vw, 320px" alt="${album.title} ${fileIndex + 1}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${previewSrc}'">`;
             button.addEventListener('click', () => openLightbox(album, fileIndex));
             photoGridEl.appendChild(button);
         });
