@@ -1,3 +1,10 @@
+# MAPA DE NAVEGACIÓN
+# Línea 27: def get_password_hash
+# Línea 30: def verify_password
+# Línea 33: def create_access_token
+# Línea 43: def register_user
+# Línea 66: def login_user
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from passlib.context  import CryptContext

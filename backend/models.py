@@ -1,3 +1,7 @@
+# MAPA DE NAVEGACIÓN
+# Línea 9: class User
+# Línea 18: class Product
+
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from .database import Base

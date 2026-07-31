@@ -1,3 +1,23 @@
+// MAPA DE NAVEGACIÓN
+// Línea 26: Función redirectLegacyHtmlUrl
+// Línea 45: Función markActiveNavLink
+// Línea 46: Función normalizePath
+// Línea 102: Función updateNavbarState
+// Línea 121: Función loadLatestAlbum
+// Línea 166: Función loadLatestPost
+// Línea 21: Elementos principales para controlar el estado del menú
+// Línea 44: Marca el enlace de navegación correspondiente a la página actual
+// Línea 67: Soporte swipe táctil para el lightbox
+// Línea 86: Oculta muestra la post navbar o gallery navbar al hacer scroll
+// Línea 101: Activa el modo "sticky" cuando el scroll supera la altura del hero
+// Línea 115: Escucha cambios de scroll y resize para recalcular
+// Línea 120: Función para cargar el álbum más reciente en la página de inicio
+// Línea 122: Verificar la página de inicio y los datos de álbumes
+// Línea 126: Filtrar álbumes vacíos y obtener el más reciente (primero en el array)
+// Línea 154: Actualizar el enlace para abrir la galería en ese álbum
+// Línea 158: Cargar el álbum más reciente cuando la página esté lista
+// Línea 165: Función para cargar el post más reciente en la página de inicio
+
 // Elementos principales para controlar el estado del menú
 const navbar = document.querySelector('.navbar');
 const hero = document.querySelector('.hero');

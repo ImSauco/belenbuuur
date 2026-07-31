@@ -1,3 +1,18 @@
+// MAPA DE NAVEGACIÓN
+// Línea 33: Función matchesPage
+// Línea 44: Función toWebp
+// Línea 45: Función buildPreviewSrc
+// Línea 46: Función buildPreviewMobileSrc
+// Línea 47: Función buildThumbSrc
+// Línea 53: Función getRowLastIndex
+// Línea 68: Función closeInlinePanel
+// Línea 78: Función updateLightbox
+// Línea 85: Función openLightbox
+// Línea 94: Función closeLightbox
+// Línea 100: Función stepPhoto
+// Línea 108: Función openInlinePanel
+// Línea 153: Función renderAlbumList
+
 (function () {
     const albumListEl = document.getElementById('album-list');
     const lightbox = document.getElementById('lightbox');

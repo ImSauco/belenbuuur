@@ -1,6 +1,107 @@
+// MAPA DE NAVEGACIÓN
+// Línea 16: Álbumes de 2024
+// Línea 131: Álbumes de 2023
+// Línea 216: Álbumes de 2022
+// Línea 356: Álbumes de 2021
+// Línea 401: Álbumes de 2020
+// Línea 441: Álbumes de 2019
+// Línea 511: Álbumes de 2018
+// Línea 536: Álbumes de 2017
+// Línea 626: Álbumes de 2016
+
 // Datos de álbumes fotográficos
 // Este archivo es compartido entre galeria.html e index.html
 const rawAlbums = [
+    {
+        folder: "2024-07-28-Paseo-por-la-playa-de-Valencia-28-de-julio-de-2024",
+        title: "Paseo por la playa de Valencia 28 de julio de 2024",
+        files: ["IMG_3647.jpg", "IMG_3648.jpg", "IMG_3653.jpg", "IMG_3659.jpg", "IMG_3667.jpg", "IMG_3669.jpg"]
+    },
+    {
+        folder: "2024-07-21-Belenpuuur-Zoe-y-Peluso-21-de-julio-de-2024",
+        title: "Zoe y Peluso 21 de julio de 2024",
+        files: ["IMG_3635.jpg", "IMG_3637.jpg", "IMG_3639.jpg", "IMG_3641.jpg", "IMG_3643.jpg", "IMG_3645.jpg"]
+    },
+    {
+        folder: "2024-06-08-Retrato-Cumple-mami-8-de-junio-de-2024",
+        title: "Cumple mami 8 de junio de 2024",
+        files: ["IMG_3025.jpg", "IMG_3028.jpg", "IMG_3030.jpg", "IMG_3031.jpg"]
+    },
+    {
+        folder: "2024-05-25-Festibuuur-Fiestas-del-cerro,-Saelices-25-de-mayo-de-2024",
+        title: "Fiestas del cerro, Saelices 25 de mayo de 2024",
+        files: ["IMG_2300.jpg", "IMG_2305.jpg", "IMG_2311.jpg", "IMG_2319.jpg", "IMG_2327.jpg", "IMG_2357.jpg", "IMG_2366.jpg", "IMG_2374.jpg", "IMG_2400.jpg", "IMG_2407.jpg", "IMG_2483.jpg", "IMG_2491.jpg", "IMG_2493.jpg", "IMG_2526.jpg", "IMG_2529.jpg", "IMG_2550.jpg", "IMG_2575.jpg", "IMG_2578.jpg", "IMG_2607.jpg", "IMG_2615.jpg", "IMG_2731.jpg", "IMG_2854.jpg", "IMG_2868.jpg"]
+    },
+    {
+        folder: "2024-05-04-Chinchínbuuur-Comunión-Laura-4-de-mayo-de-2024",
+        title: "Comunión Laura 4 de mayo de 2024",
+        files: ["IMG_0594.jpg", "IMG_0637.jpg", "IMG_0667.jpg", "IMG_0702.jpg", "IMG_0735.jpg", "IMG_0762.jpg", "IMG_0787.jpg", "IMG_0796.jpg", "IMG_0803.jpg", "IMG_0891.jpg", "IMG_0918.jpg", "IMG_0939.jpg", "IMG_0945.jpg", "IMG_0995.jpg", "IMG_1116.jpg", "IMG_1139.jpg", "IMG_1167.jpg", "IMG_1168.jpg", "IMG_1198.jpg", "IMG_1281.jpg", "IMG_1313.jpg", "IMG_1458.jpg", "IMG_1484.jpg", "IMG_1553.jpg", "IMG_1589.jpg", "IMG_1617.jpg", "IMG_1671.jpg", "IMG_1675.jpg", "IMG_1700.jpg", "IMG_1743.jpg", "IMG_1794.jpg", "IMG_1891.jpg", "IMG_1971.jpg", "IMG_2108.jpg"]
+    },
+    {
+        folder: "2024-04-27-Chinchínbuuur-Comunión-Víctor-y-Javier-27-de-abril-de-2024",
+        title: "Comunión Víctor y Javier 27 de abril de 2024",
+        files: ["_MG_4466.jpg", "IMG_0020.jpg", "IMG_0067.jpg", "IMG_0071.jpg", "IMG_0079.jpg", "IMG_0141.jpg", "IMG_0163.jpg", "IMG_0182.jpg", "IMG_0315.jpg", "IMG_0373.jpg", "IMG_0460.jpg", "IMG_0462.jpg", "IMG_0522.jpg", "IMG_9732.jpg", "IMG_9733.jpg", "IMG_9808.jpg", "IMG_9869.jpg", "IMG_9903.jpg", "IMG_9906.jpg", "IMG_9909.jpg", "IMG_9960.jpg", "IMG_9991.jpg"]
+    },
+    {
+        folder: "2024-04-27-Chinchínbuuur-Comunión-Lucía-27-de-abril-de-2024",
+        title: "Comunión Lucía 27 de abril de 2024",
+        files: ["_MG_4378.jpg", "_MG_4420.jpg", "IMG_0041.jpg", "IMG_0061.jpg", "IMG_0114.jpg", "IMG_9735.jpg", "IMG_9863.jpg", "IMG_9915.jpg", "IMG_9957.jpg"]
+    },
+    {
+        folder: "2024-04-27-Chinchínbuuur-Comunión-Layla-27-de-abril-de-2024",
+        title: "Comunión Layla 27 de abril de 2024",
+        files: ["_MG_4441.jpg", "IMG_0049.jpg", "IMG_0234.jpg", "IMG_0244.jpg", "IMG_0255.jpg", "IMG_9511.jpg", "IMG_9576.jpg", "IMG_9580.jpg", "IMG_9585.jpg", "IMG_9629.jpg", "IMG_9662.jpg", "IMG_9696.jpg", "IMG_9704.jpg", "IMG_9734.jpg", "IMG_9893.jpg", "IMG_9981.jpg"]
+    },
+    {
+        folder: "2024-04-27-Chinchínbuuur-Comunión-David-27-de-abril-de-2024",
+        title: "Comunión David 27 de abril de 2024",
+        files: ["_MG_4394.jpg", "_MG_4396.jpg", "IMG_0016.jpg", "IMG_0092.jpg", "IMG_0143.jpg", "IMG_0302.jpg", "IMG_0306.jpg", "IMG_0325.jpg", "IMG_9731.jpg", "IMG_9835.jpg", "IMG_9898.jpg"]
+    },
+    {
+        folder: "2024-04-13-Chinchínbuuur-Pre-comunión-Laura-13-de-abril-de-2024",
+        title: "Pre-comunión Laura 13 de abril de 2024",
+        files: ["IMG_8990.jpg", "IMG_8998.jpg", "IMG_9026.jpg", "IMG_9036.jpg", "IMG_9056-2.jpg", "IMG_9069.jpg", "IMG_9071.jpg", "IMG_9079.jpg", "IMG_9104.jpg", "IMG_9133.jpg", "IMG_9205.jpg", "IMG_9234.jpg", "IMG_9301.jpg", "IMG_9361.jpg", "IMG_9402.jpg", "IMG_9405.jpg"]
+    },
+    {
+        folder: "2024-04-07-Chinchínbuuur-Pre-comunión-Layla-7-de-abril-de-2024",
+        title: "Pre-comunión Layla 7 de abril de 2024",
+        files: ["IMG_8526.jpg", "IMG_8534.jpg", "IMG_8547.jpg", "IMG_8571.jpg", "IMG_8582.jpg", "IMG_8586.jpg", "IMG_8648.jpg", "IMG_8698.jpg", "IMG_8741.jpg", "IMG_8843.jpg", "IMG_8926.jpg"]
+    },
+    {
+        folder: "2024-04-06-Belenpuuur-Castillo-de-Saelices-6-de-abril-de-2024",
+        title: "Castillo de Saelices 6 de abril de 2024",
+        files: ["IMG_8446.jpg", "IMG_8449.jpg", "IMG_8454.jpg", "IMG_8463.jpg", "IMG_8466.jpg", "IMG_8469.jpg", "IMG_8471.jpg", "IMG_8480.jpg", "IMG_8491.jpg", "IMG_8498.jpg", "IMG_8504.jpg", "IMG_8517.jpg", "IMG_8518.jpg"]
+    },
+    {
+        folder: "2024-03-28-Belenpuuur-Sierra-de-Madrid-28-de-marzo-de-2024",
+        title: "Sierra de Madrid 28 de marzo de 2024",
+        files: ["IMG_8253.jpg", "IMG_8256.jpg", "IMG_8257.jpg", "IMG_8266.jpg", "IMG_8276.jpg", "IMG_8295.jpg", "IMG_8330.jpg", "IMG_8331.jpg", "IMG_8351.jpg", "IMG_8357.jpg", "IMG_8395.jpg", "IMG_8412.jpg", "IMG_8444.jpg"]
+    },
+    {
+        folder: "2024-03-24-Chinchínbuuur-Pre-comunión-Víctor-y-Javier-24-de-marzo-de-2024",
+        title: "Pre-comunión Víctor y Javier 24 de marzo de 2024",
+        files: ["IMG_7853.jpg", "IMG_7868.jpg", "IMG_7892.jpg", "IMG_7896.jpg", "IMG_7913.jpg", "IMG_7929.jpg", "IMG_7955.jpg", "IMG_7957.jpg", "IMG_7981.jpg", "IMG_8001.jpg", "IMG_8014.jpg", "IMG_8023.jpg", "IMG_8072.jpg", "IMG_8174.jpg", "IMG_8182.jpg"]
+    },
+    {
+        folder: "2024-03-24-Belenpuuur-Medusa-y-Torita-24-de-marzo-de-2024",
+        title: "Medusa y Torita 24 de marzo de 2024",
+        files: ["IMG_8186.jpg", "IMG_8187.jpg", "IMG_8188.jpg", "IMG_8190.jpg", "IMG_8193.jpg", "IMG_8199.jpg", "IMG_8201.jpg", "IMG_8205-2.jpg", "IMG_8211.jpg", "IMG_8244.jpg", "IMG_8248.jpg", "IMG_8250.jpg"]
+    },
+    {
+        folder: "2024-03-15-19-Festibuuur-Fallas-2024-15-a-19-de-marzo-de-2024",
+        title: "Fallas 2024 15 a 19 de marzo de 2024",
+        files: ["_MG_4041.jpg", "_MG_4043.jpg", "_MG_4047.jpg", "_MG_4052.jpg", "_MG_4058-2.jpg", "IMG_7577.jpg", "IMG_7581.jpg", "IMG_7594.jpg", "IMG_7625.jpg", "IMG_7640.jpg", "IMG_7642.jpg", "IMG_7644.jpg", "IMG_7668.jpg", "IMG_7683.jpg", "IMG_7707.jpg", "IMG_7740.jpg", "IMG_7745.jpg", "IMG_7748.jpg", "IMG_7752.jpg", "IMG_7794.jpg", "IMG_7808-2.jpg", "IMG_7822-2.jpg", "IMG_7844.jpg"]
+    },
+    {
+        folder: "2024-03-04-Belenpuuur-Medusa-y-Torita-4-de-marzo-de-2024",
+        title: "Medusa y Torita 4 de marzo de 2024",
+        files: ["IMG_7536.jpg", "IMG_7538.jpg", "IMG_7540.jpg", "IMG_7542.jpg", "IMG_7553.jpg", "IMG_7563.jpg"]
+    },
+    {
+        folder: "2024-03-02-Belenpuuur-Nieve-en-Saelices-2-de-marzo-de-2024",
+        title: "Nieve en Saelices 2 de marzo de 2024",
+        files: ["IMG_7520.jpg", "IMG_7531.jpg", "IMG_7532.jpg"]
+    },
     {
         folder: "2024-02-24-Arquibuuur-Belenpuuur-Betxí-y-Villafamés-24-de-febrero-de-2024",
         title: "Betxí y Villafamés 24 de febrero de 2024",

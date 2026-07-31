@@ -1,3 +1,6 @@
+# MAPA DE NAVEGACIÓN
+# Línea 12: Configuración app
+
 from fastapi import FastAPI 
 from fastapi.middleware.cors import CORSMiddleware
 from . import models

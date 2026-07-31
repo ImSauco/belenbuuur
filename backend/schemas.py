@@ -1,3 +1,10 @@
+# MAPA DE NAVEGACIÓN
+# Línea 10: class UserCreate
+# Línea 16: class UserResponse
+# Línea 25: class UserUpdate
+# Línea 31: class UserLogin
+# Línea 35: class UserToken
+
 from pydantic import BaseModel, EmailStr
 
 class UserCreate(BaseModel):

@@ -1,3 +1,9 @@
+# MAPA DE NAVEGACIÓN
+# Línea 16: def get_all_products
+# Línea 24: def update_product_stock
+# Línea 40: def create_product
+# Línea 56: def delete_product
+
 from fastapi import APIRouter, Depends, HTTPException
 from ..dependencies import get_current_user
 from backend.models import User, Product
