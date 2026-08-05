@@ -22,11 +22,74 @@
 const navbar = document.querySelector('.navbar');
 const hero = document.querySelector('.hero');
 
+// Menú principal compacto y accesible en pantallas pequeñas.
+const setupMobileNavigation = () => {
+    const navigationBars = document.querySelectorAll('.navbar, .gallery-navbar, .post-navbar');
+
+    navigationBars.forEach((bar, index) => {
+        const nav = bar.matches('.post-navbar') ? bar.querySelector('nav') : bar;
+        const list = nav?.querySelector('ul');
+        const controls = bar.matches('.post-navbar')
+            ? bar.querySelector('.post-navbar-inner')
+            : bar.querySelector('.container');
+
+        if (!list || !controls || controls.querySelector('.nav-toggle')) return;
+
+        list.id = list.id || `primary-navigation-${index + 1}`;
+
+        const brand = document.createElement('a');
+        brand.className = 'mobile-brand';
+        brand.href = '/';
+        brand.setAttribute('aria-label', 'Ir al inicio');
+        brand.innerHTML = '<img src="/media/logos/Belenbuuur-white-sn-fondo.png" alt="" width="120" height="42">';
+
+        const toggle = document.createElement('button');
+        toggle.className = 'nav-toggle';
+        toggle.type = 'button';
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-controls', list.id);
+        toggle.setAttribute('aria-label', 'Abrir menú');
+        toggle.innerHTML = '<span></span><span></span><span></span>';
+
+        controls.insertBefore(brand, controls.firstChild);
+        controls.insertBefore(toggle, nav === bar ? list : nav);
+
+        const closeMenu = () => {
+            bar.classList.remove('menu-open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Abrir menú');
+        };
+
+        toggle.addEventListener('click', () => {
+            const willOpen = !bar.classList.contains('menu-open');
+            bar.classList.toggle('menu-open', willOpen);
+            toggle.setAttribute('aria-expanded', String(willOpen));
+            toggle.setAttribute('aria-label', willOpen ? 'Cerrar menú' : 'Abrir menú');
+        });
+
+        list.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') closeMenu();
+        });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 767) closeMenu();
+        });
+    });
+};
+
+setupMobileNavigation();
+
 // Normaliza URLs antiguas con .html a rutas limpias con barra final.
 const redirectLegacyHtmlUrl = () => {
+    if (window.location.protocol === 'file:') return;
+
     const path = window.location.pathname;
     const lowerPath = path.toLowerCase();
     let cleanPath = null;
+
+    // Servicios conserva su entrada física para evitar un bucle con servicios.html
+    // en servidores que priorizan el archivo sobre el directorio homónimo.
+    if (lowerPath.endsWith('/servicios/index.html')) return;
 
     if (lowerPath.endsWith('/index.html')) {
         cleanPath = path.slice(0, -10) || '/';
@@ -52,7 +115,7 @@ const markActiveNavLink = () => {
     };
 
     const currentPath = normalizePath(window.location.pathname);
-    document.querySelectorAll('.navbar a').forEach(link => {
+    document.querySelectorAll('.navbar a, .gallery-navbar a, .post-navbar nav a').forEach(link => {
         const href = link.getAttribute('href');
         if (!href) return;
         const linkPath = normalizePath(new URL(href, window.location.origin).pathname);
@@ -63,6 +126,254 @@ const markActiveNavLink = () => {
     });
 };
 markActiveNavLink();
+
+// Personaliza los CTA de servicios y conserva el contexto al llegar a Contacto.
+const setupContextualCtas = () => {
+    const serviceLabels = {
+        'comuniones-bautizos': ['Escríbeme', 'comunión o bautizo'],
+        bodas: ['Escríbeme', 'boda'],
+        'otras-celebraciones': ['Escríbeme', 'celebración'],
+        mascotas: ['Escríbeme', 'sesión con mascota'],
+        'carreras-empresa': ['Escríbeme', 'carrera de empresa'],
+        'equipos-locales': ['Escríbeme', 'equipo local'],
+        gimnasios: ['Escríbeme', 'fotografía para gimnasio'],
+        'eventos-deportivos': ['Escríbeme', 'evento deportivo'],
+        'fiestas-patronales': ['Escríbeme', 'fiesta patronal'],
+        festivales: ['Escríbeme', 'festival'],
+        falleros: ['Escríbeme', 'sesión de fallero/a'],
+        exterior: ['Escríbeme', 'sesión exterior'],
+        artistico: ['Escríbeme', 'sesión artística'],
+        infantil: ['Escríbeme', 'sesión infantil'],
+        halloween: ['Escríbeme', 'sesión de Halloween'],
+        navidad: ['Escríbeme', 'sesión de Navidad'],
+        gastronomica: ['Escríbeme', 'fotografía gastronómica']
+    };
+
+    Object.entries(serviceLabels).forEach(([id, config]) => {
+        const action = document.querySelector(`#${id} .collab-action`);
+        if (!action) return;
+        action.textContent = config[0];
+        action.href = `/contacto/?servicio=${encodeURIComponent(config[1])}`;
+    });
+
+    document.querySelectorAll('.shop-card').forEach(card => {
+        const action = card.querySelector('.collab-action');
+        const title = card.querySelector('h3')?.textContent.trim();
+        if (!action || !title) return;
+        action.textContent = 'Consultar disponibilidad';
+        action.href = `/contacto/?servicio=${encodeURIComponent(title)}`;
+        action.classList.add('collab-action--secondary');
+    });
+
+    const exhibitionAction = document.querySelector('.exhibition-copy .collab-action');
+    if (exhibitionAction) {
+        exhibitionAction.textContent = 'Escríbeme';
+        exhibitionAction.href = '/contacto/?servicio=exposici%C3%B3n-temporal';
+    }
+
+    if (document.body.classList.contains('collabs-page')) {
+        const mobileCta = document.createElement('a');
+        mobileCta.className = 'mobile-session-cta';
+        mobileCta.href = '/contacto/?servicio=sesi%C3%B3n-fotogr%C3%A1fica';
+        mobileCta.textContent = 'Consultar sesión';
+        document.body.appendChild(mobileCta);
+
+        const updateMobileCta = () => {
+            const sessions = document.getElementById('collabs-list');
+            const footer = document.querySelector('.site-footer');
+            if (!sessions) return;
+            const hasStarted = window.scrollY > Math.max(320, sessions.offsetTop - window.innerHeight * 0.45);
+            const footerVisible = footer && footer.getBoundingClientRect().top < window.innerHeight;
+            mobileCta.classList.toggle('is-visible', hasStarted && !footerVisible);
+        };
+
+        window.addEventListener('scroll', updateMobileCta, { passive: true });
+        window.addEventListener('resize', updateMobileCta);
+        updateMobileCta();
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const selectedService = params.get('servicio');
+    if (!document.body.classList.contains('contact-page') || !selectedService) return;
+
+    const readableService = selectedService.replace(/-/g, ' ');
+    const contactIntro = document.querySelector('.contact-header p');
+    if (contactIntro) {
+        contactIntro.textContent = `Cuéntame los detalles de tu ${readableService}. Te responderé con opciones y disponibilidad, sin compromiso.`;
+    }
+
+    const subject = `Consulta sobre ${readableService}`;
+    const message = `Hola, me interesa recibir información sobre ${readableService}.`;
+    const emailLink = document.querySelector('.contact-social-link[href^="mailto:"]');
+    const whatsappLink = document.querySelector('.contact-social-link[href*="wa.me"]');
+    if (emailLink) {
+        emailLink.href = `mailto:belenbuuur@outlook.es?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+    }
+    if (whatsappLink) {
+        whatsappLink.href = `https://wa.me/34623947223?text=${encodeURIComponent(message)}`;
+    }
+};
+
+setupContextualCtas();
+
+// Fichas de producto abiertas dentro de la tienda.
+const setupShopProductViewer = () => {
+    const productCards = document.querySelectorAll('[data-shop-product]');
+    if (!productCards.length) return;
+
+    const imagePath = (folder, filename) => {
+        const encodedFolder = folder.split('/').map(encodeURIComponent).join('/');
+        return `../media/img/tienda/${encodedFolder}/${encodeURIComponent(filename)}`;
+    };
+
+    const products = {
+        tshirts: {
+            tag: 'Textil',
+            title: 'Camisetas',
+            price: 'Desde 20 €',
+            description: 'Camisetas con fotografías y composiciones originales Belenbuuur. Una colección pensada para llevar arte fotográfico en una prenda cómoda y cotidiana.',
+            details: ['Diseños originales Belenbuuur', 'Impresión en parte delantera y trasera', 'Tallas y disponibilidad bajo consulta'],
+            images: [
+                ['2026 Flores MockUp.webp', 'Camiseta Flores, vista delantera y trasera', '#fc7324'],
+                ['2026 Barrio y Vecinos MockUp.webp', 'Camiseta Barrio y vecinos, vista delantera y trasera', '#7d7d7d']
+            ].map(([file, alt, background]) => ({ src: imagePath('Camisetas', file), alt, background }))
+        },
+        polaroid: {
+            tag: 'Impresiones',
+            title: 'Láminas Polaroid',
+            price: 'Desde 3 €',
+            description: 'Láminas estilo Polaroid con fotografías seleccionadas del archivo Belenbuuur. Cada lámina se puede comprar de forma individual por 3 € y también hay packs con precios especiales.',
+            details: ['Láminas individuales a 3 € cada una', 'Packs con precios especiales', 'Selección de fotografías disponible bajo consulta', 'Un formato ideal para regalar, decorar o coleccionar'],
+            images: [
+                '(2022) Amanecer en la Malvarrosa.webp', '(2022) Danza.webp', '(2022) Fallera.webp',
+                '(2022) Florencia.webp', '(2022) Luna Creciente.webp', '(2022) Mariquita.webp',
+                '(2022) Michi trepador.webp', "(2022) Nou d'Octubre.webp", '(2022) Oceanogràfic Valencia.webp',
+                '(2022) Playa la Malvarrosa, Valencia.webp', '(2022) Rotterdam.webp', '(2022) Rural.webp',
+                '(2022) Torres Blancas, Madrid.webp', '(2023) Laguna de Gallocanta.webp',
+                '(2023) Puuurr en la Alcazaba, Almería.webp', '(2023) Semana Santa Marinera de Valencia.webp'
+            ].map((file) => ({
+                src: imagePath('Láminas Polaroid', file),
+                alt: `Lámina Polaroid ${file.replace(/^\(\d{4}\)\s*/, '').replace(/\.webp$/i, '')}`
+            }))
+        },
+        bookmarks: {
+            tag: 'Detalle',
+            title: 'Marcapáginas ilustrado',
+            price: 'Desde 2 €',
+            description: 'Marcapáginas con fotografías originales Belenbuuur impresas en un formato pequeño, ligero y pensado para acompañar tus lecturas.',
+            details: ['Tres diseños fotográficos disponibles', 'Formato vertical', 'Disponibilidad de cada modelo bajo consulta'],
+            images: [
+                '(2024) Marcapáginas Ferrari Cheste.webp',
+                '(2024) Marcapáginas Gallocanta.webp',
+                '(2024) Marcapáginas Peñíscola.webp'
+            ].map((file) => ({
+                src: imagePath('Marcapáginas', file),
+                alt: file.replace(/^\(\d{4}\)\s*/, '').replace(/\.webp$/i, '')
+            }))
+        }
+    };
+
+    const viewer = document.createElement('div');
+    viewer.className = 'shop-product-viewer';
+    viewer.hidden = true;
+    viewer.setAttribute('role', 'dialog');
+    viewer.setAttribute('aria-modal', 'true');
+    viewer.setAttribute('aria-labelledby', 'shop-product-title');
+    viewer.innerHTML = `
+        <div class="shop-product-backdrop" data-shop-close></div>
+        <article class="shop-product-sheet">
+            <button class="shop-product-close" type="button" data-shop-close aria-label="Cerrar ficha de producto">&times;</button>
+            <div class="shop-product-gallery">
+                <div class="shop-product-main-image"><img src="" alt=""></div>
+                <div class="shop-product-thumbnails" aria-label="Imágenes del producto"></div>
+            </div>
+            <div class="shop-product-copy">
+                <p class="shop-product-tag"></p>
+                <h2 id="shop-product-title"></h2>
+                <p class="shop-product-description"></p>
+                <ul class="shop-product-details"></ul>
+                <p class="shop-product-price"></p>
+                <a class="collab-action shop-product-contact" href="/contacto/">Consultar disponibilidad</a>
+            </div>
+        </article>`;
+    document.body.appendChild(viewer);
+
+    const mainImage = viewer.querySelector('.shop-product-main-image img');
+    const thumbnails = viewer.querySelector('.shop-product-thumbnails');
+    const closeButton = viewer.querySelector('.shop-product-close');
+    let opener = null;
+
+    const selectImage = (image, button) => {
+        mainImage.src = image.src;
+        mainImage.alt = image.alt;
+        mainImage.parentElement.style.backgroundColor = image.background || '';
+        thumbnails.querySelectorAll('button').forEach((thumb) => {
+            const selected = thumb === button;
+            thumb.classList.toggle('is-active', selected);
+            thumb.setAttribute('aria-current', selected ? 'true' : 'false');
+        });
+    };
+
+    const openProduct = (key, card) => {
+        const product = products[key];
+        if (!product) return;
+        opener = card;
+        viewer.querySelector('.shop-product-sheet').dataset.product = key;
+        viewer.querySelector('.shop-product-tag').textContent = product.tag;
+        viewer.querySelector('#shop-product-title').textContent = product.title;
+        viewer.querySelector('.shop-product-description').textContent = product.description;
+        viewer.querySelector('.shop-product-price').textContent = product.price;
+        viewer.querySelector('.shop-product-details').innerHTML = product.details.map((detail) => `<li>${detail}</li>`).join('');
+        viewer.querySelector('.shop-product-contact').href = `/contacto/?servicio=${encodeURIComponent(product.title)}`;
+        thumbnails.innerHTML = '';
+        product.images.forEach((image, index) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.setAttribute('aria-label', `Ver imagen ${index + 1} de ${product.images.length}`);
+            button.style.backgroundColor = image.background || '';
+            button.innerHTML = `<img src="${image.src}" alt="" loading="lazy">`;
+            button.addEventListener('click', () => selectImage(image, button));
+            thumbnails.appendChild(button);
+            if (index === 0) selectImage(image, button);
+        });
+        viewer.hidden = false;
+        document.body.classList.add('shop-product-open');
+        closeButton.focus();
+    };
+
+    const closeProduct = () => {
+        if (viewer.hidden) return;
+        viewer.hidden = true;
+        document.body.classList.remove('shop-product-open');
+        opener?.focus();
+    };
+
+    productCards.forEach((card) => {
+        card.classList.add('shop-card--interactive');
+        card.tabIndex = 0;
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-haspopup', 'dialog');
+        card.setAttribute('aria-label', `Ver artículo ${card.querySelector('h3')?.textContent.trim() || ''}`);
+
+        const openFromCard = (event) => {
+            if (event.target.closest('a, button')) return;
+            openProduct(card.dataset.shopProduct, card);
+        };
+        card.addEventListener('click', openFromCard);
+        card.addEventListener('keydown', (event) => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            openProduct(card.dataset.shopProduct, card);
+        });
+    });
+
+    viewer.querySelectorAll('[data-shop-close]').forEach((control) => control.addEventListener('click', closeProduct));
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeProduct();
+    });
+};
+
+setupShopProductViewer();
 
 // Soporte swipe táctil para el lightbox
 let _swipeTouchStartX = 0;

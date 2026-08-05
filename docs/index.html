@@ -75,7 +75,17 @@ Línea 190: Scripts
     </section>
 
     <!-- Section 1 -->
-    <section class="index" id="index">
+    <section class="index index--mosaic" id="index">
+        <div class="index-photo-mosaic" aria-hidden="true">
+            <img src="media/previews/img/2024-07-28-Paseo-por-la-playa-de-Valencia-28-de-julio-de-2024/IMG_3647.webp" alt="">
+            <img src="media/previews/img/2024-07-21-Belenpuuur-Zoe-y-Peluso-21-de-julio-de-2024/IMG_3635.webp" alt="">
+            <img src="media/previews/img/2024-05-25-Festibuuur-Fiestas-del-cerro,-Saelices-25-de-mayo-de-2024/IMG_2300.webp" alt="">
+            <img src="media/previews/img/2024-05-04-Chinchínbuuur-Comunión-Laura-4-de-mayo-de-2024/IMG_0594.webp" alt="">
+            <img src="media/previews/img/2024-02-18-Arquibuuur-Toledo-18-de-febrero-de-2024/IMG_7360.webp" alt="">
+            <img src="media/previews/img/2023-10-12-Belenbruuum-Aviación-en-Torrejón-de-Ardoz-12-de-octubre-de-2023/IMG_0383.webp" alt="">
+            <img src="media/previews/img/2021-07-04-Chinchinbuuur-Embarazo-Ángel-4-de-julio-de-2021/_MG_8327.webp" alt="">
+            <img src="media/previews/img/2017-11-01-Arquibuuur-IX-Certamen-Fotográfico-Renfe-1-de-noviembre-de-2017/IMG_0019.webp" alt="">
+        </div>
         <div class="index-container">
             <a href="/galeria/"><div class="index-card">
                 <img src="media/logos/Belenbuuur_Perfil completo.webp" alt="Belenbuuur" class="index-card-img" onerror="this.onerror=null;this.src='media/logos/Belenbuuur_Perfil completo.jpg'">
@@ -122,10 +132,33 @@ Línea 190: Scripts
         </div>
     </section>
 
+    <!-- Quién soy -->
+    <section class="about-me" id="about-me">
+        <div class="container">
+            <header class="home-section-heading">
+                <h2>Me llamo Paula, no Belén</h2>
+                <p class="home-section-intro">La persona detrás de la cámara y de todos los universos Belenbuuur.</p>
+            </header>
+            <div class="about-me-content">
+                <figure class="about-me-image">
+                    <img src="media/logos/AboutMe.webp" alt="Paula, autora de Belenbuuur" onerror="this.onerror=null;this.src='media/logos/AboutMe.jpg'">
+                </figure>
+                <div class="about-me-text">
+                    <p>Sí, me llamo Paula. De pequeña fui una niña con una cámara a la que le gustaba guardar recuerdos; hoy sigo haciendo lo mismo, aunque con alguna cámara más.</p>
+                    <p>Fotografía Belenbuuur reúne todas las facetas que me mueven: animales, arquitectura, deporte, fiestas y celebraciones.</p>
+                    <a class="about-me-link" href="/blog/#quien-soy">Conóceme mejor</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Section 2 -->
     <section class="news" id="news">
         <div class="container">
-            <h2>Novedades</h2>
+            <header class="home-section-heading">
+                <h2>Novedades</h2>
+                <p class="home-section-intro">Los últimos álbumes y relatos, reunidos en un solo lugar.</p>
+            </header>
             <div class="news-container">
                 <!-- Último álbum -->
                 <a href="/galeria/" class="news-card news-card-album">
@@ -156,21 +189,39 @@ Línea 190: Scripts
         </div>
     </section>
 
-    <!-- Section 3 -->
-    <section class="about-me" id="about-me">
-        <div class="container">
-            <h2>Me llamo Paula, no Belén</h2>
-            <div class="about-me-content">
-                <figure class="about-me-image">
-                    <img src="media/logos/AboutMe.webp" alt="Paula, autora de Belenbuuur" onerror="this.onerror=null;this.src='media/logos/AboutMe.jpg'">
-                </figure>
-                <div class="about-me-text">
-                    <p>Entiendo que con eso de Belenbuuur podáis pensar que mi nombre es Belén, está completamente justificado, sé que la culpa es mía. Es más, ya respondo también al nombre de “Belén”.<br><br>
-                    De pequeña fui una niña con una cámara a la que le gustaba mantener recuerdos. Hoy soy una mujer con más cámaras -no especificaré número para que nadie dude de mi cordura- a la que le encanta explorar los rincones de la fotografía y lo que ofrece cada uno de sus formatos. Este impulso dio lugar al nacimiento de FOTOGRAFÍA BELENBUUUR.<br><br>
-                    Sin embargo, nunca he sabido especializarme, me apasionan los animales y la arquitectura, adoro los retos de los eventos deportivos, y me emociona capturar festividades y celebraciones. Así que mi pensamiento fue… ¿y si dejo que cada enfoque fluya?<br><br>
-                    Por ello crece ARQUIBUUR, para recoger mis pensamientos arquitectónicos; BELENPUUUR, para mostraros la cantidad de animales que soy capaz de ver y disfrutar en cada paso; BELENBRUUUM, para seguir retándome y conocer nuevos deportes; FESTIBUUUR, para recorrer el mundo entre fiestas locales y festivales; y finalmente CHINCHÍNBUUUR, para no olvidarnos de que hay motivos para celebrar.<br><br>
-                    Todas estas facetas son los pilares de mi trabajo: una mezcla de técnica, sensibilidad y celebración. He organizado mi universo para que elijas tu propia experiencia: si tienes curiosidad por el conjunto, quédate en BELENBUUUR; si prefieres profundizar en una pasión concreta, toma el atajo que más te inspire.</p>
-                </div>
+    <!-- Servicios destacados -->
+    <section class="home-services" aria-labelledby="home-services-title">
+        <div class="home-services-inner">
+            <div class="home-services-heading home-section-heading">
+                <h2 id="home-services-title">¿Qué historia quieres contar?</h2>
+                <p class="home-section-intro">Desde una sesión personal hasta un evento lleno de movimiento: elegimos el formato que mejor encaje con tu idea.</p>
+            </div>
+
+            <div class="home-services-grid">
+                <a class="home-service-card" href="/servicios/#sesiones">
+                    <img src="media/previews-mobile/img/2023-04-09-Festibuuur-Domingo-de-Resurrección,-Valencia-9-de-abril-de-2023/IMG_3709.webp" alt="Sesión fotográfica en exterior" loading="lazy">
+                    <span class="home-service-card-overlay" aria-hidden="true"></span>
+                    <span class="home-service-card-content">
+                        <span class="home-service-card-label">Retratos y recuerdos</span>
+                        <strong>Sesiones</strong>
+                        <span>Una experiencia pensada alrededor de ti.</span>
+                    </span>
+                </a>
+
+                <a class="home-service-card" href="/servicios/#shop">
+                    <img src="media/img/tienda/foto-tienda.webp" alt="Productos fotográficos de la tienda Belenbuuur" loading="lazy">
+                    <span class="home-service-card-overlay" aria-hidden="true"></span>
+                    <span class="home-service-card-content">
+                        <span class="home-service-card-label">Fotografía para llevar</span>
+                        <strong>Tienda</strong>
+                        <span>Detalles y piezas creadas con mis imágenes.</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="home-services-actions">
+                <a class="home-services-action home-services-action--primary" href="/servicios/">Ver todos los servicios</a>
+                <a class="home-services-action home-services-action--secondary" href="/contacto/">Escríbeme</a>
             </div>
         </div>
     </section>
