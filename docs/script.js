@@ -227,6 +227,30 @@ const setupShopProductViewer = () => {
     };
 
     const products = {
+        poster: {
+            tag: 'Impresiones',
+            title: 'Póster A4',
+            price: 'Desde 18 €',
+            description: 'Póster fotográfico de la colección Belenbuuur, preparado para enmarcar o combinar con otras piezas.',
+            details: ['Diseño Londres', 'Formato A4', 'Disponibilidad bajo consulta'],
+            images: [
+                ['2022 Londres.webp', 'Póster Londres de Belenbuuur']
+            ].map(([file, alt]) => ({ src: imagePath('Poster', file), alt }))
+        },
+        totebags: {
+            tag: 'Textil',
+            title: 'Totebags',
+            price: 'Desde 20 €',
+            description: 'Bolsas de tela con fotografías y composiciones originales Belenbuuur para llevar arte fotográfico a diario.',
+            details: ['Seis diseños disponibles', 'Impresión fotográfica', 'Disponibilidad bajo consulta'],
+            images: [
+                '2021 Medusas 1.webp', '2021 Medusas 2.webp', '2026 Rosaleda, Madrid.webp',
+                '2026 Michirrines.webp', '2026 Campeonato de Cross.webp', '2026 Fiestas del Cerro.webp'
+            ].map((file) => ({
+                src: imagePath('Totebags', file),
+                alt: `Totebag ${file.replace(/^\d{4}\s*/, '').replace(/\.webp$/i, '')}`
+            }))
+        },
         tshirts: {
             tag: 'Textil',
             title: 'Camisetas',
@@ -234,9 +258,24 @@ const setupShopProductViewer = () => {
             description: 'Camisetas con fotografías y composiciones originales Belenbuuur. Una colección pensada para llevar arte fotográfico en una prenda cómoda y cotidiana.',
             details: ['Diseños originales Belenbuuur', 'Impresión en parte delantera y trasera', 'Tallas y disponibilidad bajo consulta'],
             images: [
-                ['2026 Flores MockUp.webp', 'Camiseta Flores, vista delantera y trasera', '#fc7324'],
-                ['2026 Barrio y Vecinos MockUp.webp', 'Camiseta Barrio y vecinos, vista delantera y trasera', '#7d7d7d']
-            ].map(([file, alt, background]) => ({ src: imagePath('Camisetas', file), alt, background }))
+                ['2026 Flores.webp', 'Camiseta Flores, vista delantera y trasera'],
+                ['2026 Barrio y vecinos.webp', 'Camiseta Barrio y vecinos, vista delantera y trasera']
+            ].map(([file, alt]) => ({ src: imagePath('Camisetas', file), alt }))
+        },
+        retro: {
+            tag: 'Impresiones',
+            title: 'Láminas retro',
+            price: 'Desde 3 €',
+            description: 'Láminas fotográficas de la colección retro Belenbuuur. Cada diseño se puede comprar de forma individual y también hay packs con precios especiales.',
+            details: ['Ocho diseños disponibles', 'Láminas individuales desde 3 €', 'Packs con precios especiales', 'Disponibilidad bajo consulta'],
+            images: [
+                '2026 La última gota del invierno.webp', '2026 Llévame a mi pueblo.webp',
+                '2026 Florecer de primavera.webp', '2026 Pureza.webp', '2026 Barrio y Vecinos.webp',
+                '2026 Ilusiones que el alma quería.webp', '2026 Arquibuuur.webp', '2026 El mar, la mar.webp'
+            ].map((file) => ({
+                src: imagePath('Laminas Retro', file),
+                alt: `Lámina retro ${file.replace(/^\d{4}\s*/, '').replace(/\.webp$/i, '')}`
+            }))
         },
         polaroid: {
             tag: 'Impresiones',

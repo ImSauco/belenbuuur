@@ -2802,6 +2802,106 @@ main {
     }
 }
 
+/* Ajuste final de la tienda para pantallas estrechas. */
+@media (max-width: 760px) {
+    .shop-grid {
+        gap: 14px;
+        scroll-padding-inline: 16px;
+    }
+
+    .shop-card {
+        flex: 0 0 calc(100vw - 32px);
+        max-width: 360px;
+    }
+
+    .shop-card img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .shop-card-content {
+        gap: 8px;
+        padding: 18px 16px;
+    }
+
+    .shop-product-viewer {
+        align-items: stretch;
+        padding: 0;
+    }
+
+    .shop-product-sheet {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        width: 100%;
+        height: 100dvh;
+        max-height: none;
+        padding: 56px 16px max(24px, env(safe-area-inset-bottom));
+        border-radius: 0;
+        overscroll-behavior: contain;
+    }
+
+    .shop-product-close {
+        position: fixed;
+        top: max(10px, env(safe-area-inset-top));
+        right: 12px;
+    }
+
+    .shop-product-gallery {
+        flex: 0 0 auto;
+    }
+
+    .shop-product-main-image,
+    .shop-product-sheet[data-product="polaroid"] .shop-product-main-image {
+        width: min(100%, 390px);
+        height: auto;
+        max-height: 42dvh;
+        margin-inline: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .shop-product-thumbnails {
+        padding-bottom: 4px;
+        scroll-snap-type: x proximity;
+    }
+
+    .shop-product-thumbnails button {
+        flex-basis: 64px;
+        width: 64px;
+        scroll-snap-align: start;
+    }
+
+    .shop-product-copy {
+        padding-bottom: 8px;
+    }
+
+    .shop-product-copy h2 {
+        margin: 0 48px 12px 0;
+        font-size: clamp(1.65rem, 8vw, 2rem);
+    }
+
+    .shop-product-description {
+        font-size: 0.95rem;
+        line-height: 1.55;
+    }
+
+    .shop-product-details {
+        gap: 6px;
+        margin: 16px 0;
+        font-size: 0.92rem;
+    }
+
+    .shop-product-price {
+        margin-bottom: 16px;
+    }
+
+    .shop-product-contact {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
 /* CTA contextuales de Servicios. */
 .collabs-cta-reassurance {
     max-width: 62ch;
@@ -2981,6 +3081,7 @@ main {
 .shop-card img {
     display: block;
     width: 100%;
+    height: auto;
     aspect-ratio: 1 / 1;
     object-fit: contain;
     background: #f4e5e5;
@@ -3000,10 +3101,6 @@ main {
     background: #fff;
     padding-block: 16px;
     box-sizing: border-box;
-}
-
-.shop-card img.shop-card-img--tshirts {
-    background: #fc7322;
 }
 
 .shop-card-content {
@@ -3219,6 +3316,32 @@ body.shop-product-open {
     flex-basis: 48px;
     width: 48px;
     aspect-ratio: 550 / 1970;
+}
+
+.shop-product-sheet[data-product="retro"] .shop-product-main-image,
+.shop-product-sheet[data-product="retro"] .shop-product-thumbnails button {
+    background: #fff;
+}
+
+.shop-card[data-shop-product="retro"] > img {
+    background: #fff;
+}
+
+.shop-product-sheet[data-product="poster"] .shop-product-main-image,
+.shop-product-sheet[data-product="poster"] .shop-product-thumbnails button,
+.shop-product-sheet[data-product="tshirts"] .shop-product-main-image,
+.shop-product-sheet[data-product="tshirts"] .shop-product-thumbnails button {
+    aspect-ratio: 1 / 1;
+    background: #fff;
+}
+
+.shop-product-sheet[data-product="poster"] .shop-product-main-image img,
+.shop-product-sheet[data-product="poster"] .shop-product-thumbnails img,
+.shop-product-sheet[data-product="tshirts"] .shop-product-main-image img,
+.shop-product-sheet[data-product="tshirts"] .shop-product-thumbnails img {
+    transform: none;
+    object-fit: contain;
+    object-position: center;
 }
 
 .shop-product-copy {
@@ -5467,5 +5590,50 @@ body.shop-product-open {
     .about-story-actions {
         align-items: stretch;
         flex-direction: column;
+    }
+}
+
+@media (max-width: 760px) {
+    .shop-grid {
+        gap: 14px;
+    }
+
+    .shop-card {
+        flex: 0 0 calc(100vw - 32px);
+        max-width: 360px;
+    }
+
+    .shop-card-content {
+        padding: 18px 16px;
+    }
+
+    .shop-product-main-image,
+    .shop-product-sheet[data-product="polaroid"] .shop-product-main-image {
+        width: min(100%, 42dvh);
+        max-height: none;
+    }
+
+    .shop-product-sheet[data-product="retro"] .shop-product-main-image,
+    .shop-product-sheet[data-product="retro"] .shop-product-thumbnails button {
+        aspect-ratio: 1 / 1;
+        background: #fff;
+    }
+
+    .shop-product-sheet[data-product="retro"] .shop-product-main-image img,
+    .shop-product-sheet[data-product="retro"] .shop-product-thumbnails img {
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .shop-product-sheet[data-product="totebags"] .shop-product-main-image img,
+    .shop-product-sheet[data-product="totebags"] .shop-product-thumbnails img {
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .shop-product-sheet[data-product="totebags"] .shop-product-main-image,
+    .shop-product-sheet[data-product="totebags"] .shop-product-thumbnails button {
+        aspect-ratio: 1 / 1;
+        background: #f1e8e2;
     }
 }
