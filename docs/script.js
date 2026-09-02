@@ -83,6 +83,11 @@ setupMobileNavigation();
 const redirectLegacyHtmlUrl = () => {
     if (window.location.protocol === 'file:') return;
 
+    // Los servidores locales de vista previa sirven los archivos físicos, pero
+    // no siempre resuelven las rutas limpias de directorio como GitHub Pages.
+    // Conservamos /index.html durante el desarrollo para evitar falsos 404.
+    if (['localhost', '127.0.0.1', '::1'].includes(window.location.hostname)) return;
+
     const path = window.location.pathname;
     const lowerPath = path.toLowerCase();
     let cleanPath = null;

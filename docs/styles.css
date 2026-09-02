@@ -2039,6 +2039,10 @@ main {
     border-radius: 8px;
 }
 
+.post-content figure img.post-image-compact {
+    width: min(100%, 320px);
+}
+
 .post-content figcaption {
     font-size: 0.9rem;
     color: rgb(130, 130, 130);
