@@ -2043,6 +2043,11 @@ main {
     width: min(100%, 320px);
 }
 
+.post-content figure img.post-image-medium {
+    width: min(100%, 480px);
+    height: auto;
+}
+
 .post-content figcaption {
     font-size: 0.9rem;
     color: rgb(130, 130, 130);
