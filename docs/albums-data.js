@@ -13,6 +13,56 @@
 // Este archivo es compartido entre galeria.html e index.html
 const rawAlbums = [
     {
+        folder: "2024-11-16-Belenbruuum-Vallecas-Rugby-Unión-16-de-noviembre-de-2024",
+        title: "Vallecas Rugby Unión 16 de noviembre de 2024",
+        files: ["IMG_6711.jpg", "IMG_6732.jpg", "IMG_6805.jpg", "IMG_6866.jpg", "IMG_6883.jpg"]
+    },
+    {
+        folder: "2024-11-02-Arquibuuur-Lalín-y-Santiago-2-de-noviembre-de-2024",
+        title: "Lalín y Santiago 2 de noviembre de 2024",
+        files: ["IMG_6612.jpg", "IMG_6618.jpg", "IMG_6626.jpg", "IMG_6629.jpg", "IMG_6633.jpg", "IMG_6647.jpg", "IMG_6649.jpg", "IMG_6656-2.jpg", "IMG_6663-2.jpg", "IMG_6664-2.jpg", "IMG_6669.jpg", "IMG_6687.jpg", "IMG_6694.jpg", "IMG_6695.jpg", "IMG_6699.jpg", "IMG_6702.jpg"]
+    },
+    {
+        folder: "2024-10-27-Sesión-Autorretrato-Halloween-27-de-octubre-de-2024",
+        title: "Sesión Autorretrato Halloween 27 de octubre de 2024",
+        files: ["IMG_6533.jpg", "IMG_6555.jpg", "IMG_6556.jpg", "IMG_6563.jpg", "IMG_6566.jpg", "IMG_6608.jpg"]
+    },
+    {
+        folder: "2024-10-19-Belenpuuur-Asociación-Vida-Gatuna-Tarancón-19-de-octubre-de-2024",
+        title: "Asociación Vida Gatuna Tarancón 19 de octubre de 2024",
+        files: ["IMG_6216.jpg", "IMG_6224.jpg", "IMG_6228.jpg", "IMG_6238.jpg", "IMG_6258.jpg", "IMG_6264.jpg", "IMG_6270.jpg", "IMG_6274.jpg", "IMG_6292.jpg", "IMG_6316.jpg", "IMG_6344.jpg", "IMG_6347.jpg", "IMG_6396.jpg", "IMG_6424.jpg", "IMG_6457.jpg", "IMG_6467.jpg", "IMG_6495.jpg", "IMG_6511.jpg"]
+    },
+    {
+        folder: "2024-10-11-Belenpuuur-Gatets-del-Cabanyal-11-de-octubre-de-2024",
+        title: "Gatets del Cabanyal 11 de octubre de 2024",
+        files: ["IMG_6110.jpg", "IMG_6111.jpg", "IMG_6118.jpg", "IMG_6144.jpg", "IMG_6163.jpg"]
+    },
+    {
+        folder: "2024-09-28-Chinchinbuuur-Boda-Amanda-y-Marc-28-de-septiembre-de-2024",
+        title: "Boda Amanda y Marc 28 de septiembre de 2024",
+        files: ["IMG_4851.jpg", "IMG_4998.jpg", "IMG_5214.jpg", "IMG_5453.jpg", "IMG_5455.jpg", "IMG_5473.jpg", "IMG_5481.jpg", "IMG_5598.jpg", "IMG_5798.jpg", "IMG_5877.jpg", "IMG_5974.jpg", "IMG_6000.jpg", "IMG_6027.jpg", "IMG_6058.jpg", "_MG_4594.jpg", "_MG_4597.jpg", "_MG_4602.jpg", "_MG_4681.jpg", "_MG_4684.jpg", "_MG_4710.jpg"]
+    },
+    {
+        folder: "2024-09-20-Arquibuuur-Belenpuuur-Córdoba-20-a-22-de-septiembre-de-2024",
+        title: "Córdoba 20 a 22 de septiembre de 2024",
+        files: ["IMG_4656.jpg", "IMG_4662.jpg", "IMG_4673.jpg", "IMG_4685.jpg", "IMG_4694.jpg", "IMG_4710.jpg", "IMG_4722.jpg", "IMG_4724.jpg", "IMG_4736.jpg", "IMG_4750.jpg", "IMG_4763.jpg", "IMG_4764.jpg", "IMG_4768.jpg", "IMG_4778.jpg", "IMG_4783.jpg", "IMG_4791.jpg", "IMG_4793.jpg", "IMG_4794.jpg", "IMG_4798.jpg", "IMG_4806.jpg", "IMG_4825.jpg", "IMG_4831.jpg", "IMG_4832.jpg", "IMG_4838.jpg", "_MG_4563.jpg", "_MG_4567.jpg", "_MG_4570.jpg"]
+    },
+    {
+        folder: "2024-08-31-Belenpuuur-Belenbruuum-Albufera-de-Anna-y-cascadas-31-de-agosto-de-2024",
+        title: "Albufera de Anna y cascadas 31 de agosto de 2024",
+        files: ["IMG_4356.jpg", "IMG_4358.jpg", "IMG_4397.jpg", "IMG_4400.jpg", "IMG_4452.jpg", "IMG_4464.jpg", "IMG_4488.jpg", "IMG_4503.jpg", "IMG_4558.jpg", "IMG_4575.jpg", "IMG_4601.jpg", "IMG_4619.jpg", "IMG_4623.jpg", "IMG_4653.jpg"]
+    },
+    {
+        folder: "2024-08-23-Arquibuuur-Cartagena-23-a-25-de-agosto-de-2024",
+        title: "Cartagena 23 a 25 de agosto de 2024",
+        files: ["IMG_4037.jpg", "IMG_4044.jpg", "IMG_4077.jpg", "IMG_4089.jpg", "IMG_4099.jpg", "IMG_4109.jpg", "IMG_4118.jpg", "IMG_4152.jpg", "IMG_4175.jpg", "IMG_4181.jpg", "IMG_4202.jpg", "IMG_4212.jpg", "IMG_4228.jpg", "IMG_4231.jpg", "IMG_4240.jpg", "IMG_4250.jpg", "IMG_4252.jpg", "IMG_4256.jpg", "IMG_4285.jpg", "IMG_4307.jpg", "IMG_4329.jpg", "IMG_4348.jpg", "IMG_4354.jpg", "_MG_4549.jpg", "_MG_4552.jpg", "_MG_4557.jpg", "_MG_4559.jpg"]
+    },
+    {
+        folder: "2024-08-02-Belenpuuur-Arquibuuur-Huesca-02-a-05-de-agosto-de-2024",
+        title: "Huesca 02 a 05 de agosto de 2024",
+        files: ["IMG_3675.jpg", "IMG_3680.jpg", "IMG_3699.jpg", "IMG_3701.jpg", "IMG_3711.jpg", "IMG_3713-2.jpg", "IMG_3720.jpg", "IMG_3737.jpg", "IMG_3742.jpg", "IMG_3768.jpg", "IMG_3802.jpg", "IMG_3844.jpg", "IMG_3859.jpg", "IMG_3864.jpg", "IMG_3865.jpg", "IMG_3870.jpg", "IMG_3872.jpg", "IMG_3878.jpg", "IMG_3891.jpg", "IMG_3921.jpg", "IMG_3936.jpg", "IMG_3938.jpg", "IMG_3941.jpg", "IMG_3973.jpg", "IMG_4027.jpg", "_MG_4502.jpg", "_MG_4514.jpg", "_MG_4522.jpg", "_MG_4535.jpg", "_MG_4544.jpg", "_MG_4545.jpg"]
+    },
+    {
         folder: "2024-07-28-Paseo-por-la-playa-de-Valencia-28-de-julio-de-2024",
         title: "Paseo por la playa de Valencia 28 de julio de 2024",
         files: ["IMG_3647.jpg", "IMG_3648.jpg", "IMG_3653.jpg", "IMG_3659.jpg", "IMG_3667.jpg", "IMG_3669.jpg"]
