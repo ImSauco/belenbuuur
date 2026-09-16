@@ -2034,6 +2034,56 @@ main {
     text-align: center;
 }
 
+.travel-summary {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 32px 0;
+    font-size: 0.95em;
+}
+
+.travel-summary caption {
+    text-align: left;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.travel-summary th,
+.travel-summary td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+}
+
+.travel-summary th {
+    width: 40%;
+    background: #9933660d;
+}
+
+.travel-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    align-items: center;
+}
+
+.post-content .travel-gallery img {
+    height: auto;
+    max-height: 760px;
+    object-fit: contain;
+}
+
+.travel-gallery img:only-child {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 600px) {
+    .travel-gallery {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
 .post-content figure img {
     width: 100%;
     border-radius: 8px;
