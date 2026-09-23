@@ -22,6 +22,29 @@
 const navbar = document.querySelector('.navbar');
 const hero = document.querySelector('.hero');
 
+// La presentación del blog se puede desplegar en móvil.
+const authorToggle = document.querySelector('.blog-author-toggle');
+const authorDetails = document.getElementById('blog-author-details');
+if (authorToggle && authorDetails) {
+    const mobileAuthor = window.matchMedia('(max-width: 760px)');
+    let authorExpanded = false;
+    const updateAuthorDetails = () => {
+        const expanded = !mobileAuthor.matches || authorExpanded;
+        authorToggle.hidden = !mobileAuthor.matches;
+        authorDetails.classList.toggle('is-collapsed', !expanded);
+        const actions = authorDetails.querySelector('.blog-author-actions');
+        if (actions) actions.inert = !expanded;
+        authorToggle.setAttribute('aria-expanded', String(expanded));
+        authorToggle.textContent = expanded ? 'Leer menos' : 'Leer más';
+    };
+    authorToggle.addEventListener('click', () => {
+        authorExpanded = !authorExpanded;
+        updateAuthorDetails();
+    });
+    mobileAuthor.addEventListener('change', updateAuthorDetails);
+    updateAuthorDetails();
+}
+
 // Menú principal compacto y accesible en pantallas pequeñas.
 const setupMobileNavigation = () => {
     const navigationBars = document.querySelectorAll('.navbar, .gallery-navbar, .post-navbar');

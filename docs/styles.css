@@ -1328,6 +1328,17 @@ main {
     transform: scale(1.05);
 }
 
+/* Recorta la franja superior incluida en la portada de arquitectura. */
+.blog-post-image .blog-cover-tics {
+    display: block;
+    transform: scale(1.16);
+    transform-origin: center bottom;
+}
+
+.blog-post:hover .blog-post-image .blog-cover-tics {
+    transform: scale(1.21);
+}
+
 .blog-post-content {
     padding: 28px;
 }
@@ -2069,8 +2080,11 @@ main {
 }
 
 .post-content .travel-gallery img {
+    width: auto;
+    max-width: 100%;
     height: auto;
     max-height: 760px;
+    justify-self: center;
     object-fit: contain;
 }
 
@@ -5471,6 +5485,33 @@ body.shop-product-open {
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 24px;
+}
+
+.blog-author-toggle {
+    min-height: 44px;
+    padding: 8px 18px;
+    margin-top: 12px;
+    border: 1px solid rgb(153, 51, 102);
+    border-radius: 999px;
+    background: transparent;
+    color: rgb(123, 39, 82);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.blog-author-toggle:focus-visible {
+    outline: 2px solid rgb(153, 51, 102);
+    outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+    #blog-author-details.is-collapsed {
+        max-height: 8em;
+        overflow: hidden;
+        -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+        mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    }
 }
 
 .blog-author-actions a {
