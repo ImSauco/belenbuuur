@@ -13,6 +13,141 @@
 // Este archivo es compartido entre galeria.html e index.html
 const rawAlbums = [
     {
+        "folder": "2025-03-02-Festibuuur-Arquibuuur-Mascletá-02-de-marzo-de-2025",
+        "title": "Mascletá 02 de marzo de 2025",
+        "files": [
+            "IMG_8427.jpg",
+            "IMG_8434.jpg",
+            "IMG_8438.jpg",
+            "IMG_8440.jpg",
+            "IMG_8442.jpg",
+            "IMG_8471.jpg",
+            "IMG_8501.jpg"
+        ]
+    },
+    {
+        "folder": "2025-03-01-Chinchinbuuur-Boda-Alicia-y-Fernando-01-de-marzo-de-2025",
+        "title": "Boda Alicia y Fernando 01 de marzo de 2025",
+        "files": [
+            "IMG_8601.jpg",
+            "IMG_8607.jpg",
+            "IMG_8614.jpg",
+            "IMG_8630.jpg",
+            "IMG_8654.jpg",
+            "IMG_8823.jpg",
+            "IMG_9355.jpg",
+            "IMG_9627.jpg",
+            "IMG_9694-2.jpg",
+            "IMG_9711.jpg",
+            "IMG_9716.jpg",
+            "IMG_9719.jpg",
+            "IMG_9991.jpg"
+        ]
+    },
+    {
+        "folder": "2025-02-19-Belenpuuur-Medusa-y-Torita-19-de-febrero-de-2025",
+        "title": "Medusa y Torita 19 de febrero de 2025",
+        "files": [
+            "IMG_8456.jpg",
+            "IMG_8458.jpg",
+            "IMG_8464.jpg",
+            "IMG_8468.jpg"
+        ]
+    },
+    {
+        "folder": "2025-02-15-Cumple-yaya-15-de-febrero-de-2025",
+        "title": "Cumple yaya 15 de febrero de 2025",
+        "files": [
+            "IMG_8432.jpg",
+            "IMG_8444.jpg",
+            "IMG_8448.jpg"
+        ]
+    },
+    {
+        "folder": "2025-02-08-Festibuuur-Don't-Let-Daddy-Know-Spain-08-de-febrero-de-2025",
+        "title": "Don't Let Daddy Know Spain 08 de febrero de 2025",
+        "files": [
+            "IMG_7471.jpg",
+            "IMG_7535.jpg",
+            "IMG_7548.jpg",
+            "IMG_7552.jpg",
+            "IMG_7555.jpg",
+            "IMG_7566.jpg",
+            "IMG_7598.jpg",
+            "IMG_7703.jpg",
+            "IMG_7776.jpg",
+            "IMG_7827.jpg",
+            "IMG_7840.jpg",
+            "IMG_7852.jpg",
+            "IMG_7965.jpg",
+            "IMG_7994.jpg",
+            "IMG_8069.jpg",
+            "IMG_8127.jpg",
+            "IMG_8148.jpg",
+            "IMG_8161.jpg",
+            "IMG_8165.jpg",
+            "IMG_8176.jpg",
+            "IMG_8250.jpg",
+            "IMG_8283.jpg",
+            "IMG_8293.jpg",
+            "IMG_8332.jpg"
+        ]
+    },
+    {
+        "folder": "2025-01-26-Belenbruuum-Campeonato-de-España-de-Cross-Absoluto-26-de-enero-de-2025",
+        "title": "Campeonato de España de Cross Absoluto 26 de enero de 2025",
+        "files": [
+            "IMG_7064.jpg",
+            "IMG_7072.jpg",
+            "IMG_7114.jpg",
+            "IMG_7142.jpg",
+            "IMG_7166.jpg",
+            "IMG_7175.jpg",
+            "IMG_7334.jpg",
+            "IMG_7351.jpg",
+            "IMG_7375.jpg",
+            "IMG_7386.jpg",
+            "IMG_7390-2.jpg",
+            "IMG_7392.jpg"
+        ]
+    },
+    {
+        "folder": "2025-01-02-Belenpuuur-Medusa-y-Torita-02-de-enero-de-2025",
+        "title": "Medusa y Torita 02 de enero de 2025",
+        "files": [
+            "IMG_7060.jpg",
+            "IMG_7061.jpg",
+            "IMG_7062.jpg"
+        ]
+    },
+    {
+        "folder": "2024-12-07-Arquibuuur-Luces-de-Cuenca-en-Navidad-07-de-diciembre-de-2024",
+        "title": "Luces de Cuenca en Navidad 07 de diciembre de 2024",
+        "files": [
+            "IMG_7024.jpg",
+            "IMG_7028.jpg",
+            "IMG_7036.jpg",
+            "IMG_7052.jpg",
+            "IMG_7053.jpg"
+        ]
+    },
+    {
+        "folder": "2024-12-05-Arquibuuur-Luces-de-Madrid-en-Navidad-05-de-diciembre-de-2024",
+        "title": "Luces de Madrid en Navidad 05 de diciembre de 2024",
+        "files": [
+            "IMG_6982.jpg",
+            "IMG_6983.jpg",
+            "IMG_6986.jpg",
+            "IMG_6989.jpg",
+            "IMG_6996.jpg",
+            "IMG_6998.jpg",
+            "IMG_7001.jpg",
+            "IMG_7003.jpg",
+            "IMG_7014.jpg",
+            "IMG_7021.jpg"
+        ]
+    },
+    {
         folder: "2024-11-16-Belenbruuum-Vallecas-Rugby-Unión-16-de-noviembre-de-2024",
         title: "Vallecas Rugby Unión 16 de noviembre de 2024",
         files: ["IMG_6711.jpg", "IMG_6732.jpg", "IMG_6805.jpg", "IMG_6866.jpg", "IMG_6883.jpg"]
