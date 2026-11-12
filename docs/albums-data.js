@@ -13,6 +13,148 @@
 // Este archivo es compartido entre galeria.html e index.html
 const rawAlbums = [
     {
+        "folder": "2025-09-15-Belenpuuur-Palomica-simpática-15-de-septiembre-de-2025",
+        "title": "Palomica simpática 15 de septiembre de 2025",
+        "files": [
+            "IMG_8854.jpg",
+            "IMG_8857.jpg",
+            "IMG_8860.jpg"
+        ]
+    },
+    {
+        "folder": "2025-09-14-Belenbruuum-Pista-de-atletismo-14-de-septiembre-de-2025",
+        "title": "Pista de atletismo 14 de septiembre de 2025",
+        "files": [
+            "IMG_8805.jpg",
+            "IMG_8806.jpg",
+            "IMG_8816.jpg",
+            "IMG_8821-2.jpg",
+            "IMG_8825.jpg",
+            "IMG_8831.jpg",
+            "IMG_8844.jpg"
+        ]
+    },
+    {
+        "folder": "2025-09-07-Belenpuuur-Pardalet-en-una-terraza-7-de-septiembre-de-2025",
+        "title": "Pardalet en una terraza 7 de septiembre de 2025",
+        "files": [
+            "IMG_8788.jpg",
+            "IMG_8790.jpg",
+            "IMG_8791.jpg",
+            "IMG_8794.jpg",
+            "IMG_8797.jpg",
+            "IMG_8798.jpg",
+            "IMG_8803.jpg"
+        ]
+    },
+    {
+        "folder": "2025-09-06-Chinchinbuuur-Sesión-de-embarazo,-Sofía-6-de-septiembre-de-2025",
+        "title": "Sesión de embarazo, Sofía 6 de septiembre de 2025",
+        "files": [
+            "IMG_8592.jpg",
+            "IMG_8610.jpg",
+            "IMG_8612.jpg",
+            "IMG_8619.jpg",
+            "IMG_8645.jpg",
+            "IMG_8653.jpg",
+            "IMG_8662.jpg",
+            "IMG_8671.jpg",
+            "IMG_8675.jpg",
+            "IMG_8677-2.jpg",
+            "IMG_8705.jpg",
+            "IMG_8709.jpg",
+            "IMG_8772.jpg",
+            "IMG_8782.jpg",
+            "IMG_8785.jpg",
+            "IMG_98569-2.jpg"
+        ]
+    },
+    {
+        "folder": "2025-09-03-Belenpuuur-En-casita-3-de-septiembre-de-2025",
+        "title": "En casita 3 de septiembre de 2025",
+        "files": [
+            "IMG_8554.jpg",
+            "IMG_8559.jpg",
+            "IMG_8562.jpg"
+        ]
+    },
+    {
+        "folder": "2025-09-02-Templo-de-Debod-2-de-septiembre-de-2025",
+        "title": "Templo de Debod 2 de septiembre de 2025",
+        "files": [
+            "IMG_8549.jpg",
+            "IMG_8550.jpg"
+        ]
+    },
+    {
+        "folder": "2025-08-27-Belenpuuur-En-casita-27-de-agosto-de-2025",
+        "title": "En casita 27 de agosto de 2025",
+        "files": [
+            "IMG_8504.jpg",
+            "IMG_8511.jpg",
+            "IMG_8514.jpg",
+            "IMG_8516.jpg",
+            "IMG_8528.jpg",
+            "IMG_8531.jpg",
+            "IMG_8539.jpg",
+            "IMG_8542.jpg",
+            "IMG_8545.jpg",
+            "IMG_98498.jpg",
+            "IMG_98501.jpg"
+        ]
+    },
+    {
+        "folder": "2025-08-24-Belenpuuur-Valencia-24-de-agosto-de-2025",
+        "title": "Valencia 24 de agosto de 2025",
+        "files": [
+            "_MG_4980.jpg",
+            "_MG_4984.jpg",
+            "_MG_4987.jpg",
+            "_MG_54976.jpg"
+        ]
+    },
+    {
+        "folder": "2025-08-20-En-casita-20-de-agosto-de-2025",
+        "title": "En casita 20 de agosto de 2025",
+        "files": [
+            "_MG_4952.jpg",
+            "_MG_4953.jpg"
+        ]
+    },
+    {
+        "folder": "2025-07-29-Belenbruuum-Tour-Mestalla-29-de-julio-de-2025",
+        "title": "Tour Mestalla 29 de julio de 2025",
+        "files": [
+            "IMG_8468.jpg",
+            "IMG_8469.jpg",
+            "IMG_8471.jpg",
+            "IMG_8474.jpg",
+            "IMG_8476.jpg",
+            "IMG_8477.jpg",
+            "IMG_8478.jpg",
+            "IMG_8479.jpg",
+            "IMG_8481.jpg",
+            "IMG_8484.jpg",
+            "IMG_8491.jpg"
+        ]
+    },
+    {
+        "folder": "2025-07-19-Belenbruuum-Vallehermoso-en-analógico-17-de-julio-de-2025",
+        "title": "Vallehermoso en analógico 17 de julio de 2025",
+        "files": [
+            "071409.JPG"
+        ]
+    },
+    {
+        "folder": "2025-07-17-Belenpuuur-En-casita-17-de-julio-de-2025",
+        "title": "En casita 17 de julio de 2025",
+        "files": [
+            "IMG_8460.jpg",
+            "IMG_8463.jpg",
+            "IMG_8465.jpg"
+        ]
+    },
+    {
         "folder": "2025-07-05-Chinchinbuuur-Boda-Zahara-y-Nacho-5-de-julio-de-2025",
         "title": "Boda Zahara y Nacho 5 de julio de 2025",
         "files": [
